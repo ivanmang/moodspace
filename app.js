@@ -781,8 +781,138 @@ function resetGuided() {
 
 // Call on init
 
+
+// Interactive decision tree
+function renderTree() {
+  const container = document.getElementById('tree-container');
+  if (!container) return;
+  
+  const tree = {
+    zh: {
+      start: { text: '開始', next: 'q1' },
+      q1: {
+        text: '現在最接近的狀態？',
+        options: [
+          { text: '情緒有些亂', next: 'q2a' },
+          { text: '有話想說', next: 'q2b' },
+          { text: '事情很多', next: 'q2c' },
+          { text: '想先停一下', next: 'q2d' },
+          { text: '想求助', next: 'result-help' }
+        ]
+      },
+      q2a: {
+        text: '更具體？',
+        options: [
+          { text: '擔心一直轉', next: 'result-worry' },
+          { text: '對自己嚴厲', next: 'result-compassion' },
+          { text: '不確定', next: 'result-feelings' }
+        ]
+      },
+      q2b: {
+        text: '更具體？',
+        options: [
+          { text: '想設定界線', next: 'result-boundary' },
+          { text: '準備對話', next: 'result-convo' },
+          { text: '衝突後想修復', next: 'result-repair' }
+        ]
+      },
+      q2c: {
+        text: '更具體？',
+        options: [
+          { text: '一直沒開始', next: 'result-smallstep' },
+          { text: '待辦太多', next: 'result-tasksorter' },
+          { text: '不知道先做什麼', next: 'result-values' }
+        ]
+      },
+      q2d: {
+        text: '更具體？',
+        options: [
+          { text: '身體很緊', next: 'result-body' },
+          { text: '只想呼吸', next: 'result-breathing' },
+          { text: '生氣想暫停', next: 'result-anger' }
+        ]
+      },
+      'result-worry': { tools: ['worry', 'thoughtcheck'], text: '推薦：擔心整理、想法核對' },
+      'result-compassion': { tools: ['compassion', 'selfbreak'], text: '推薦：對自己換一句話、自我同理休息' },
+      'result-feelings': { tools: ['feelings', 'bodycheck'], text: '推薦：情緒與需要整理卡、身體覺察' },
+      'result-boundary': { tools: ['boundary', 'convo'], text: '推薦：界線表達、對話前整理' },
+      'result-convo': { tools: ['convo', 'askhelp'], text: '推薦：對話前整理、開口求助' },
+      'result-repair': { tools: ['repair', 'relpause'], text: '推薦：衝突後修復、關係不安暫停' },
+      'result-smallstep': { tools: ['smallstep', 'goodenough'], text: '推薦：第一小步、夠好就好' },
+      'result-tasksorter': { tools: ['tasksorter', 'smallstep'], text: '推薦：待辦整理器、第一小步' },
+      'result-values': { tools: ['values', 'tasksorter'], text: '推薦：我現在最在意什麼、待辦整理器' },
+      'result-body': { tools: ['bodycheck', 'pmr', 'breathing'], text: '推薦：身體覺察、肌肉放鬆、呼吸' },
+      'result-breathing': { tools: ['breathing', 'breathspace'], text: '推薦：呼吸練習、三分鐘呼吸空間' },
+      'result-anger': { tools: ['anger', 'breathing'], text: '推薦：生氣暫停、呼吸練習' },
+      'result-help': { tools: ['counselprep', 'docprep', 'supportcard'], text: '推薦：輔導準備、看診準備、支持資源卡' }
+    }
+  };
+  
+  let path = ['start'];
+  
+  function render() {
+    const node = tree.zh[path[path.length - 1]];
+    let html = '<div class="tree-path">';
+    
+    // Show path
+    path.forEach((p, i) => {
+      const n = tree.zh[p];
+      if (n.text && p !== 'start') {
+        html += `<span class="tree-crumb">${n.text || p}</span>`;
+        if (i < path.length - 1) html += ' → ';
+      }
+    });
+    html += '</div>';
+    
+    if (node.tools) {
+      // Result
+      html += `<div class="guided-result"><h3>${node.text}</h3>`;
+      node.tools.forEach(id => {
+        const tool = tools.find(t => t.id === id);
+        if (tool) {
+          html += `<a href="#" class="tool-link" onclick="event.preventDefault(); openTool('${id}')">${tool.icon || ''} ${tool[lang].name}</a>`;
+        }
+      });
+      html += `<p style="margin-top:0.8rem;"><a href="#" onclick="event.preventDefault(); resetTree()" style="color:var(--accent);">重新開始</a></p></div>`;
+    } else if (node.options) {
+      // Question
+      html += `<p style="font-weight:500; margin:0.8rem 0;">${node.text}</p><div class="options">`;
+      node.options.forEach(opt => {
+        html += `<button class="option-btn" onclick="goTree('${opt.next}')">${opt.text}</button>`;
+      });
+      html += '</div>';
+      if (path.length > 1) {
+        html += `<p style="margin-top:0.5rem;"><a href="#" onclick="event.preventDefault(); backTree()" style="color:var(--text-soft); font-size:0.9rem;">← 返回</a></p>`;
+      }
+    }
+    
+    container.innerHTML = html;
+  }
+  
+  window.goTree = function(next) {
+    path.push(next);
+    render();
+  };
+  
+  window.backTree = function() {
+    if (path.length > 1) {
+      path.pop();
+      render();
+    }
+  };
+  
+  window.resetTree = function() {
+    path = ['start'];
+    render();
+  };
+  
+  render();
+}
+
+
 // Init
 applyTheme();
+renderTree();
 renderGuided();
 document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
 renderHome();
