@@ -158,6 +158,7 @@ function openTool(id) {
   answers = {};
   document.getElementById('home-view').classList.add('hidden');
   document.getElementById('tool-view').classList.add('active');
+  document.getElementById('tool-view').scrollTop = 0;
   history.replaceState(null, '', '#' + id);
   renderWizard();
 }
