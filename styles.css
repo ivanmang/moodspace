@@ -302,3 +302,14 @@ details[open] summary {
   border-color: var(--accent);
   transform: translateX(3px);
 }
+
+.tree-path {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin-bottom: 0.5rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.tree-crumb {
+  color: var(--accent);
+}
