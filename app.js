@@ -500,7 +500,7 @@ function renderWizard() {
   const step = steps[currentStep];
   const progress = Math.round(((currentStep + 1) / steps.length) * 100);
 
-  let html = showExample(currentTool) + (currentTool === 'boundary' && answers.situation ? renderBoundaryPhrases() : '') + `
+  let html = showExample(currentTool) + (currentTool === 'boundary' && answers.situation ? renderBoundaryPhrases() : '') + (currentTool === 'bodycheck' && currentStep === 0 ? renderBodyMap() : '') + `
     <div class="tool-header">
       <h1>${tool.icon || ''} ${tool[lang].name}</h1>
       <p class="tool-desc" style="margin-top:0.3rem; color:var(--text-soft);">${tool[lang].desc}</p>
@@ -1213,6 +1213,45 @@ function showSection(section) {
   if (section === 'glossary') renderGlossary();
   if (section === 'resources') renderResources();
   window.scrollTo(0, 0);
+}
+
+
+
+// Body map
+function renderBodyMap() {
+  const areas = [
+    { id: 'head', label: '頭部', y: 30 },
+    { id: 'face', label: '臉部', y: 55 },
+    { id: 'neck', label: '頸部', y: 80 },
+    { id: 'shoulders', label: '肩膀', y: 110 },
+    { id: 'chest', label: '胸前', y: 145 },
+    { id: 'abdomen', label: '腹部', y: 185 },
+    { id: 'lowerback', label: '下背', y: 185 },
+    { id: 'leftarm', label: '左手', y: 160 },
+    { id: 'rightarm', label: '右手', y: 160 },
+    { id: 'leftleg', label: '左腿', y: 260 },
+    { id: 'rightleg', label: '右腿', y: 260 },
+    { id: 'feet', label: '雙腳', y: 330 }
+  ];
+  
+  let svg = `<svg viewBox="0 0 200 380" style="width:100%; max-width:200px; margin:0 auto; display:block;">
+    <!-- Body outline -->
+    <ellipse cx="100" cy="40" rx="25" ry="30" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
+    <rect x="85" y="70" width="30" height="20" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
+    <rect x="60" y="90" width="80" height="50" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
+    <rect x="70" y="140" width="60" height="60" rx="5" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
+    <rect x="75" y="200" width="20" height="80" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
+    <rect x="105" y="200" width="20" height="80" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
+    <rect x="30" y="100" width="25" height="70" rx="5" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
+    <rect x="145" y="100" width="25" height="70" rx="5" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
+    <ellipse cx="85" cy="290" rx="12" ry="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
+    <ellipse cx="115" cy="290" rx="12" ry="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
+  </svg>`;
+  
+  return `<div style="text-align:center; margin:1rem 0;">
+    <p style="font-size:0.9rem; color:var(--text-soft); margin-bottom:0.5rem;">點選身體部位，或用下方清單選擇</p>
+    ${svg}
+  </div>`;
 }
 
 
