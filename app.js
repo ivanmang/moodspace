@@ -1122,6 +1122,9 @@ const examples = {
   problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
   decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
   bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  tasksorter: { zh: '今天想處理：回覆確認時間的信\n可以延後：整理整個房間\n需要協助：確認活動交通安排\n還沒決定：決定週末怎麼安排\n第一小步：打開信件，先確認可行的時間', en: 'Today: reply to confirm time\nLater: tidy whole room\nNeed help: confirm event transport\nUndecided: weekend plans\nFirst step: open email, check times' },
+  sleepdiary: { zh: '上床：23:30\n睡著：00:15\n醒來：07:00\n起床：07:15\n感覺：普通\n備註：喝了咖啡', en: 'Bed: 11:30pm\nAsleep: 12:15am\nWake: 7:00am\nUp: 7:15am\nFeeling: okay\nNote: had coffee' },
+  counselprep: { zh: '階段：正在找機構\n想確認：單次費用、保密方式、第一次流程\n聯絡範本：您好，我想了解第一次個別諮商的安排…', en: 'Stage: looking for a center\nQuestions: fee, confidentiality, first session\nTemplate: Hello, I would like to know about first session arrangements...' },
   transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
@@ -1137,6 +1140,9 @@ const examples = {
   problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
   decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
   bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  tasksorter: { zh: '今天想處理：回覆確認時間的信\n可以延後：整理整個房間\n需要協助：確認活動交通安排\n還沒決定：決定週末怎麼安排\n第一小步：打開信件，先確認可行的時間', en: 'Today: reply to confirm time\nLater: tidy whole room\nNeed help: confirm event transport\nUndecided: weekend plans\nFirst step: open email, check times' },
+  sleepdiary: { zh: '上床：23:30\n睡著：00:15\n醒來：07:00\n起床：07:15\n感覺：普通\n備註：喝了咖啡', en: 'Bed: 11:30pm\nAsleep: 12:15am\nWake: 7:00am\nUp: 7:15am\nFeeling: okay\nNote: had coffee' },
+  counselprep: { zh: '階段：正在找機構\n想確認：單次費用、保密方式、第一次流程\n聯絡範本：您好，我想了解第一次個別諮商的安排…', en: 'Stage: looking for a center\nQuestions: fee, confidentiality, first session\nTemplate: Hello, I would like to know about first session arrangements...' },
   transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
@@ -1457,6 +1463,9 @@ function renderSinglePageForm(toolId) {
   problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
   decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
   bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  tasksorter: { zh: '今天想處理：回覆確認時間的信\n可以延後：整理整個房間\n需要協助：確認活動交通安排\n還沒決定：決定週末怎麼安排\n第一小步：打開信件，先確認可行的時間', en: 'Today: reply to confirm time\nLater: tidy whole room\nNeed help: confirm event transport\nUndecided: weekend plans\nFirst step: open email, check times' },
+  sleepdiary: { zh: '上床：23:30\n睡著：00:15\n醒來：07:00\n起床：07:15\n感覺：普通\n備註：喝了咖啡', en: 'Bed: 11:30pm\nAsleep: 12:15am\nWake: 7:00am\nUp: 7:15am\nFeeling: okay\nNote: had coffee' },
+  counselprep: { zh: '階段：正在找機構\n想確認：單次費用、保密方式、第一次流程\n聯絡範本：您好，我想了解第一次個別諮商的安排…', en: 'Stage: looking for a center\nQuestions: fee, confidentiality, first session\nTemplate: Hello, I would like to know about first session arrangements...' },
   transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
@@ -1480,6 +1489,9 @@ function renderSinglePageForm(toolId) {
     },
     decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
   bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  tasksorter: { zh: '今天想處理：回覆確認時間的信\n可以延後：整理整個房間\n需要協助：確認活動交通安排\n還沒決定：決定週末怎麼安排\n第一小步：打開信件，先確認可行的時間', en: 'Today: reply to confirm time\nLater: tidy whole room\nNeed help: confirm event transport\nUndecided: weekend plans\nFirst step: open email, check times' },
+  sleepdiary: { zh: '上床：23:30\n睡著：00:15\n醒來：07:00\n起床：07:15\n感覺：普通\n備註：喝了咖啡', en: 'Bed: 11:30pm\nAsleep: 12:15am\nWake: 7:00am\nUp: 7:15am\nFeeling: okay\nNote: had coffee' },
+  counselprep: { zh: '階段：正在找機構\n想確認：單次費用、保密方式、第一次流程\n聯絡範本：您好，我想了解第一次個別諮商的安排…', en: 'Stage: looking for a center\nQuestions: fee, confidentiality, first session\nTemplate: Hello, I would like to know about first session arrangements...' },
   transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: {
       fields: [
@@ -1528,6 +1540,9 @@ function renderSinglePageForm(toolId) {
   problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
   decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
   bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  tasksorter: { zh: '今天想處理：回覆確認時間的信\n可以延後：整理整個房間\n需要協助：確認活動交通安排\n還沒決定：決定週末怎麼安排\n第一小步：打開信件，先確認可行的時間', en: 'Today: reply to confirm time\nLater: tidy whole room\nNeed help: confirm event transport\nUndecided: weekend plans\nFirst step: open email, check times' },
+  sleepdiary: { zh: '上床：23:30\n睡著：00:15\n醒來：07:00\n起床：07:15\n感覺：普通\n備註：喝了咖啡', en: 'Bed: 11:30pm\nAsleep: 12:15am\nWake: 7:00am\nUp: 7:15am\nFeeling: okay\nNote: had coffee' },
+  counselprep: { zh: '階段：正在找機構\n想確認：單次費用、保密方式、第一次流程\n聯絡範本：您好，我想了解第一次個別諮商的安排…', en: 'Stage: looking for a center\nQuestions: fee, confidentiality, first session\nTemplate: Hello, I would like to know about first session arrangements...' },
   transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
@@ -1570,6 +1585,9 @@ function renderSinglePageForm(toolId) {
   problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
   decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
   bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  tasksorter: { zh: '今天想處理：回覆確認時間的信\n可以延後：整理整個房間\n需要協助：確認活動交通安排\n還沒決定：決定週末怎麼安排\n第一小步：打開信件，先確認可行的時間', en: 'Today: reply to confirm time\nLater: tidy whole room\nNeed help: confirm event transport\nUndecided: weekend plans\nFirst step: open email, check times' },
+  sleepdiary: { zh: '上床：23:30\n睡著：00:15\n醒來：07:00\n起床：07:15\n感覺：普通\n備註：喝了咖啡', en: 'Bed: 11:30pm\nAsleep: 12:15am\nWake: 7:00am\nUp: 7:15am\nFeeling: okay\nNote: had coffee' },
+  counselprep: { zh: '階段：正在找機構\n想確認：單次費用、保密方式、第一次流程\n聯絡範本：您好，我想了解第一次個別諮商的安排…', en: 'Stage: looking for a center\nQuestions: fee, confidentiality, first session\nTemplate: Hello, I would like to know about first session arrangements...' },
   transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
@@ -1608,6 +1626,9 @@ function renderSinglePageForm(toolId) {
     problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
   decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
   bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  tasksorter: { zh: '今天想處理：回覆確認時間的信\n可以延後：整理整個房間\n需要協助：確認活動交通安排\n還沒決定：決定週末怎麼安排\n第一小步：打開信件，先確認可行的時間', en: 'Today: reply to confirm time\nLater: tidy whole room\nNeed help: confirm event transport\nUndecided: weekend plans\nFirst step: open email, check times' },
+  sleepdiary: { zh: '上床：23:30\n睡著：00:15\n醒來：07:00\n起床：07:15\n感覺：普通\n備註：喝了咖啡', en: 'Bed: 11:30pm\nAsleep: 12:15am\nWake: 7:00am\nUp: 7:15am\nFeeling: okay\nNote: had coffee' },
+  counselprep: { zh: '階段：正在找機構\n想確認：單次費用、保密方式、第一次流程\n聯絡範本：您好，我想了解第一次個別諮商的安排…', en: 'Stage: looking for a center\nQuestions: fee, confidentiality, first session\nTemplate: Hello, I would like to know about first session arrangements...' },
   transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: {
@@ -1714,6 +1735,9 @@ const toolNotes = {
   lowenergy: '選「沒力氣時也有可能做到」的活動。不是作業，今天做不到也沒關係。',
   decision: '這張表不替你打分數，也不推薦。只是幫你把選項和條件攤開來看。',
   bodycheck: '只是「注意到」，不急著解釋原因。身體感覺可能有很多原因，不一定是壓力。',
+  tasksorter: '整理是為了少一點負擔，不是要求自己把清單全部完成。不必全部放進「今天想處理」。',
+  sleepdiary: '這不是失眠診斷。每天花一兩分鐘記下記得的部分，不需要精準到每分鐘。',
+  counselprep: '不需要先填寫病史或完成測驗。不知道怎麼說，也可以從「我還不太確定」開始。',
   transition: '生活變動可能帶來壓力，即使是正向的改變，也需要時間適應。',
   gratitude: '只記一件小事即可。沒有想到也沒關係，可先留白或記讓自己喘口氣的事。',
   relpause: '這張卡不判斷對方愛不愛你。猜測不代表事實，寫下來只是讓它被看見。',
@@ -1764,6 +1788,18 @@ const toolFAQ = {
     { q: '這會告訴我該選哪個嗎？', a: '不會。這張表不打分數、不推薦，只是幫你把選項和條件攤開來看。' },
     { q: '可以不今天決定嗎？', a: '可以。下一步可以是「先找資訊」或「先不決定」。' }
   ],
+  tasksorter: [
+    { q: '一定要把所有事情都分類嗎？', a: '不用。留在「還沒決定」也可以。' },
+    { q: '今天沒有想處理的事怎麼辦？', a: '可以選「今天先不安排」，一樣能拿到整理結果。' }
+  ],
+  sleepdiary: [
+    { q: '一定要每天記嗎？', a: '不用。漏掉可以留空，只記一兩天也可以。' },
+    { q: '這能診斷失眠嗎？', a: '不能。這是個人觀察紀錄，可以帶給醫師參考。' }
+  ],
+  counselprep: [
+    { q: '一定要先把問題想清楚嗎？', a: '不需要。這份工具只是幫你整理想確認的事。' },
+    { q: '填完會幫我預約嗎？', a: '不會。你可以複製文字，自行向機構詢問。' }
+  ],
   bodycheck: [
     { q: '不確定感覺是什麼能選嗎？', a: '可以。描述裡有「不確定」，說不清楚位置可以選「其他」。' },
     { q: '身體痠痛一定代表壓力嗎？', a: '不一定。可能和姿勢、睡眠、受傷有關。持續不適請找醫師評估。' }
@@ -1806,6 +1842,18 @@ const toolFAQ = {
   decision: [
     { q: '這會告訴我該選哪個嗎？', a: '不會。這張表不打分數、不推薦，只是幫你把選項和條件攤開來看。' },
     { q: '可以不今天決定嗎？', a: '可以。下一步可以是「先找資訊」或「先不決定」。' }
+  ],
+  tasksorter: [
+    { q: '一定要把所有事情都分類嗎？', a: '不用。留在「還沒決定」也可以。' },
+    { q: '今天沒有想處理的事怎麼辦？', a: '可以選「今天先不安排」，一樣能拿到整理結果。' }
+  ],
+  sleepdiary: [
+    { q: '一定要每天記嗎？', a: '不用。漏掉可以留空，只記一兩天也可以。' },
+    { q: '這能診斷失眠嗎？', a: '不能。這是個人觀察紀錄，可以帶給醫師參考。' }
+  ],
+  counselprep: [
+    { q: '一定要先把問題想清楚嗎？', a: '不需要。這份工具只是幫你整理想確認的事。' },
+    { q: '填完會幫我預約嗎？', a: '不會。你可以複製文字，自行向機構詢問。' }
   ],
   bodycheck: [
     { q: '不確定感覺是什麼能選嗎？', a: '可以。描述裡有「不確定」，說不清楚位置可以選「其他」。' },
