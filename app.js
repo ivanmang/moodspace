@@ -1219,39 +1219,52 @@ function showSection(section) {
 
 // Body map
 function renderBodyMap() {
-  const areas = [
-    { id: 'head', label: '頭部', y: 30 },
-    { id: 'face', label: '臉部', y: 55 },
-    { id: 'neck', label: '頸部', y: 80 },
-    { id: 'shoulders', label: '肩膀', y: 110 },
-    { id: 'chest', label: '胸前', y: 145 },
-    { id: 'abdomen', label: '腹部', y: 185 },
-    { id: 'lowerback', label: '下背', y: 185 },
-    { id: 'leftarm', label: '左手', y: 160 },
-    { id: 'rightarm', label: '右手', y: 160 },
-    { id: 'leftleg', label: '左腿', y: 260 },
-    { id: 'rightleg', label: '右腿', y: 260 },
-    { id: 'feet', label: '雙腳', y: 330 }
+  window.selectedBodyParts = window.selectedBodyParts || [];
+  
+  const parts = [
+    { id: 'head', label: '頭部', shape: 'ellipse', cx: 100, cy: 40, rx: 25, ry: 30 },
+    { id: 'neck', label: '頸部', shape: 'rect', x: 88, y: 68, w: 24, h: 18 },
+    { id: 'shoulders', label: '肩膀', shape: 'rect', x: 55, y: 86, w: 90, h: 20, rx: 5 },
+    { id: 'chest', label: '胸前', shape: 'rect', x: 65, y: 106, w: 70, h: 35, rx: 5 },
+    { id: 'abdomen', label: '腹部', shape: 'rect', x: 70, y: 141, w: 60, h: 40, rx: 5 },
+    { id: 'leftarm', label: '左手', shape: 'rect', x: 25, y: 95, w: 22, h: 75, rx: 8 },
+    { id: 'rightarm', label: '右手', shape: 'rect', x: 153, y: 95, w: 22, h: 75, rx: 8 },
+    { id: 'leftleg', label: '左腿', shape: 'rect', x: 72, y: 181, w: 22, h: 90, rx: 5 },
+    { id: 'rightleg', label: '右腿', shape: 'rect', x: 106, y: 181, w: 22, h: 90, rx: 5 },
+    { id: 'feet', label: '雙腳', shape: 'ellipse', cx: 100, cy: 285, rx: 40, ry: 12 }
   ];
   
-  let svg = `<svg viewBox="0 0 200 380" style="width:100%; max-width:200px; margin:0 auto; display:block;">
-    <!-- Body outline -->
-    <ellipse cx="100" cy="40" rx="25" ry="30" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
-    <rect x="85" y="70" width="30" height="20" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
-    <rect x="60" y="90" width="80" height="50" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
-    <rect x="70" y="140" width="60" height="60" rx="5" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
-    <rect x="75" y="200" width="20" height="80" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
-    <rect x="105" y="200" width="20" height="80" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
-    <rect x="30" y="100" width="25" height="70" rx="5" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
-    <rect x="145" y="100" width="25" height="70" rx="5" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
-    <ellipse cx="85" cy="290" rx="12" ry="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
-    <ellipse cx="115" cy="290" rx="12" ry="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
-  </svg>`;
+  let svgParts = parts.map(p => {
+    const selected = window.selectedBodyParts.includes(p.label);
+    const fill = selected ? 'var(--accent)' : 'var(--accent-light)';
+    const stroke = selected ? 'var(--accent-dark)' : 'var(--accent)';
+    if (p.shape === 'ellipse') {
+      return `<ellipse cx="${p.cx}" cy="${p.cy}" rx="${p.rx}" ry="${p.ry}" fill="${fill}" stroke="${stroke}" stroke-width="2" style="cursor:pointer;" onclick="toggleBodyPart('${p.label}')" />`;
+    } else {
+      return `<rect x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" rx="${p.rx || 0}" fill="${fill}" stroke="${stroke}" stroke-width="2" style="cursor:pointer;" onclick="toggleBodyPart('${p.label}')" />`;
+    }
+  }).join('');
   
   return `<div style="text-align:center; margin:1rem 0;">
-    <p style="font-size:0.9rem; color:var(--text-soft); margin-bottom:0.5rem;">點選身體部位，或用下方清單選擇</p>
-    ${svg}
+    <p style="font-size:0.9rem; color:var(--text-soft); margin-bottom:0.5rem;">點選身體部位（已選：${window.selectedBodyParts.length}）</p>
+    <svg viewBox="0 0 200 310" style="width:100%; max-width:180px; margin:0 auto; display:block;">
+      ${svgParts}
+    </svg>
+    <p style="font-size:0.8rem; color:var(--text-soft); margin-top:0.5rem;">${window.selectedBodyParts.join('、') || '尚未選擇'}</p>
   </div>`;
+}
+
+function toggleBodyPart(label) {
+  window.selectedBodyParts = window.selectedBodyParts || [];
+  const idx = window.selectedBodyParts.indexOf(label);
+  if (idx >= 0) {
+    window.selectedBodyParts.splice(idx, 1);
+  } else if (window.selectedBodyParts.length < 8) {
+    window.selectedBodyParts.push(label);
+  }
+  // Update answers and re-render
+  answers.areas = window.selectedBodyParts;
+  renderWizard();
 }
 
 
