@@ -47,50 +47,50 @@ let currentStep = 0;
 let answers = {};
 
 const tools = [
-  { id: 'feelings', cat: 'emotions', zh: { name: '情緒與需要整理卡', desc: '不太確定自己在想什麼、感受什麼？選幾個詞，整理此刻可能的需要。' }, en: { name: 'Feelings & Needs Card', desc: 'Name feelings, note what happened, identify needs, then choose one next step' } },
-  { id: 'worry', cat: 'emotions', zh: { name: '擔心整理＋擔心時間', desc: '擔心的事反覆出現？先記下來，區分可以處理和暫時放下的部分。' }, en: { name: 'Worry Sorter', desc: 'List your worries, then sort what you can act on' } },
-  { id: 'compassion', cat: 'emotions', zh: { name: '對自己換一句話', desc: '常常責備自己？試著找到一種比較能接受的方式回應自己。' }, en: { name: 'Self-Compassion Response', desc: 'Write a harsh self-talk, then rephrase it as if talking to a friend' } },
-  { id: 'gratitude', cat: 'emotions', zh: { name: '感恩日記', desc: '記下今天值得感謝，或讓你覺得還不錯的一件小事。' }, en: { name: 'Gratitude Journal', desc: 'Note things you appreciate, one at a time' } },
-  { id: 'thoughtcheck', cat: 'emotions', zh: { name: '想法核對練習', desc: '一個想法讓你很難受？整理有哪些線索支持它，還有哪些可能的看法。' }, en: { name: 'Thought Check', desc: 'Write the thought, find evidence for and against, then write a balanced version' } },
-  { id: 'boundary', cat: 'communication', zh: { name: '界線表達練習', desc: '有些話很難開口？先找出符合處境、自己也說得出口的表達方式。' }, en: { name: 'Boundary Expression', desc: 'Clarify the boundary, then practice a short phrase to express it' } },
-  { id: 'convo', cat: 'communication', zh: { name: '對話前整理紙', desc: '有件事想談，怕一開口就亂了？先寫下要談的重點與自己的需求。' }, en: { name: 'Conversation Prep', desc: 'Clarify who, what outcome you want, and key points before talking' } },
-  { id: 'smallstep', cat: 'actions', zh: { name: '把事情拆成第一小步', desc: '一件事拖了很久還沒開始？試著找出現在做得到的第一步。' }, en: { name: 'First Small Step', desc: 'Write the bigger goal, then name the smallest step you can take today' } },
-  { id: 'decision', cat: 'actions', zh: { name: '選擇比較', desc: '先寫出兩個選項，再分別列出好處與風險' }, en: { name: 'Decision Comparer', desc: 'Name two options, then list pros and cons for each' } },
-  { id: 'values', cat: 'actions', zh: { name: '我現在最在意什麼', desc: '事情擠在一起時，先排出目前最在意、最需要處理的事。' }, en: { name: 'Values Sort', desc: 'Select the three values that matter most to you right now' } },
-  { id: 'breathing', cat: 'pause', zh: { name: '呼吸練習', desc: '不想填寫文字時，可以跟著畫面輕輕呼吸，或照自己的速度進行。' }, en: { name: 'Breathing Exercise', desc: 'Follow a calm breathing rhythm' } },
-  { id: 'fivesenses', cat: 'pause', zh: { name: '三分鐘五感練習', desc: '跟著提示留意周圍看見、聽見的事物；任何一步都可以跳過。' }, en: { name: 'Five Senses Practice', desc: 'Ground yourself one sense at a time' } },
-  { id: 'anger', cat: 'pause', zh: { name: '生氣時的情緒暫停器', desc: '正在生氣、怕一開口就後悔時，先暫停一下再決定。' }, en: { name: 'Anger Pause', desc: 'Pause for 60 seconds before responding' } },
-  { id: 'supportcard', cat: 'help', zh: { name: '我的支持資源卡', desc: '把遇到困難時可以聯絡的人、機構和聯絡方式整理在一起。' }, en: { name: 'Support Resource Card', desc: 'List people you can reach and other support resources' } },
-  { id: 'tasksep', cat: 'emotions', zh: { name: '課題分離整理器', desc: '有件事牽涉別人的決定？分清自己能做的事，以及需要一起討論的部分。' }, en: { name: 'What is Mine to Handle', desc: 'Describe the situation, then separate what you can handle from what you cannot' } },
-  { id: 'repair', cat: 'communication', zh: { name: '衝突後關係修復卡', desc: '吵完架不知道該不該聯絡？先整理發生的事、自己願意負責的部分和想採取的修復方式。' }, en: { name: 'Conflict Repair', desc: 'Decide one first step after a conflict, then practice how to say it' } },
-  { id: 'goodenough', cat: 'actions', zh: { name: '夠好就好標準卡', desc: '常因為擔心不夠好而做個不停？先決定做到哪裡可以暫時停下。' }, en: { name: 'Good-Enough Standard', desc: 'Define what good enough looks like for a task, and when you can stop' } },
-  { id: 'phone', cat: 'actions', zh: { name: '手機滑不停暫停計畫', desc: '一拿起手機就停不下來？選這次原本想做什麼、想在哪裡先停、放下後的第一個動作。' }, en: { name: 'Phone Pause Plan', desc: 'Identify when you scroll mindlessly, then set a pause rule and alternative' } },
-  { id: 'problemsolve', cat: 'actions', zh: { name: '問題解決五步驟', desc: '有件事卡住了？說清楚問題、列出方法，選一個先試。' }, en: { name: 'Problem Solving', desc: 'Define the problem, list solutions, pick one to try, and set a time' } },
-  { id: 'selfbreak', cat: 'emotions', zh: { name: '自我同理休息', desc: '用三句話給自己一點空間：承認困難、看到共同性、給自己溫柔' }, en: { name: 'Self-Compassion Break', desc: 'Offer yourself three phrases: acknowledge difficulty, note shared experience, be kind' } },
-  { id: 'bodycheck', cat: 'emotions', zh: { name: '身體覺察地圖', desc: '想看看現在身體哪裡緊、哪裡有感覺？選部位，記下感覺，整理成一張覺察卡。' }, en: { name: 'Body Awareness', desc: 'Quickly scan your body, mark where you notice sensation, then describe it' } },
-  { id: 'sleep', cat: 'pause', zh: { name: '睡前放鬆流程產生器', desc: '睡前腦袋停不下來時，選想做的活動，排出一份今晚的睡前流程。' }, en: { name: 'Bedtime Wind-Down', desc: 'Choose 2–3 simple wind-down steps for tonight' } },
+  { id: 'feelings', icon: '💭', cat: 'emotions', zh: { name: '情緒與需要整理卡', desc: '不太確定自己在想什麼、感受什麼？選幾個詞，整理此刻可能的需要。' }, en: { name: 'Feelings & Needs Card', desc: 'Name feelings, note what happened, identify needs, then choose one next step' } },
+  { id: 'worry', icon: '😰', cat: 'emotions', zh: { name: '擔心整理＋擔心時間', desc: '擔心的事反覆出現？先記下來，區分可以處理和暫時放下的部分。' }, en: { name: 'Worry Sorter', desc: 'List your worries, then sort what you can act on' } },
+  { id: 'compassion', icon: '💚', cat: 'emotions', zh: { name: '對自己換一句話', desc: '常常責備自己？試著找到一種比較能接受的方式回應自己。' }, en: { name: 'Self-Compassion Response', desc: 'Write a harsh self-talk, then rephrase it as if talking to a friend' } },
+  { id: 'gratitude', icon: '🙏', cat: 'emotions', zh: { name: '感恩日記', desc: '記下今天值得感謝，或讓你覺得還不錯的一件小事。' }, en: { name: 'Gratitude Journal', desc: 'Note things you appreciate, one at a time' } },
+  { id: 'thoughtcheck', icon: '🔍', cat: 'emotions', zh: { name: '想法核對練習', desc: '一個想法讓你很難受？整理有哪些線索支持它，還有哪些可能的看法。' }, en: { name: 'Thought Check', desc: 'Write the thought, find evidence for and against, then write a balanced version' } },
+  { id: 'boundary', icon: '🚧', cat: 'communication', zh: { name: '界線表達練習', desc: '有些話很難開口？先找出符合處境、自己也說得出口的表達方式。' }, en: { name: 'Boundary Expression', desc: 'Clarify the boundary, then practice a short phrase to express it' } },
+  { id: 'convo', icon: '💬', cat: 'communication', zh: { name: '對話前整理紙', desc: '有件事想談，怕一開口就亂了？先寫下要談的重點與自己的需求。' }, en: { name: 'Conversation Prep', desc: 'Clarify who, what outcome you want, and key points before talking' } },
+  { id: 'smallstep', icon: '👣', cat: 'actions', zh: { name: '把事情拆成第一小步', desc: '一件事拖了很久還沒開始？試著找出現在做得到的第一步。' }, en: { name: 'First Small Step', desc: 'Write the bigger goal, then name the smallest step you can take today' } },
+  { id: 'decision', icon: '⚖️', cat: 'actions', zh: { name: '選擇比較', desc: '先寫出兩個選項，再分別列出好處與風險' }, en: { name: 'Decision Comparer', desc: 'Name two options, then list pros and cons for each' } },
+  { id: 'values', icon: '⭐', cat: 'actions', zh: { name: '我現在最在意什麼', desc: '事情擠在一起時，先排出目前最在意、最需要處理的事。' }, en: { name: 'Values Sort', desc: 'Select the three values that matter most to you right now' } },
+  { id: 'breathing', icon: '🌬️', cat: 'pause', zh: { name: '呼吸練習', desc: '不想填寫文字時，可以跟著畫面輕輕呼吸，或照自己的速度進行。' }, en: { name: 'Breathing Exercise', desc: 'Follow a calm breathing rhythm' } },
+  { id: 'fivesenses', icon: '👁️', cat: 'pause', zh: { name: '三分鐘五感練習', desc: '跟著提示留意周圍看見、聽見的事物；任何一步都可以跳過。' }, en: { name: 'Five Senses Practice', desc: 'Ground yourself one sense at a time' } },
+  { id: 'anger', icon: '⏸️', cat: 'pause', zh: { name: '生氣時的情緒暫停器', desc: '正在生氣、怕一開口就後悔時，先暫停一下再決定。' }, en: { name: 'Anger Pause', desc: 'Pause for 60 seconds before responding' } },
+  { id: 'supportcard', icon: '🤝', cat: 'help', zh: { name: '我的支持資源卡', desc: '把遇到困難時可以聯絡的人、機構和聯絡方式整理在一起。' }, en: { name: 'Support Resource Card', desc: 'List people you can reach and other support resources' } },
+  { id: 'tasksep', icon: '📋', cat: 'emotions', zh: { name: '課題分離整理器', desc: '有件事牽涉別人的決定？分清自己能做的事，以及需要一起討論的部分。' }, en: { name: 'What is Mine to Handle', desc: 'Describe the situation, then separate what you can handle from what you cannot' } },
+  { id: 'repair', icon: '🔧', cat: 'communication', zh: { name: '衝突後關係修復卡', desc: '吵完架不知道該不該聯絡？先整理發生的事、自己願意負責的部分和想採取的修復方式。' }, en: { name: 'Conflict Repair', desc: 'Decide one first step after a conflict, then practice how to say it' } },
+  { id: 'goodenough', icon: '✅', cat: 'actions', zh: { name: '夠好就好標準卡', desc: '常因為擔心不夠好而做個不停？先決定做到哪裡可以暫時停下。' }, en: { name: 'Good-Enough Standard', desc: 'Define what good enough looks like for a task, and when you can stop' } },
+  { id: 'phone', icon: '📱', cat: 'actions', zh: { name: '手機滑不停暫停計畫', desc: '一拿起手機就停不下來？選這次原本想做什麼、想在哪裡先停、放下後的第一個動作。' }, en: { name: 'Phone Pause Plan', desc: 'Identify when you scroll mindlessly, then set a pause rule and alternative' } },
+  { id: 'problemsolve', icon: '🧩', cat: 'actions', zh: { name: '問題解決五步驟', desc: '有件事卡住了？說清楚問題、列出方法，選一個先試。' }, en: { name: 'Problem Solving', desc: 'Define the problem, list solutions, pick one to try, and set a time' } },
+  { id: 'selfbreak', icon: '🌸', cat: 'emotions', zh: { name: '自我同理休息', desc: '用三句話給自己一點空間：承認困難、看到共同性、給自己溫柔' }, en: { name: 'Self-Compassion Break', desc: 'Offer yourself three phrases: acknowledge difficulty, note shared experience, be kind' } },
+  { id: 'bodycheck', icon: '🧘', cat: 'emotions', zh: { name: '身體覺察地圖', desc: '想看看現在身體哪裡緊、哪裡有感覺？選部位，記下感覺，整理成一張覺察卡。' }, en: { name: 'Body Awareness', desc: 'Quickly scan your body, mark where you notice sensation, then describe it' } },
+  { id: 'sleep', icon: '🌙', cat: 'pause', zh: { name: '睡前放鬆流程產生器', desc: '睡前腦袋停不下來時，選想做的活動，排出一份今晚的睡前流程。' }, en: { name: 'Bedtime Wind-Down', desc: 'Choose 2–3 simple wind-down steps for tonight' } },
 
-  { id: 'tasksorter', cat: 'emotions', zh: { name: '腦中待辦整理器', desc: '待辦事情太多？先分成四類，再挑出今天想處理的一件事。' }, en: { name: 'Task Sorter', desc: 'Too many tasks? Sort into four categories, then pick one for today.' } },
-  { id: 'askhelp', cat: 'communication', zh: { name: '開口求助練習', desc: '想請別人幫忙，卻不知道怎麼開口？先整理一段可以修改的訊息。' }, en: { name: 'Asking for Help', desc: 'Want to ask for help but don\'t know how? Draft a message you can edit.' } },
-  { id: 'careguide', cat: 'communication', zh: { name: '我的陪伴說明書', desc: '想讓身邊的人知道你低落時需要什麼？整理適合自己的陪伴方式。' }, en: { name: 'My Care Guide', desc: 'Want others to know how to support you when you are low? Write your care preferences.' } },
-  { id: 'lowenergy', cat: 'actions', zh: { name: '低能量活動菜單', desc: '提不起勁時，從負擔較小的活動中挑一件目前做得到的事。' }, en: { name: 'Low Energy Menu', desc: 'When energy is low, pick one small activity you can do right now.' } },
-  { id: 'docprep', cat: 'help', zh: { name: '看診前準備單', desc: '準備看身心科或回診？先記下近期變化、用藥情況和要問醫師的事。' }, en: { name: 'Doctor Visit Prep', desc: 'Preparing for a doctor visit? Note recent changes, medications, and questions.' } },
-  { id: 'breakup', cat: 'emotions', zh: { name: '分手後這一週', desc: '剛結束一段關係？找出最難熬的時段，替每一段先準備一件小事。' }, en: { name: 'After a Breakup', desc: 'Just ended a relationship? Identify hard moments and prepare one small thing for each.' } },
-  { id: 'transition', cat: 'emotions', zh: { name: '生活變動適應卡', desc: '搬家、轉職、畢業或家裡有變化？把想保留、可以調整和還不確定的事分開寫。' }, en: { name: 'Life Transition Card', desc: 'Moving, changing jobs, graduating? Sort what to keep, adjust, and what is still unclear.' } },
-  { id: 'relpause', cat: 'communication', zh: { name: '關係不安時的暫停卡', desc: '訊息還沒回，心裡有些不安？先整理感受，再決定如何回應。' }, en: { name: 'Relationship Pause Card', desc: 'Message not replied, feeling uneasy? Organize feelings, then decide how to respond.' } },
-  { id: 'examprep', cat: 'actions', zh: { name: '考試、面試前準備清單', desc: '考試或面試快到了？依還有幾天整理出要確認的事。' }, en: { name: 'Exam / Interview Prep', desc: 'Exam or interview coming up? Organize what to check based on days remaining.' } },
+  { id: 'tasksorter', icon: '📊', cat: 'emotions', zh: { name: '腦中待辦整理器', desc: '待辦事情太多？先分成四類，再挑出今天想處理的一件事。' }, en: { name: 'Task Sorter', desc: 'Too many tasks? Sort into four categories, then pick one for today.' } },
+  { id: 'askhelp', icon: '🙋', cat: 'communication', zh: { name: '開口求助練習', desc: '想請別人幫忙，卻不知道怎麼開口？先整理一段可以修改的訊息。' }, en: { name: 'Asking for Help', desc: 'Want to ask for help but don\'t know how? Draft a message you can edit.' } },
+  { id: 'careguide', icon: '📖', cat: 'communication', zh: { name: '我的陪伴說明書', desc: '想讓身邊的人知道你低落時需要什麼？整理適合自己的陪伴方式。' }, en: { name: 'My Care Guide', desc: 'Want others to know how to support you when you are low? Write your care preferences.' } },
+  { id: 'lowenergy', icon: '🔋', cat: 'actions', zh: { name: '低能量活動菜單', desc: '提不起勁時，從負擔較小的活動中挑一件目前做得到的事。' }, en: { name: 'Low Energy Menu', desc: 'When energy is low, pick one small activity you can do right now.' } },
+  { id: 'docprep', icon: '🏥', cat: 'help', zh: { name: '看診前準備單', desc: '準備看身心科或回診？先記下近期變化、用藥情況和要問醫師的事。' }, en: { name: 'Doctor Visit Prep', desc: 'Preparing for a doctor visit? Note recent changes, medications, and questions.' } },
+  { id: 'breakup', icon: '💔', cat: 'emotions', zh: { name: '分手後這一週', desc: '剛結束一段關係？找出最難熬的時段，替每一段先準備一件小事。' }, en: { name: 'After a Breakup', desc: 'Just ended a relationship? Identify hard moments and prepare one small thing for each.' } },
+  { id: 'transition', icon: '🔄', cat: 'emotions', zh: { name: '生活變動適應卡', desc: '搬家、轉職、畢業或家裡有變化？把想保留、可以調整和還不確定的事分開寫。' }, en: { name: 'Life Transition Card', desc: 'Moving, changing jobs, graduating? Sort what to keep, adjust, and what is still unclear.' } },
+  { id: 'relpause', icon: '⏳', cat: 'communication', zh: { name: '關係不安時的暫停卡', desc: '訊息還沒回，心裡有些不安？先整理感受，再決定如何回應。' }, en: { name: 'Relationship Pause Card', desc: 'Message not replied, feeling uneasy? Organize feelings, then decide how to respond.' } },
+  { id: 'examprep', icon: '📚', cat: 'actions', zh: { name: '考試、面試前準備清單', desc: '考試或面試快到了？依還有幾天整理出要確認的事。' }, en: { name: 'Exam / Interview Prep', desc: 'Exam or interview coming up? Organize what to check based on days remaining.' } },
 
-  { id: 'relatives', cat: 'communication', zh: { name: '過年親戚問題應答卡', desc: '擔心聚會被問收入、感情或婚育？先準備幾句想使用的回應。' }, en: { name: 'Family Gathering Responses', desc: 'Worried about questions on income, relationships, or kids? Prepare a few responses.' } },
-  { id: 'parenttalk', cat: 'communication', zh: { name: '親子溝通接話練習', desc: '孩子不想說話或一開口就吵？比較三種說法，寫下一句你自己的接話。' }, en: { name: 'Parent-Child Response Practice', desc: 'Child not talking or arguing? Compare three approaches and write your own response.' } },
-  { id: 'mindfulreply', cat: 'communication', zh: { name: '正念接話練習', desc: '被一句話刺到、很想回嘴？先看見衝動，再擬一句想說的回覆。' }, en: { name: 'Mindful Reply', desc: 'Triggered by a comment and want to snap back? Notice the urge, then draft a reply.' } },
-  { id: 'twoperson', cat: 'communication', zh: { name: '三分鐘雙人對話練習', desc: '兩個人都願意的時候，輪流當說話者和聆聽者。不適合高衝突關係。' }, en: { name: 'Three-Minute Dialogue', desc: 'When both are willing, take turns speaking and listening. Not for high-conflict situations.' } },
-  { id: 'screentime', cat: 'actions', zh: { name: '家庭 3C 使用約定表', desc: '想和孩子一起訂手機、平板或電玩的規則？逐項寫下做法和例外。' }, en: { name: 'Family Screen Time Agreement', desc: 'Want to set rules for phones, tablets, or games with your child? Write the rules and exceptions.' } },
-  { id: 'visualcard', cat: 'actions', zh: { name: '情境轉換視覺提示卡', desc: '孩子換活動時常卡住？選「現在、接下來、完成後」的步驟，做成提示卡。' }, en: { name: 'Transition Visual Card', desc: 'Child gets stuck switching activities? Create a now-next-done visual prompt.' } },
-  { id: 'sleepdiary', cat: 'emotions', zh: { name: '一週睡眠日記', desc: '想看清楚自己這一週怎麼睡？每天記下上床、睡著、醒來的時間。' }, en: { name: 'Weekly Sleep Diary', desc: 'Want to see your sleep pattern this week? Note bedtime, sleep time, and wake time each day.' } },
-  { id: 'workplace', cat: 'help', zh: { name: '職場事件紀錄表', desc: '遇到不舒服的職場事件？把時間、聽到的話和自己的推測分開記下。' }, en: { name: 'Workplace Incident Log', desc: 'Uncomfortable workplace incident? Separate what you heard, what was told to you, and your interpretation.' } },
-  { id: 'breathspace', cat: 'pause', zh: { name: '三分鐘呼吸空間練習', desc: '心裡很亂時，跟著覺察、集中、擴展三個階段停下來看看自己。' }, en: { name: 'Three-Minute Breathing Space', desc: 'Mind racing? Pause with awareness, focus, and expansion. No need to control the breath.' } },
-  { id: 'pmr', cat: 'pause', zh: { name: '漸進式肌肉放鬆', desc: '身體一直很緊時，跟著提示一組一組收緊再放開。不舒服的部位隨時跳過。' }, en: { name: 'Progressive Muscle Relaxation', desc: 'Body tense? Follow prompts to tense and release muscle groups. Skip any that feel uncomfortable.' } },
-  { id: 'counselprep', cat: 'help', zh: { name: '第一次諮商準備包', desc: '正在考慮心理諮商？先整理想談的內容和想問的問題。' }, en: { name: 'Counseling Prep', desc: 'Organize topics, main concern, and anything you want the counselor to know' } },
+  { id: 'relatives', icon: '👨‍👩‍👧‍👦', cat: 'communication', zh: { name: '過年親戚問題應答卡', desc: '擔心聚會被問收入、感情或婚育？先準備幾句想使用的回應。' }, en: { name: 'Family Gathering Responses', desc: 'Worried about questions on income, relationships, or kids? Prepare a few responses.' } },
+  { id: 'parenttalk', icon: '👶', cat: 'communication', zh: { name: '親子溝通接話練習', desc: '孩子不想說話或一開口就吵？比較三種說法，寫下一句你自己的接話。' }, en: { name: 'Parent-Child Response Practice', desc: 'Child not talking or arguing? Compare three approaches and write your own response.' } },
+  { id: 'mindfulreply', icon: '🎯', cat: 'communication', zh: { name: '正念接話練習', desc: '被一句話刺到、很想回嘴？先看見衝動，再擬一句想說的回覆。' }, en: { name: 'Mindful Reply', desc: 'Triggered by a comment and want to snap back? Notice the urge, then draft a reply.' } },
+  { id: 'twoperson', icon: '👥', cat: 'communication', zh: { name: '三分鐘雙人對話練習', desc: '兩個人都願意的時候，輪流當說話者和聆聽者。不適合高衝突關係。' }, en: { name: 'Three-Minute Dialogue', desc: 'When both are willing, take turns speaking and listening. Not for high-conflict situations.' } },
+  { id: 'screentime', icon: '📺', cat: 'actions', zh: { name: '家庭 3C 使用約定表', desc: '想和孩子一起訂手機、平板或電玩的規則？逐項寫下做法和例外。' }, en: { name: 'Family Screen Time Agreement', desc: 'Want to set rules for phones, tablets, or games with your child? Write the rules and exceptions.' } },
+  { id: 'visualcard', icon: '🖼️', cat: 'actions', zh: { name: '情境轉換視覺提示卡', desc: '孩子換活動時常卡住？選「現在、接下來、完成後」的步驟，做成提示卡。' }, en: { name: 'Transition Visual Card', desc: 'Child gets stuck switching activities? Create a now-next-done visual prompt.' } },
+  { id: 'sleepdiary', icon: '📔', cat: 'emotions', zh: { name: '一週睡眠日記', desc: '想看清楚自己這一週怎麼睡？每天記下上床、睡著、醒來的時間。' }, en: { name: 'Weekly Sleep Diary', desc: 'Want to see your sleep pattern this week? Note bedtime, sleep time, and wake time each day.' } },
+  { id: 'workplace', icon: '🏢', cat: 'help', zh: { name: '職場事件紀錄表', desc: '遇到不舒服的職場事件？把時間、聽到的話和自己的推測分開記下。' }, en: { name: 'Workplace Incident Log', desc: 'Uncomfortable workplace incident? Separate what you heard, what was told to you, and your interpretation.' } },
+  { id: 'breathspace', icon: '🌌', cat: 'pause', zh: { name: '三分鐘呼吸空間練習', desc: '心裡很亂時，跟著覺察、集中、擴展三個階段停下來看看自己。' }, en: { name: 'Three-Minute Breathing Space', desc: 'Mind racing? Pause with awareness, focus, and expansion. No need to control the breath.' } },
+  { id: 'pmr', icon: '💪', cat: 'pause', zh: { name: '漸進式肌肉放鬆', desc: '身體一直很緊時，跟著提示一組一組收緊再放開。不舒服的部位隨時跳過。' }, en: { name: 'Progressive Muscle Relaxation', desc: 'Body tense? Follow prompts to tense and release muscle groups. Skip any that feel uncomfortable.' } },
+  { id: 'counselprep', icon: '📝', cat: 'help', zh: { name: '第一次諮商準備包', desc: '正在考慮心理諮商？先整理想談的內容和想問的問題。' }, en: { name: 'Counseling Prep', desc: 'Organize topics, main concern, and anything you want the counselor to know' } },
 ];
 
 function t(key) { return translations[lang][key] || key; }
@@ -128,7 +128,7 @@ function renderHome() {
       card.className = 'tool-card';
       card.href = '#';
       card.onclick = (e) => { e.preventDefault(); openTool(tool.id); };
-      card.innerHTML = `<h3>${tool[lang].name}</h3><p>${tool[lang].desc}</p>`;
+      card.innerHTML = `<h3>${tool.icon || ''} ${tool[lang].name}</h3><p>${tool[lang].desc}</p>`;
       toolsDiv.appendChild(card);
     });
     container.appendChild(div);
@@ -371,7 +371,7 @@ function renderWizard() {
   if (!tool) return;
 
   if (['breathing','fivesenses','anger'].includes(currentTool)) {
-    content.innerHTML = `<div class="tool-header"><h1>${tool[lang].name}</h1><p class="tool-desc">${tool[lang].desc}</p></div>` + renderSpecial(currentTool);
+    content.innerHTML = `<div class="tool-header"><h1>${tool.icon || ''} ${tool[lang].name}</h1><p class="tool-desc">${tool[lang].desc}</p></div>` + renderSpecial(currentTool);
     attachSpecial(currentTool);
     return;
   }
@@ -387,7 +387,7 @@ function renderWizard() {
 
   let html = `
     <div class="tool-header">
-      <h1>${tool[lang].name}</h1>
+      <h1>${tool.icon || ''} ${tool[lang].name}</h1>
       <p class="tool-desc" style="margin-top:0.3rem; color:var(--text-soft);">${tool[lang].desc}</p>
     </div>
     <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
