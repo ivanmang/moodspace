@@ -204,11 +204,9 @@ function getSteps(id) {
     { key: 'balanced', type: 'text', explain: isZh ? '試著寫一個比較完整的看法。找不到也可以留白。' : 'Try writing a more complete view. Leaving it blank is okay.', title: isZh ? '更平衡的想法可能是…' : 'A more balanced thought might be…' }
   ];
   if (id === 'boundary') return [
-    { key: 'relation', type: 'single', explain: isZh ? '選一種關係。也可以跳過，直接看全部範例。' : 'Select a relationship type. Or skip to see all examples.', title: isZh ? '關係類型' : 'Relationship type', options: isZh ? ['職場','家人','伴侶','朋友','跳過，看全部'] : ['Work','Family','Partner','Friend','Skip, see all'] },
-    { key: 'situation', type: 'single', explain: isZh ? '選一個情境。' : 'Select a situation.', title: isZh ? '情境' : 'Situation', options: isZh ? ['下班後收到非緊急訊息','臨時增加工作','被問不想回答的私事','反覆詢問感情或婚育安排','希望我答應每次聚會','未先詢問就動用我的物品','要求立刻回訊息','爭執時想先暫停','需要獨處時間','借錢但我不願意','我沒有餘力繼續聽對方傾訴','不想接受邀約'] : ['Non-urgent messages after work','Sudden extra work','Personal questions I don\'t want to answer','Repeated questions about relationship or kids','Expected to attend every gathering','Using my things without asking','Demanding instant replies','Want to pause during conflict','Need alone time','Asked to lend money but unwilling','No capacity to keep listening','Don\'t want to accept invitation'] },
-    { key: 'need', type: 'text', explain: isZh ? '確認你想表達的需求。可以改成自己的話。' : 'Confirm the need you want to express. Rewrite in your own words.', title: isZh ? '我想表達的需求' : 'The need I want to express', placeholder: isZh ? '例：保留下班後的休息時間' : 'e.g. Keep rest time after work' },
-    { key: 'style', type: 'single', explain: isZh ? '選一種說法風格，再改成你的語氣。' : 'Pick a style, then adjust to your tone.', title: isZh ? '說法風格' : 'Phrase style', options: isZh ? ['溫和說明','簡短直接','再次重申'] : ['Gentle explanation','Short and direct','Restate firmly'] },
-    { key: 'phrase', type: 'text', explain: isZh ? '改成你的語氣，寫下來。可以複製帶走。' : 'Adjust to your tone and write it down. You can copy it.', title: isZh ? '我的說法' : 'My phrase', placeholder: isZh ? '例：我看到訊息了。這件事如果不是緊急，我會在下一個工作時段回覆。' : 'e.g. I saw the message. If it is not urgent, I will reply during the next work period.' }
+    { key: 'relation', type: 'single', explain: isZh ? '選一種關係，或跳過看全部情境。' : 'Select a relationship, or skip to see all.', title: isZh ? '1. 選一種關係' : '1. Select a relationship', options: isZh ? ['職場','家人','伴侶','朋友'] : ['Work','Family','Partner','Friend'] },
+    { key: 'situation', type: 'single', explain: isZh ? '選一個情境，會顯示三種說法範例。' : 'Select a situation to see three phrase examples.', title: isZh ? '2. 選一個情境' : '2. Select a situation', options: isZh ? ['下班後收到非緊急訊息','臨時增加工作','被問不想回答的私事','反覆詢問感情或婚育安排','希望我答應每次聚會','未先詢問就動用我的物品','要求立刻回訊息','爭執時想先暫停','需要獨處時間','借錢但我不願意','我沒有餘力繼續聽對方傾訴','不想接受邀約'] : ['Non-urgent messages after work','Sudden extra work','Personal questions','Repeated questions about relationship','Expected to attend every gathering','Using my things without asking','Demanding instant replies','Want to pause during conflict','Need alone time','Asked to lend money','No capacity to keep listening','Don\'t want invitation'] },
+    { key: 'myphrase', type: 'text', explain: isZh ? '看完範例後，改成你的語氣寫下來。' : 'After seeing the examples, rewrite in your tone.', title: isZh ? '3. 我的說法（可改寫）' : '3. My phrase (edit as needed)', placeholder: isZh ? '改成你說得出口的話' : 'Rewrite in words you can say' }
   ];
   if (id === 'convo') return [
     { key: 'who', type: 'text', explain: isZh ? '寫名字或關係都可以，如「主管」「媽媽」。' : 'Name or relationship is fine, e.g. manager, mom.', hint: isZh ? '可以寫名字或關係，如「主管」「媽媽」' : 'Name or relationship is fine, e.g. manager, mom', title: isZh ? '對話對象是誰？' : 'Who will I talk to?' },
@@ -415,6 +413,19 @@ function getSteps(id) {
   return [];
 }
 
+function renderBoundaryPhrases() {
+  const sit = answers.situation;
+  if (!sit || !boundaryPhrases[sit]) return '';
+  const p = boundaryPhrases[sit];
+  return `<div class="boundary-examples" style="background:var(--accent-light); padding:1rem; border-radius:8px; margin:1rem 0;">
+    <p style="margin:0 0 0.5rem; font-weight:500;">需求：${p.need}</p>
+    <p style="margin:0.5rem 0;"><strong>溫和說明</strong><br>${p.gentle}</p>
+    <p style="margin:0.5rem 0;"><strong>簡短直接</strong><br>${p.direct}</p>
+    <p style="margin:0.5rem 0;"><strong>再次重申</strong><br>${p.restate}</p>
+    <p style="margin:0.5rem 0; color:var(--text-soft);"><strong>如果對方繼續要求，我可以…</strong><br>${p.ifcontinue}</p>
+  </div>`;
+}
+
 function renderWizard() {
   const tool = tools.find(t => t.id === currentTool);
   const content = document.getElementById('tool-content');
@@ -439,7 +450,7 @@ function renderWizard() {
   const step = steps[currentStep];
   const progress = Math.round(((currentStep + 1) / steps.length) * 100);
 
-  let html = showExample(currentTool) + `
+  let html = showExample(currentTool) + (currentTool === 'boundary' && answers.situation ? renderBoundaryPhrases() : '') + `
     <div class="tool-header">
       <h1>${tool.icon || ''} ${tool[lang].name}</h1>
       <p class="tool-desc" style="margin-top:0.3rem; color:var(--text-soft);">${tool[lang].desc}</p>
@@ -928,6 +939,96 @@ function showExample(toolId) {
   const text = ex[lang] || ex.zh;
   return `<details style="margin-top:1rem;"><summary style="cursor:pointer; color:var(--accent); font-size:0.9rem;">${lang === 'zh' ? '查看範例' : 'See example'}</summary><pre style="background:var(--accent-light); padding:0.8rem; border-radius:6px; font-size:0.85rem; white-space:pre-wrap; margin-top:0.5rem;">${text}</pre></details>`;
 }
+
+
+
+// Boundary expression phrases from original
+const boundaryPhrases = {
+  '下班後收到非緊急訊息': {
+    need: '保留下班後的休息時間',
+    gentle: '我看到訊息了。這件事如果不是緊急狀況，我會在下一個工作時段回覆。',
+    direct: '非緊急工作訊息，我會在工作時間處理。',
+    restate: '我理解你希望盡快確認；我仍會在下一個工作時段處理。緊急情況可以依我們約定的方式聯絡。',
+    ifcontinue: '先確認職務與團隊的值班或緊急聯絡約定，再提出可行的回覆時段。'
+  },
+  '臨時增加工作': {
+    need: '先確認優先順序與可負擔的工作量',
+    gentle: '我目前正在處理原定工作。如果要加入這一項，想先一起確認哪件事優先、哪些時程可以調整。',
+    direct: '目前的工作量無法全部在原期限完成，需要先調整優先順序或時程。',
+    restate: '我可以配合討論安排，但無法同時承諾所有項目的原期限。請先確認要優先完成哪一項。',
+    ifcontinue: '列出目前任務與預計時間，讓討論回到具體安排，而不是只反覆承諾會更努力。'
+  },
+  '被問不想回答的私事': {
+    need: '保留私人資訊',
+    gentle: '謝謝關心，這部分我想先留給自己。我們聊別的吧。',
+    direct: '這是我的私事，我不想分享細節。',
+    restate: '我知道你有好奇，但我仍不打算談這件事。',
+    ifcontinue: '準備一個轉換話題的句子；若持續造成困擾，可考慮向適當的工作支持窗口詢問。'
+  },
+  '反覆詢問感情或婚育安排': {
+    need: '自己決定何時分享個人安排',
+    gentle: '我知道你關心我的生活，這部分有想分享的時候，我會主動說。',
+    direct: '感情和婚育安排，我目前不想討論。',
+    restate: '我的回答沒有改變，今天先不談這個話題。',
+    ifcontinue: '可改聊其他話題；若現場適合，也可以暫時離開談話，讓自己喘口氣。'
+  },
+  '希望我答應每次聚會': {
+    need: '自己安排時間與休息',
+    gentle: '我很重視和大家相處，但這次需要休息，沒辦法參加。',
+    direct: '這次聚會我不參加，請不用替我安排。',
+    restate: '我知道你希望我到場，但這次的決定不變。我會在有餘裕時再安排見面。',
+    ifcontinue: '如果你願意，可提出另一個可行時間；不需要為了拒絕而承諾做不到的替代方案。'
+  },
+  '未先詢問就動用我的物品': {
+    need: '物品被使用前先徵求同意',
+    gentle: '這個東西對我很重要，下次使用前可以先問我嗎？',
+    direct: '請先得到我的同意，再使用我的物品。',
+    restate: '即使是家人，我仍希望使用前先詢問。這個規則對我很重要。',
+    ifcontinue: '在可行範圍內調整物品的收放方式，並再次說明哪些物品不能共用。'
+  },
+  '要求立刻回訊息': {
+    need: '保有不即時回覆的時間',
+    gentle: '我有時需要把手機放下，沒辦法立即回覆。等我有空時會再回你。',
+    direct: '我不一定能即時回訊息，希望我們不要用回覆速度判斷彼此是否在乎。',
+    restate: '我理解你希望快一點收到回覆，但我仍需要自己的時間。我會在方便時回覆。',
+    ifcontinue: '若雙方願意，可以另找平靜的時間討論聯絡期待，而不是在催促中承諾隨時待命。'
+  },
+  '爭執時想先暫停': {
+    need: '先平復再繼續討論',
+    gentle: '我現在有點難整理想法，想先休息一下，再一起討論。',
+    direct: '我需要先暫停這段對話，等狀態穩定後再談。',
+    restate: '我不是要忽略這件事，但現在繼續談對我很吃力。我想先停下來，再確認何時繼續。',
+    ifcontinue: '若安全且可行，可一起約定重新討論的時間；不要用暫停作為威脅或無限期懲罰。'
+  },
+  '需要獨處時間': {
+    need: '在關係中保留自己的時間',
+    gentle: '我喜歡和你相處，也需要一些自己安靜待著的時間。今天想先留一段時間給自己。',
+    direct: '今天這段時間我想自己安排，之後再一起確認相處時間。',
+    restate: '需要獨處不代表我不重視你；我仍希望保留這段自己的時間。',
+    ifcontinue: '想清楚你希望保留的具體時段，讓對方理解安排，但不需要把每一分鐘都交代清楚。'
+  },
+  '借錢但我不願意': {
+    need: '拒絕借款',
+    gentle: '我知道你現在有困難，但這次我沒辦法借錢給你。',
+    direct: '這筆借款我不會答應。',
+    restate: '我理解你還有需要，但我的決定沒有改變，請另找其他方式。',
+    ifcontinue: '如果你願意，可以陪對方找公開資源；不需要用金錢承諾證明友誼。'
+  },
+  '我沒有餘力繼續聽對方傾訴': {
+    need: '尊重自己的精神與時間負荷',
+    gentle: '我在意你，但今天沒有足夠的心力好好聽，想先休息。',
+    direct: '我現在需要停下這段對話，沒辦法繼續聊。',
+    restate: '我知道你還想說，但我今天能陪伴的時間到這裡了。',
+    ifcontinue: '只有確實有餘裕時才約下一次；若對方需要更多支持，可一起了解其他資源。'
+  },
+  '不想接受邀約': {
+    need: '拒絕這次邀請',
+    gentle: '謝謝你想到我，但這次我想保留自己的時間，就不參加了。',
+    direct: '這次邀約我不參加。',
+    restate: '謝謝你再邀請我，但這次的決定不變，祝你們玩得開心。',
+    ifcontinue: '如果願意再見面，可以主動提出其他安排；不必編造理由或答應不想參加的活動。'
+  }
+};
 
 
 // Init
