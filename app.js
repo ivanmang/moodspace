@@ -277,7 +277,7 @@ function getSteps(id) {
     { key: 'p3', type: 'text', explain: isZh ? '給自己一句溫柔的話。可以沿用例子或改寫。' : 'Offer yourself a kind phrase. Use the example or rewrite it.', title: isZh ? '第三句：給自己一句溫柔的話' : 'Phrase 3: Offer yourself a kind phrase', placeholder: isZh ? '例：願我對自己溫柔一點' : 'e.g. May I be kind to myself' }
   ];
   if (id === 'bodycheck') return [
-    { key: 'areas', type: 'multi', explain: isZh ? '選現在有感覺的部位。不用全部，選有感覺的就好。' : 'Select where you notice sensation. Just the ones you feel.', max: 5, hint: isZh ? '選有感覺的就好，不用全部' : 'Just the ones you notice — no need for all', title: isZh ? '哪個部位現在有感覺？' : 'Where do you notice sensation?', options: isZh ? ['頭／臉','肩膀／頸','胸口','肚子','手／手臂','腿／腳','全身'] : ['Head/Face','Shoulders/Neck','Chest','Belly','Hands/Arms','Legs/Feet','Whole body'] },
+    { key: 'areas', type: 'multi', explain: isZh ? '選現在有感覺的部位。不用全部，選有感覺的就好。' : 'Select where you notice sensation. Just the ones you feel.', max: 5, hint: isZh ? '選有感覺的就好，不用全部' : 'Just the ones you notice — no need for all', title: isZh ? '哪個部位現在有感覺？' : 'Where do you notice sensation?', options: isZh ? ['頭部','臉部與下顎','頸部','肩膀與上背','胸前','腹部','下背','左手與手臂','右手與手臂','左腿','右腿','雙腳','其他'] : ['Head/Face','Shoulders/Neck','Chest','Belly','Hands/Arms','Legs/Feet','Whole body'] },
     { key: 'sensation', type: 'text', explain: isZh ? '簡單描述感覺。選填，不用分析原因。' : 'Briefly describe the sensation. Optional — no need to analyze.', title: isZh ? '簡單描述感覺（選填）' : 'Briefly describe the sensation (optional)' }
   ];
   if (id === 'sleep') return [
@@ -307,7 +307,9 @@ function getSteps(id) {
     { key: 'note', type: 'text', explain: isZh ? '其他想讓對方知道的。選填。' : 'Anything else you want them to know. Optional.', title: isZh ? '其他想說的（選填）' : 'Anything else (optional)', placeholder: isZh ? '例：這些不代表我在生你的氣' : 'e.g. This does not mean I am angry at you' }
   ];
   if (id === 'lowenergy') return [
-    { key: 'activity', type: 'single', explain: isZh ? '從負擔較小的活動中挑一件目前做得到的。' : 'Pick one low-effort activity you can do right now.', title: isZh ? '現在做得到的一件事' : 'One thing I can do right now', options: isZh ? ['喝一杯水','開窗透氣','站起來伸展','洗把臉','聽一首歌','寫下一件事','什麼都不做，休息一下'] : ['Drink a glass of water','Open a window','Stand and stretch','Wash my face','Listen to one song','Write down one thing','Do nothing, just rest'] }
+    { key: 'time', type: 'single', explain: isZh ? '從三種份量裡挑。' : 'Pick from three durations.', title: isZh ? '1. 現在有多少時間？' : '1. How much time?', options: isZh ? ['2 分鐘','15 分鐘','有力氣的時候'] : ['2 minutes','15 minutes','When I have energy'] },
+    { key: 'activity', type: 'single', explain: isZh ? '挑一件做得到的。' : 'Pick one you can do.', title: isZh ? '2. 挑一件活動' : '2. Pick an activity', options: isZh ? ['喝一杯溫水','開窗透氣','伸個懶腰','洗把臉','回一則簡單的訊息','看窗外一分鐘','洗個熱水澡','到樓下走一圈','整理桌面一角','聽一首歌','去公園散步','約朋友喝咖啡'] : ['Drink warm water','Open a window','Stretch','Wash face','Reply to a simple message','Look outside for a minute','Take a hot shower','Walk downstairs','Tidy a corner','Listen to a song','Walk in the park','Meet a friend for coffee'] },
+    { key: 'own', type: 'text', explain: isZh ? '補上你自己的。選填。' : 'Add your own. Optional.', title: isZh ? '3. 我自己的（選填）' : '3. My own (optional)', placeholder: isZh ? '例：以前喜歡、後來很久沒做的事' : 'e.g. something I used to enjoy' }
   ];
   if (id === 'docprep') return [
     { key: 'changes', type: 'text', explain: isZh ? '近期有什麼變化？睡眠、情緒、生活都可以。' : 'Any recent changes? Sleep, mood, daily life all count.', title: isZh ? '近期有什麼變化？' : 'Any recent changes?', placeholder: isZh ? '例：這兩週睡不好，容易醒來' : 'e.g. Sleep has been poor these two weeks' },
