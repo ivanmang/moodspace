@@ -47,6 +47,8 @@ let currentStep = 0;
 let answers = {};
 
 const tools = [
+
+  { id: 'moodtracker', icon: '📈', cat: 'emotions', zh: { name: '心情紀錄', desc: '每天記下心情，看看這一週的變化。資料只留在你的瀏覽器。' }, en: { name: 'Mood Tracker', desc: 'Log your mood each day and see the week\'s pattern. Data stays in your browser.' } },
   { id: 'feelings', icon: '💭', cat: 'emotions', zh: { name: '情緒與需要整理卡', desc: '不太確定自己在想什麼、感受什麼？選幾個詞，整理此刻可能的需要。' }, en: { name: 'Feelings & Needs Card', desc: 'Name feelings, note what happened, identify needs, then choose one next step' } },
   { id: 'worry', icon: '😰', cat: 'emotions', zh: { name: '擔心整理＋擔心時間', desc: '擔心的事反覆出現？先記下來，區分可以處理和暫時放下的部分。' }, en: { name: 'Worry Sorter', desc: 'List your worries, then sort what you can act on' } },
   { id: 'compassion', icon: '💚', cat: 'emotions', zh: { name: '對自己換一句話', desc: '常常責備自己？試著找到一種比較能接受的方式回應自己。' }, en: { name: 'Self-Compassion Response', desc: 'Write a harsh self-talk, then rephrase it as if talking to a friend' } },
@@ -370,6 +372,10 @@ function renderWizard() {
   const content = document.getElementById('tool-content');
   if (!tool) return;
 
+  if (currentTool === 'moodtracker') {
+    content.innerHTML = `<div class="tool-header"><h1>${tool.icon || ''} ${tool[lang].name}</h1><p class="tool-desc">${tool[lang].desc}</p></div>` + renderMoodTracker();
+    return;
+  }
   if (['breathing','fivesenses','anger'].includes(currentTool)) {
     content.innerHTML = `<div class="tool-header"><h1>${tool.icon || ''} ${tool[lang].name}</h1><p class="tool-desc">${tool[lang].desc}</p></div>` + renderSpecial(currentTool);
     attachSpecial(currentTool);
@@ -907,6 +913,79 @@ function renderTree() {
   };
   
   render();
+}
+
+
+
+// Mood Tracker
+function renderMoodTracker() {
+  const moods = JSON.parse(localStorage.getItem('moodspace-moods') || '[]');
+  const today = new Date().toISOString().slice(0, 10);
+  const todayMood = moods.find(m => m.date === today);
+  
+  const moodOptions = [
+    { emoji: '😊', label: lang === 'zh' ? '不錯' : 'Good', value: 4 },
+    { emoji: '😌', label: lang === 'zh' ? '平靜' : 'Calm', value: 3 },
+    { emoji: '😐', label: lang === 'zh' ? '普通' : 'Okay', value: 2 },
+    { emoji: '😔', label: lang === 'zh' ? '低落' : 'Low', value: 1 },
+    { emoji: '😰', label: lang === 'zh' ? '焦慮' : 'Anxious', value: 1 }
+  ];
+  
+  let html = '<div class="mood-tracker">';
+  
+  // Today's entry
+  html += `<h3 style="margin-bottom:0.8rem;">${lang === 'zh' ? '今天的心情' : 'Today\'s mood'}</h3>`;
+  html += '<div class="mood-options" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1rem;">';
+  moodOptions.forEach(m => {
+    const selected = todayMood && todayMood.value === m.value && todayMood.emoji === m.emoji ? 'selected' : '';
+    html += `<button class="option-btn ${selected}" onclick="logMood('${m.emoji}', ${m.value}, '${m.label}')" style="font-size:1.2rem; padding:0.6rem 1rem;">${m.emoji}<br><span style="font-size:0.75rem;">${m.label}</span></button>`;
+  });
+  html += '</div>';
+  
+  if (todayMood) {
+    html += `<p style="color:var(--accent); font-size:0.9rem;">${lang === 'zh' ? '已記錄：' : 'Logged: '} ${todayMood.emoji} ${todayMood.label}</p>`;
+  }
+  
+  // Week view
+  html += `<h3 style="margin:1.5rem 0 0.8rem;">${lang === 'zh' ? '這一週' : 'This week'}</h3>`;
+  html += '<div class="week-view" style="display:flex; gap:0.4rem; justify-content:space-between;">';
+  
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const dateStr = d.toISOString().slice(0, 10);
+    const dayMood = moods.find(m => m.date === dateStr);
+    const dayLabel = d.toLocaleDateString(lang === 'zh' ? 'zh-TW' : 'en', { weekday: 'short' });
+    html += `<div style="text-align:center; flex:1;">
+      <div style="font-size:0.75rem; color:var(--text-soft);">${dayLabel}</div>
+      <div style="font-size:1.5rem; margin:0.3rem 0;">${dayMood ? dayMood.emoji : '·'}</div>
+      <div style="font-size:0.7rem; color:var(--text-soft);">${d.getDate()}</div>
+    </div>`;
+  }
+  html += '</div>';
+  
+  // Note
+  html += `<p style="margin-top:1.5rem; font-size:0.85rem; color:var(--text-soft);">${lang === 'zh' ? '資料只存在你的瀏覽器，不會上傳。清除瀏覽器資料會一併清除紀錄。' : 'Data stays in your browser only. Clearing browser data will remove the log.'}</p>`;
+  
+  html += '</div>';
+  return html;
+}
+
+function logMood(emoji, value, label) {
+  const moods = JSON.parse(localStorage.getItem('moodspace-moods') || '[]');
+  const today = new Date().toISOString().slice(0, 10);
+  
+  // Remove existing entry for today
+  const filtered = moods.filter(m => m.date !== today);
+  filtered.push({ date: today, emoji, value, label });
+  
+  // Keep only last 30 days
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - 30);
+  const recent = filtered.filter(m => new Date(m.date) >= cutoff);
+  
+  localStorage.setItem('moodspace-moods', JSON.stringify(recent));
+  renderWizard();
 }
 
 
