@@ -392,7 +392,7 @@ function renderWizard() {
   const step = steps[currentStep];
   const progress = Math.round(((currentStep + 1) / steps.length) * 100);
 
-  let html = `
+  let html = showExample(currentTool) + `
     <div class="tool-header">
       <h1>${tool.icon || ''} ${tool[lang].name}</h1>
       <p class="tool-desc" style="margin-top:0.3rem; color:var(--text-soft);">${tool[lang].desc}</p>
@@ -859,6 +859,24 @@ function resetGuided() {
   guidedStep = 0;
   guidedTags = [];
   renderGuided();
+}
+
+
+
+// Example cards
+const examples = {
+  feelings: { zh: '我記下的事情：原本的安排臨時改變\n我注意到的感受：失望、困惑\n我現在可能需要：更清楚的資訊\n我願意先試的一件事：先確認新的安排', en: 'What happened: Plans changed suddenly\nFeelings: disappointed, confused\nNeed: clearer information\nWilling to try: confirm the new arrangement' },
+  worry: { zh: '擔心：明天會議會不會出錯\n可以行動：準備議程、提早到\n先放著：如果大家覺得我說得不好\n擔心時間：每天晚上八點，十分鐘', en: 'Worry: What if the meeting goes badly\nCan act: prepare agenda, arrive early\nPark: What if people think I spoke poorly\nWorry time: 8 pm daily, 10 minutes' },
+  compassion: { zh: '嚴厲的話：我怎麼又搞砸了\n遇到的困難：工作量突然增加\n對朋友會說：你已經盡力了，這次真的很多', en: 'Harsh: I messed up again\nDifficulty: workload suddenly increased\nTo a friend: You did your best, this was a lot' },
+  smallstep: { zh: '想做的事：整理房間\n卡在：太大了不知道從哪開始\n最小一步：先整理桌面的一個角落', en: 'Big thing: tidy the room\nStuck: too big, don\'t know where to start\nSmallest step: just tidy one corner of the desk' },
+  boundary: { zh: '情況：下班後收到非緊急訊息\n界線：保留下班後的休息時間\n可以這樣說：我下班後需要休息，明天再回你', en: 'Situation: non-urgent messages after work\nBoundary: keep rest time after work\nCan say: I need rest after work, I\'ll reply tomorrow' }
+};
+
+function showExample(toolId) {
+  const ex = examples[toolId];
+  if (!ex) return '';
+  const text = ex[lang] || ex.zh;
+  return `<details style="margin-top:1rem;"><summary style="cursor:pointer; color:var(--accent); font-size:0.9rem;">${lang === 'zh' ? '查看範例' : 'See example'}</summary><pre style="background:var(--accent-light); padding:0.8rem; border-radius:6px; font-size:0.85rem; white-space:pre-wrap; margin-top:0.5rem;">${text}</pre></details>`;
 }
 
 
