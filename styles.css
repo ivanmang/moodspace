@@ -324,3 +324,31 @@ details[open] summary {
 .tree-crumb {
   color: var(--accent);
 }
+
+/* Mobile fixes */
+@media (max-width: 600px) {
+  main { padding: 1rem; }
+  h1 { font-size: 1.5rem; }
+  .tools { grid-template-columns: 1fr; }
+  .tool-card { padding: 0.8rem; }
+  .guided-entry { padding: 1rem; }
+  .option-btn { padding: 0.5rem 0.7rem; font-size: 0.85rem; }
+  #tool-view { padding: 0.8rem; }
+  .wizard-nav { flex-direction: column; gap: 0.5rem; }
+  .wizard-nav .btn { width: 100%; }
+}
+
+/* Print styles */
+@media print {
+  header, .back-btn, .wizard-nav, .actions, footer, 
+  .guided-entry, #onboarding, .emergency, .faq { display: none !important; }
+  #tool-view { position: static; overflow: visible; padding: 0; }
+  #home-view { display: none !important; }
+  .card-result {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    page-break-inside: avoid;
+  }
+  body { background: white; }
+  body::before { display: none; }
+}
