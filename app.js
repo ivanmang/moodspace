@@ -1402,6 +1402,105 @@ function toggleBodyPart(label) {
 }
 
 
+
+// Single-page form tools (matching original UX)
+function renderSinglePageForm(toolId) {
+  const isZh = lang === 'zh';
+  const tool = tools.find(t => t.id === toolId);
+  
+  const forms = {
+    feelings: {
+      fields: [
+        { key: 'feelings', type: 'multi', max: 5, label: isZh ? '選接近的感受詞（最多 5 個）' : 'Pick feelings (up to 5)', options: isZh ? ['開心','放鬆','感謝','期待','難過','失望','生氣','挫折','緊張','擔心','孤單','尷尬','困惑','麻木','好幾種感受混在一起','還不確定'] : ['Happy','Relaxed','Grateful','Hopeful','Sad','Disappointed','Angry','Frustrated','Nervous','Worried','Lonely','Awkward','Confused','Numb','Mixed','Not sure'] },
+        { key: 'what', type: 'text', label: isZh ? '剛才發生了什麼？（選填）' : 'What happened? (optional)', placeholder: isZh ? '只寫你願意記下的部分' : 'Only what you want to note' },
+        { key: 'needs', type: 'multi', max: 3, label: isZh ? '現在可能需要什麼？（最多 3 個）' : 'What might you need? (up to 3)', options: isZh ? ['休息','一點空間','有人陪伴','被聽見','更清楚的資訊','實際協助','釐清下一步','還不知道'] : ['Rest','Some space','Company','To be heard','Clearer info','Practical help','Clarity','Not sure'] },
+        { key: 'try', type: 'single', label: isZh ? '我願意先試的一件事' : 'One thing to try', options: isZh ? ['先停一下','找個人聽我說','查一項需要的資訊','先不決定'] : ['Just pause','Talk to someone','Look up info','Decide later'] }
+      ]
+    },
+    worry: {
+      fields: [
+        { key: 'worries', type: 'text', label: isZh ? '把擔心寫下來（一行一個，最多 10 件）' : 'List worries (one per line, up to 10)', placeholder: isZh ? '例：明天會議會不會出錯' : 'e.g. What if the meeting goes badly' },
+        { key: 'canact', type: 'text', label: isZh ? '哪些是我可以採取行動的？' : 'Which can I act on?', placeholder: isZh ? '例：查資料、問人、安排時間' : 'e.g. look up info, ask someone' },
+        { key: 'park', type: 'text', label: isZh ? '哪些先放著？' : 'Which to park?', placeholder: isZh ? '例：還沒發生的「如果…」' : 'e.g. hypotheticals' },
+        { key: 'worrytime', type: 'text', label: isZh ? '擔心時間（選填）' : 'Worry time (optional)', placeholder: isZh ? '例：每天晚上八點，十分鐘' : 'e.g. 8pm daily, 10 min' }
+      ]
+    },
+    smallstep: {
+      fields: [
+        { key: 'task', type: 'text', label: isZh ? '我想處理的一件事' : 'The thing I want to handle', placeholder: isZh ? '例：整理房間' : 'e.g. tidy the room' },
+        { key: 'stuck', type: 'single', label: isZh ? '現在卡在哪裡？（可略過）' : 'Where stuck? (optional)', options: isZh ? ['太大了','不知道第一步','缺資訊或資源','現在沒力氣','擔心做不好','還不確定'] : ['Too big','Don\'t know first step','Missing info','No energy','Afraid','Not sure'] },
+        { key: 'first', type: 'text', label: isZh ? '第一小步' : 'First small step', placeholder: isZh ? '例：先整理桌面的一個角落' : 'e.g. tidy one corner of the desk' },
+        { key: 'when', type: 'text', label: isZh ? '何時開始？（選填）' : 'When to start? (optional)', placeholder: isZh ? '例：今天下午' : 'e.g. this afternoon' }
+      ]
+    },
+    compassion: {
+      fields: [
+        { key: 'harsh', type: 'text', label: isZh ? '腦中那句責備自己的話' : 'The harsh thing I say', placeholder: isZh ? '例：你怎麼又拖到最後一刻' : 'e.g. Why did you leave it to the last minute' },
+        { key: 'difficulty', type: 'text', label: isZh ? '現在實際遇到的困難' : 'The actual difficulty', placeholder: isZh ? '例：這週工作太多' : 'e.g. Too much work this week' },
+        { key: 'need', type: 'multi', max: 3, label: isZh ? '我現在需要' : 'I need', options: isZh ? ['休息','多一點時間','被理解','實際協助','其他'] : ['Rest','More time','To be understood','Help','Other'] },
+        { key: 'kind', type: 'text', label: isZh ? '我能接受的新說法' : 'A new phrase I can accept', placeholder: isZh ? '例：這週真的很多，我已經盡力了' : 'e.g. This week was a lot, I did my best' },
+        { key: 'action', type: 'text', label: isZh ? '一個小行動（選填）' : 'One small action (optional)', placeholder: isZh ? '例：今天先完成最急的' : 'e.g. Finish the most urgent today' }
+      ]
+    }
+  };
+  
+  const form = forms[toolId];
+  if (!form) return '<p>Form not found</p>';
+  
+  let html = `<div class="tool-header">
+    <button class="back-btn" onclick="showHome()">← ${isZh ? '返回' : 'Back'}</button>
+    <h1>${tool.icon || ''} ${tool[lang].name}</h1>
+    <p class="tool-desc">${tool[lang].desc}</p>
+  </div>
+  <form id="single-form" onsubmit="event.preventDefault(); submitSingleForm('${toolId}')">`;
+  
+  form.fields.forEach(f => {
+    html += `<div class="form-group"><label>${f.label}</label>`;
+    if (f.type === 'text') {
+      html += `<textarea name="${f.key}" placeholder="${f.placeholder || ''}" rows="2"></textarea>`;
+    } else if (f.type === 'single') {
+      html += '<div class="options">';
+      f.options.forEach(opt => {
+        html += `<button type="button" class="option-btn" onclick="this.parentElement.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected')); this.classList.add('selected'); document.querySelector('[name=${f.key}]').value=this.textContent;">${opt}</button>`;
+      });
+      html += `<input type="hidden" name="${f.key}"></div>`;
+    } else if (f.type === 'multi') {
+      html += '<div class="options">';
+      f.options.forEach(opt => {
+        html += `<button type="button" class="option-btn" onclick="this.classList.toggle('selected'); updateMulti('${f.key}');">${opt}</button>`;
+      });
+      html += `<input type="hidden" name="${f.key}"></div>`;
+    }
+    html += '</div>';
+  });
+  
+  html += `<div class="actions"><button type="submit" class="btn">${isZh ? '產生整理卡' : 'Generate card'}</button></div></form>
+  <div id="form-result"></div>`;
+  
+  return html;
+}
+
+function updateMulti(key) {
+  const selected = [...document.querySelectorAll(`[onclick*="${key}"]`)].filter(b => b.classList.contains('selected')).map(b => b.textContent);
+  document.querySelector(`[name="${key}"]`).value = selected.join('、');
+}
+
+function submitSingleForm(toolId) {
+  const form = document.getElementById('single-form');
+  const data = {};
+  new FormData(form).forEach((v, k) => data[k] = v);
+  
+  const isZh = lang === 'zh';
+  let result = `<div class="card-result"><h3>${isZh ? '整理卡' : 'Card'}</h3>`;
+  for (const [k, v] of Object.entries(data)) {
+    if (v) result += `<p><strong>${k}：</strong>${v}</p>`;
+  }
+  result += `<div class="actions" style="margin-top:1rem;"><button class="btn" onclick="window.print()">${isZh ? '列印' : 'Print'}</button></div></div>`;
+  
+  document.getElementById('form-result').innerHTML = result;
+}
+
+
 // Init
 applyTheme();
 renderGuided();
