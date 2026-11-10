@@ -1220,7 +1220,7 @@ function showSection(section) {
 // Body map
 function renderBodyMap() {
   window.selectedBodyParts = window.selectedBodyParts || [];
-  window.bodyView = window.bodyView || 'front';
+  window.bodyView = window.bodyView || 'front'; // front, back, left, right
   
   const frontParts = [
     { id: 'head', label: '頭部', cx: 100, cy: 28, rx: 20, ry: 22 },
@@ -1271,7 +1271,37 @@ function renderBodyMap() {
     { id: 'rheel', label: '右腳跟', cx: 117, cy: 250, rx: 10, ry: 6 }
   ];
   
-  const parts = window.bodyView === 'front' ? frontParts : backParts;
+  const leftParts = [
+    { id: 'sidehead', label: '頭側', cx: 100, cy: 30, rx: 18, ry: 24 },
+    { id: 'sideneck', label: '頸側', x: 94, y: 54, w: 12, h: 16 },
+    { id: 'sideshoulder', label: '肩側', x: 70, y: 70, w: 40, h: 16, rx: 4 },
+    { id: 'sidechest', label: '胸側', x: 75, y: 86, w: 35, h: 30, rx: 4 },
+    { id: 'sideabd', label: '腹側', x: 78, y: 116, w: 30, h: 35, rx: 3 },
+    { id: 'sidearm', label: '手臂側', x: 45, y: 75, w: 18, h: 70, rx: 6 },
+    { id: 'sidehip', label: '臀側', x: 72, y: 151, w: 28, h: 18, rx: 3 },
+    { id: 'sidethigh', label: '大腿側', x: 78, y: 169, w: 18, h: 45, rx: 4 },
+    { id: 'sideknee', label: '膝側', cx: 87, cy: 220, rx: 10, ry: 8 },
+    { id: 'sidecalf', label: '小腿側', x: 80, y: 228, w: 14, h: 35, rx: 4 },
+    { id: 'sidefoot', label: '腳側', cx: 87, cy: 272, rx: 14, ry: 6 }
+  ];
+  
+  const rightParts = [
+    { id: 'rsidehead', label: '右頭側', cx: 100, cy: 30, rx: 18, ry: 24 },
+    { id: 'rsideneck', label: '右頸側', x: 94, y: 54, w: 12, h: 16 },
+    { id: 'rsideshoulder', label: '右肩側', x: 90, y: 70, w: 40, h: 16, rx: 4 },
+    { id: 'rsidechest', label: '右胸側', x: 90, y: 86, w: 35, h: 30, rx: 4 },
+    { id: 'rsideabd', label: '右腹側', x: 92, y: 116, w: 30, h: 35, rx: 3 },
+    { id: 'rsidearm', label: '右臂側', x: 137, y: 75, w: 18, h: 70, rx: 6 },
+    { id: 'rsidehip', label: '右臀側', x: 100, y: 151, w: 28, h: 18, rx: 3 },
+    { id: 'rsidethigh', label: '右大腿側', x: 104, y: 169, w: 18, h: 45, rx: 4 },
+    { id: 'rsideknee', label: '右膝側', cx: 113, cy: 220, rx: 10, ry: 8 },
+    { id: 'rsidecalf', label: '右小腿側', x: 106, y: 228, w: 14, h: 35, rx: 4 },
+    { id: 'rsidefoot', label: '右腳側', cx: 113, cy: 272, rx: 14, ry: 6 }
+  ];
+  
+  const parts = window.bodyView === 'front' ? frontParts : 
+                window.bodyView === 'back' ? backParts :
+                window.bodyView === 'left' ? leftParts : rightParts;
   
   let svgParts = parts.map(p => {
     const selected = window.selectedBodyParts.includes(p.label);
@@ -1284,9 +1314,15 @@ function renderBodyMap() {
     }
   }).join('');
   
-  const viewBtn = window.bodyView === 'front' 
-    ? `<button class="btn secondary" onclick="window.bodyView='back'; renderWizard();" style="font-size:0.85rem; padding:0.3rem 0.6rem;">看背面</button>`
-    : `<button class="btn secondary" onclick="window.bodyView='front'; renderWizard();" style="font-size:0.85rem; padding:0.3rem 0.6rem;">看正面</button>`;
+  const views = [
+    { id: 'front', label: '正面' },
+    { id: 'back', label: '背面' },
+    { id: 'left', label: '左側' },
+    { id: 'right', label: '右側' }
+  ];
+  const viewBtn = views.map(v => 
+    `<button class="btn ${window.bodyView === v.id ? '' : 'secondary'}" onclick="window.bodyView='${v.id}'; renderWizard();" style="font-size:0.8rem; padding:0.25rem 0.5rem; margin:0 0.2rem;">${v.label}</button>`
+  ).join('');
   
   return `<div style="text-align:center; margin:1rem 0;">
     <p style="font-size:0.9rem; color:var(--text-soft); margin-bottom:0.5rem;">點選身體部位（已選：${window.selectedBodyParts.length}/8）</p>
