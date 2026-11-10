@@ -187,9 +187,11 @@ function getSteps(id) {
     { key: 'worrytime', type: 'text', explain: isZh ? '給擔心一個固定時間，其他時間先放著。選填。' : 'Give worries a set time. Park them the rest of the time. Optional.', hint: isZh ? '例：每天晚上八點，十分鐘' : 'e.g. 8 pm every day, 10 minutes', title: isZh ? '給擔心一個固定時間（選填）' : 'Set a worry time (optional)', placeholder: isZh ? '例：每天晚上八點，十分鐘' : 'e.g. 8 pm daily, 10 minutes' }
   ];
   if (id === 'compassion') return [
-    { key: 'harsh', type: 'text', explain: isZh ? '寫下你對自己說的話，不用修飾。這不是要你批評自己。' : 'Write what you say to yourself, without polishing. This is not about criticizing yourself.', hint: isZh ? '寫下你對自己說的話，不用修飾' : 'Write what you actually say to yourself', title: isZh ? '最近對自己說了什麼嚴厲的話？' : 'What harsh thing have you been saying to yourself?' },
-    { key: 'difficulty', type: 'text', explain: isZh ? '現在實際遇到什麼困難？寫下來，幫助自己看清楚。' : 'What difficulty are you actually facing? Writing it down can help clarify.', hint: isZh ? '現在實際遇到什麼困難？' : 'What difficulty are you actually facing?', title: isZh ? '現在遇到的困難是…' : 'The difficulty I\'m facing is…', placeholder: isZh ? '例：工作量突然增加，來不及完成' : 'e.g. Workload suddenly increased' },
-    { key: 'kind', type: 'text', explain: isZh ? '如果是對好朋友說，你會怎麼說？試著寫一句你能接受的話。' : 'What would you say to a good friend? Try writing a phrase you can accept.', hint: isZh ? '試著寫一句你能接受的新說法' : 'Try writing a phrase you can accept', title: isZh ? '如果是對好朋友說，你會怎麼說？' : 'What would you say to a good friend in the same situation?' }
+    { key: 'harsh', type: 'text', explain: isZh ? '照原樣寫下來就好，例如「你怎麼又拖到最後一刻」。' : 'Write it as is, e.g. Why did you leave it to the last minute again.', title: isZh ? '腦中那句責備自己的話' : 'The harsh thing I say to myself', placeholder: isZh ? '例：你怎麼又拖到最後一刻' : 'e.g. Why did you leave it to the last minute' },
+    { key: 'difficulty', type: 'text', explain: isZh ? '現在實際遇到的困難。' : 'The actual difficulty you are facing.', title: isZh ? '現在實際遇到的困難' : 'The difficulty I am facing', placeholder: isZh ? '例：這週工作太多，又一直睡不好' : 'e.g. Too much work this week, and sleeping poorly' },
+    { key: 'need', type: 'multi', max: 3, explain: isZh ? '選一選或寫下你現在需要什麼。' : 'Select or write what you need right now.', title: isZh ? '我現在需要' : 'What I need now', options: isZh ? ['休息','多一點時間','被理解','實際協助','其他'] : ['Rest','More time','To be understood','Practical help','Other'] },
+    { key: 'kind', type: 'text', explain: isZh ? '想像你在跟一位好朋友說話。寫得短、寫得普通都可以。' : 'Imagine talking to a good friend. Short and ordinary is fine.', title: isZh ? '我能接受的新說法' : 'A new phrase I can accept', placeholder: isZh ? '例：這週的事情真的很多，我已經盡力了' : 'e.g. This week has been a lot, I have been doing my best' },
+    { key: 'action', type: 'text', explain: isZh ? '一個小行動。選填。' : 'One small action. Optional.', title: isZh ? '一個小行動（選填）' : 'One small action (optional)', placeholder: isZh ? '例：今天先完成最急的那一份' : 'e.g. Finish the most urgent one today' }
   ];
   if (id === 'gratitude') return [
     { key: 'g1', type: 'text', explain: isZh ? '小事也可以。寫得出來就好，不用想很大的事。' : 'Small things count. Just write what comes to mind.', hint: isZh ? '小事也可以，寫得出來就好' : 'Small things count — just write what comes to mind', title: isZh ? '第一件值得感謝的事' : 'First thing I appreciate' },
@@ -216,7 +218,7 @@ function getSteps(id) {
   ];
   if (id === 'smallstep') return [
     { key: 'big', type: 'text', explain: isZh ? '用一句話寫下你想處理的事。不用想完整計畫。' : 'Write what you want to handle in one sentence. No need for a full plan.', hint: isZh ? '用一句話寫下你想處理的事' : 'Write what you want to handle in one sentence', title: isZh ? '想做的大事情是…' : 'The bigger thing I want to do is…', placeholder: isZh ? '例：整理房間、開始運動、回覆積壓的訊息' : 'e.g. tidy the room, start exercising, reply to messages' },
-    { key: 'stuck', type: 'single', explain: isZh ? '選最接近的卡點。這幫助你找到適合的第一步。' : 'Pick the closest stuck point. This helps find a fitting first step.', hint: isZh ? '選最接近的就好' : 'Just pick the closest one', title: isZh ? '現在卡在哪裡？' : 'Where are you stuck?', options: isZh ? ['太大了不知道從哪開始','不知道第一步是什麼','沒有時間或精力','怕做不好','其他'] : ['Too big, don\'t know where to start','Don\'t know the first step','No time or energy','Afraid of doing it poorly','Other'] },
+    { key: 'stuck', type: 'single', explain: isZh ? '選最接近的卡點。這幫助你找到適合的第一步。' : 'Pick the closest stuck point. This helps find a fitting first step.', hint: isZh ? '選最接近的就好' : 'Just pick the closest one', title: isZh ? '現在卡在哪裡？' : 'Where are you stuck?', options: isZh ? ['太大了','不知道第一步','缺資訊或資源','現在沒力氣','擔心做不好','還不確定'] : ['Too big, don\'t know where to start','Don\'t know the first step','No time or energy','Afraid of doing it poorly','Other'] },
     { key: 'small', type: 'text', explain: isZh ? '越小越好，最好是今天就能做的。寫下來就好。' : 'Smaller is better — ideally something you can do today. Just write it down.', hint: isZh ? '越小越好，最好是今天就能做的' : 'Smaller is better — ideally something you can do today', title: isZh ? '今天可以做的最小一步是…' : 'The smallest step I can take today is…', placeholder: isZh ? '例：先整理桌面的一個角落' : 'e.g. Just tidy one corner of the desk' }
   ];
   if (id === 'decision') return [
@@ -226,7 +228,7 @@ function getSteps(id) {
     { key: 'bPros', type: 'text', explain: isZh ? '寫下選項 B 的好處和風險。不用想完整。' : 'Write the pros and cons of Option B. No need to be complete.', title: isZh ? '選項 B 的好處與風險' : 'Pros and cons of Option B' }
   ];
   if (id === 'values') return [
-    { key: 'values', type: 'multi', max: 3, hint: isZh ? '選少一點比較容易排出先後' : 'Fewer choices make it easier to prioritize', title: isZh ? '選出目前最重要的 3 個價值' : 'Select the 3 values that matter most right now', options: isZh ? ['健康','關係','成長','自由','貢獻','成就','平靜','創造','安全','樂趣'] : ['Health','Relationships','Growth','Freedom','Contribution','Achievement','Calm','Creativity','Safety','Fun'] },
+    { key: 'values', type: 'multi', max: 3, hint: isZh ? '選少一點比較容易排出先後' : 'Fewer choices make it easier to prioritize', title: isZh ? '選出目前最重要的 3 個價值' : 'Select the 3 values that matter most right now', options: isZh ? ['身體健康','休息與放鬆','家人','伴侶關係','朋友','工作表現','學習與成長','經濟穩定','自由與選擇','創作與興趣','幫助別人','誠實做自己','內心平靜','好玩與新鮮','社群與歸屬','接近自然'] : ['Health','Relationships','Growth','Freedom','Contribution','Achievement','Calm','Creativity','Safety','Fun'] },
     { key: 'action', type: 'text', explain: isZh ? '挑一個方向，寫一件這週做得到的小事。' : 'Pick one direction and write one small action for this week.', hint: isZh ? '越小越好，這週做得到的就好' : 'Smaller is better — something doable this week', title: isZh ? '這週想多照顧哪個？寫一件小事' : 'Which one do you want to care for more this week? Write one small action', placeholder: isZh ? '例：這週有兩個晚上十一點前關電腦睡覺' : 'e.g. Two nights this week, close the laptop before 11' }
   ];
   if (id === 'supportcard') return [
@@ -246,9 +248,11 @@ function getSteps(id) {
     { key: 'phrase', type: 'text', explain: isZh ? '寫下來就好，不一定要現在傳。' : 'Just write it down — you don\'t have to send it now.', hint: isZh ? '可以先寫下來，不一定要現在傳' : 'Write it down — you don\'t have to send it now', title: isZh ? '我可以怎麼說？' : 'How can I phrase it?', placeholder: isZh ? '例：剛才的事我有些後悔，想跟你聊聊' : 'e.g. I regret what happened, can we talk?' }
   ];
   if (id === 'goodenough') return [
-    { key: 'task', type: 'text', explain: isZh ? '寫下你一直停不下來的那件事。' : 'Write the task you keep working on without stopping.', title: isZh ? '這件事是…' : 'The task is…' },
-    { key: 'standard', type: 'text', explain: isZh ? '不用完美。寫下「夠好」的樣子，做到就可以停。' : 'Not perfect. Describe what good enough looks like — you can stop there.', hint: isZh ? '不用完美，寫下「夠好」的樣子' : 'Not perfect — describe what good enough looks like', title: isZh ? '「夠好」長什麼樣子？' : 'What does "good enough" look like?' },
-    { key: 'stop', type: 'text', explain: isZh ? '做到這樣就夠了，之後可以停。寫下來提醒自己。' : 'Once you reach this, you can stop. Write it as a reminder.', title: isZh ? '做到這樣就夠了，之後可以停' : 'Once I reach this, I can stop' }
+    { key: 'task', type: 'text', explain: isZh ? '是哪一件事？' : 'Which task?', title: isZh ? '1. 是哪一件事？' : '1. Which task?', placeholder: isZh ? '例：週五要交的企劃簡報' : 'e.g. Friday presentation' },
+    { key: 'purpose', type: 'text', explain: isZh ? '這件事主要是為了什麼？' : 'What is this mainly for?', title: isZh ? '2. 這件事是為了什麼？' : '2. What is this for?', placeholder: isZh ? '例：讓團隊了解進度' : 'e.g. Let the team know the progress' },
+    { key: 'must', type: 'text', explain: isZh ? '一定要有的，最多 3 項。' : 'Must-haves, up to 3.', title: isZh ? '一定要有的' : 'Must have', placeholder: isZh ? '例：目標、進度、下一步' : 'e.g. goal, progress, next step' },
+    { key: 'nice', type: 'text', explain: isZh ? '有很好，沒有也可以的。選填。' : 'Nice to have, but okay without. Optional.', title: isZh ? '有很好，沒有也可以（選填）' : 'Nice to have (optional)', placeholder: isZh ? '例：精美的圖表' : 'e.g. polished charts' },
+    { key: 'stop', type: 'single', explain: isZh ? '什麼時候停手？' : 'When to stop?', title: isZh ? '3. 什麼時候停手？' : '3. When to stop?', options: isZh ? ['到一個時間就停','檢查固定次數就停','花固定時間就停'] : ['Stop at a set time','Stop after a set number of checks','Stop after a set duration'] }
   ];
   if (id === 'phone') return [
     { key: 'trigger', type: 'text', explain: isZh ? '什麼時候或什麼情況最容易滑手機？寫下來。' : 'When or where do you scroll most? Write it down.', hint: isZh ? '例：等車時、睡前、無聊時' : 'e.g. waiting for the bus, before bed, when bored', title: isZh ? '我最容易無意識滑手機的時間／情境' : 'When/where I scroll mindlessly most' },
