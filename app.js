@@ -555,6 +555,53 @@ const boundaryPhrases = {
   }
 };
 
+
+function renderBoundaryPage() {
+  const isZh = lang === 'zh';
+  const situations = {
+    '職場': ['下班後收到非緊急訊息','臨時增加工作','被問不想回答的私事'],
+    '家人': ['反覆詢問感情或婚育安排','希望我答應每次聚會','未先詢問就動用我的物品'],
+    '伴侶': ['要求立刻回訊息','爭執時想先暫停','需要獨處時間'],
+    '朋友': ['借錢但我不願意','我沒有餘力繼續聽對方傾訴','不想接受邀約']
+  };
+  
+  let html = `<div class="tool-header">
+    <button class="back-btn" onclick="showHome()">← ${isZh ? '返回' : 'Back'}</button>
+    <h1>🚧 ${isZh ? '界線表達練習' : 'Boundary Expression'}</h1>
+    <p class="tool-desc">${isZh ? '有些話很難開口，可以先在這裡練習。整理你的需求，找到比較像自己會說的方式。' : 'Some words are hard to say. Practice here first.'}</p>
+  </div>
+  <p style="color:var(--text-soft); margin-bottom:1.5rem;">${isZh ? '這是表達練習，不替你判斷誰對誰錯，也不能保證對方接受。你可以決定自己如何回應。' : 'This is practice. It does not judge who is right, and cannot guarantee the other person will accept.'}</p>
+  
+  <div style="background:var(--accent-light); padding:1rem; border-radius:8px; margin-bottom:1.5rem;">
+    <h3 style="margin:0 0 0.5rem;">${isZh ? '怎麼使用' : 'How to use'}</h3>
+    <ol style="margin:0; padding-left:1.2rem;">
+      <li>${isZh ? '選一種關係與一個情境（也可以直接看全部範例）。' : 'Select a relationship and situation (or see all examples).'}</li>
+      <li>${isZh ? '確認你想表達的需求，可以改成自己的話。' : 'Confirm the need you want to express.'}</li>
+      <li>${isZh ? '看三種說法：溫和說明、簡短直接、再次重申；改成你的語氣，再複製帶走。' : 'See three styles, adjust to your tone, then copy.'}</li>
+    </ol>
+  </div>`;
+  
+  for (const [rel, sits] of Object.entries(situations)) {
+    html += `<h2 style="margin-top:2rem; color:var(--accent-dark);">${rel}</h2>`;
+    for (const sit of sits) {
+      const p = boundaryPhrases[sit];
+      if (!p) continue;
+      html += `<div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1rem; margin:1rem 0;">
+        <h3 style="margin:0 0 0.5rem;">${sit}</h3>
+        <p style="margin:0.5rem 0;"><strong>${isZh ? '需求' : 'Need'}：</strong>${p.need}</p>
+        <p style="margin:0.5rem 0;"><strong>${isZh ? '溫和說明' : 'Gentle'}</strong><br>${p.gentle}</p>
+        <p style="margin:0.5rem 0;"><strong>${isZh ? '簡短直接' : 'Direct'}</strong><br>${p.direct}</p>
+        <p style="margin:0.5rem 0;"><strong>${isZh ? '再次重申' : 'Restate'}</strong><br>${p.restate}</p>
+        <p style="margin:0.5rem 0; color:var(--text-soft);"><strong>${isZh ? '如果對方繼續要求，我可以…' : 'If they continue…'}</strong><br>${p.ifcontinue}</p>
+      </div>`;
+    }
+  }
+  
+  html += `<p style="margin-top:2rem; color:var(--text-soft); font-size:0.9rem;">${isZh ? '表達界線不能保證對方接受。如果你擔心說出口會受到威脅或傷害，可以先暫停練習，尋求可信任的人或適當支持。' : 'Setting boundaries cannot guarantee acceptance. If you worry about safety, pause and seek support.'}</p>`;
+  
+  return html;
+}
+
 function renderBoundaryPhrases() {
   const sit = answers.situation;
   if (!sit || !boundaryPhrases[sit]) return '';
