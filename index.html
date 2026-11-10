@@ -27,8 +27,12 @@
       <h2 style="font-size:1.4rem; margin-bottom:0.5rem;">不知道先選哪個？</h2>
       <p style="color:var(--text-soft); margin-bottom:1.2rem;">回答幾個問題，幫你找到適合的練習。</p>
       <div id="guided-content"></div>
-    <details style="margin-top:1rem;">
-      <summary style="cursor:pointer; color:var(--accent); font-size:0.95rem;">查看流程圖</summary>
+    <details style="margin-top:1rem;" open>
+      <summary style="cursor:pointer; color:var(--accent); font-size:0.95rem;">互動決策樹</summary>
+      <div id="tree-container" style="margin-top:1rem;"></div>
+    </details>
+    <details style="margin-top:0.5rem;">
+      <summary style="cursor:pointer; color:var(--text-soft); font-size:0.9rem;">查看靜態流程圖</summary>
       <div style="margin-top:1rem; overflow-x:auto;">
         <svg id="flowchart" viewBox="0 0 800 420" style="width:100%; max-width:800px; height:auto;">
           <!-- Background -->
