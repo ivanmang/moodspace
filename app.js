@@ -148,7 +148,7 @@ function getSteps(id) {
     { key: 'try', type: 'single', title: isZh ? '我願意先試的一件事' : 'One thing I\'m willing to try first', options: isZh ? ['先停一下','找個人聽我說','查一項需要的資訊','先不決定'] : ['Just pause','Talk to someone','Look up one piece of info','Decide later'] }
   ];
   if (id === 'worry') return [
-    { key: 'worries', type: 'text', title: isZh ? '把擔心寫下來（一行一個）' : 'List your worries (one per line)', placeholder: isZh ? '例如：明天會議會不會出錯' : 'e.g. What if the meeting goes badly' },
+    { key: 'worries', type: 'text', hint: isZh ? '一行寫一件，不用想完整' : 'One per line — no need to be complete', title: isZh ? '把擔心寫下來（一行一個）' : 'List your worries (one per line)', placeholder: isZh ? '例如：明天會議會不會出錯' : 'e.g. What if the meeting goes badly' },
     { key: 'action', type: 'single', title: isZh ? '這些擔心裡，有哪些是我可以採取行動的？' : 'Which of these can I take action on?', options: isZh ? ['大部分可以行動','只有少數可以行動','大部分先擱置','我還不確定'] : ['Mostly actionable','Only a few','Mostly park for now','Not sure yet'] }
   ];
   if (id === 'compassion') return [
@@ -156,7 +156,7 @@ function getSteps(id) {
     { key: 'kind', type: 'text', title: isZh ? '如果是對好朋友說，你會怎麼說？' : 'What would you say to a good friend in the same situation?' }
   ];
   if (id === 'gratitude') return [
-    { key: 'g1', type: 'text', title: isZh ? '第一件值得感謝的事' : 'First thing I appreciate' },
+    { key: 'g1', type: 'text', hint: isZh ? '小事也可以，寫得出來就好' : 'Small things count — just write what comes to mind', title: isZh ? '第一件值得感謝的事' : 'First thing I appreciate' },
     { key: 'g2', type: 'text', title: isZh ? '第二件（選填）' : 'Second (optional)' },
     { key: 'g3', type: 'text', title: isZh ? '第三件（選填）' : 'Third (optional)' }
   ];
@@ -171,7 +171,7 @@ function getSteps(id) {
     { key: 'phrase', type: 'text', title: isZh ? '我可以這樣說：' : 'I can say it like this:' }
   ];
   if (id === 'convo') return [
-    { key: 'who', type: 'text', title: isZh ? '對話對象是誰？' : 'Who will I talk to?' },
+    { key: 'who', type: 'text', hint: isZh ? '可以寫名字或關係，如「主管」「媽媽」' : 'Name or relationship is fine, e.g. manager, mom', title: isZh ? '對話對象是誰？' : 'Who will I talk to?' },
     { key: 'goal', type: 'text', title: isZh ? '我想達到的目的是？' : 'What outcome do I want?' },
     { key: 'points', type: 'text', title: isZh ? '我想說的重點' : 'Key points I want to say' }
   ];
@@ -180,26 +180,27 @@ function getSteps(id) {
     { key: 'small', type: 'text', hint: isZh ? '越小越好，最好是今天就能做的' : 'Smaller is better — ideally something you can do today', title: isZh ? '今天可以做的最小一步是…' : 'The smallest step I can take today is…' }
   ];
   if (id === 'decision') return [
-    { key: 'optA', type: 'text', title: isZh ? '選項 A 是什麼？' : 'What is Option A?' },
+    { key: 'optA', type: 'text', hint: isZh ? '用一句話描述就好' : 'One sentence is enough', title: isZh ? '選項 A 是什麼？' : 'What is Option A?' },
     { key: 'optB', type: 'text', title: isZh ? '選項 B 是什麼？' : 'What is Option B?' },
     { key: 'aPros', type: 'text', title: isZh ? '選項 A 的好處與風險' : 'Pros and cons of Option A' },
     { key: 'bPros', type: 'text', title: isZh ? '選項 B 的好處與風險' : 'Pros and cons of Option B' }
   ];
   if (id === 'values') return [
-    { key: 'values', type: 'multi', max: 3, title: isZh ? '選出目前最重要的 3 個價值' : 'Select the 3 values that matter most right now', options: isZh ? ['健康','關係','成長','自由','貢獻','成就','平靜','創造','安全','樂趣'] : ['Health','Relationships','Growth','Freedom','Contribution','Achievement','Calm','Creativity','Safety','Fun'] }
+    { key: 'values', type: 'multi', max: 3, hint: isZh ? '選少一點比較容易排出先後' : 'Fewer choices make it easier to prioritize', title: isZh ? '選出目前最重要的 3 個價值' : 'Select the 3 values that matter most right now', options: isZh ? ['健康','關係','成長','自由','貢獻','成就','平靜','創造','安全','樂趣'] : ['Health','Relationships','Growth','Freedom','Contribution','Achievement','Calm','Creativity','Safety','Fun'] },
+    { key: 'action', type: 'text', hint: isZh ? '越小越好，這週做得到的就好' : 'Smaller is better — something doable this week', title: isZh ? '這週想多照顧哪個？寫一件小事' : 'Which one do you want to care for more this week? Write one small action', placeholder: isZh ? '例：這週有兩個晚上十一點前關電腦睡覺' : 'e.g. Two nights this week, close the laptop before 11' }
   ];
   if (id === 'supportcard') return [
-    { key: 'people', type: 'text', title: isZh ? '我可以找的人（名字＋怎麼聯絡）' : 'People I can reach (name + how to contact)' },
+    { key: 'people', type: 'text', hint: isZh ? '寫名字和怎麼聯絡，方便之後找' : 'Name and how to reach them, for later', title: isZh ? '我可以找的人（名字＋怎麼聯絡）' : 'People I can reach (name + how to contact)' },
     { key: 'resources', type: 'text', title: isZh ? '其他資源（專線、機構、網站）' : 'Other resources (hotlines, centers, sites)' }
   ];
 
   if (id === 'tasksep') return [
-    { key: 'situation', type: 'text', title: isZh ? '這件事是…' : 'This situation is…' },
+    { key: 'situation', type: 'text', hint: isZh ? '用一句話描述這件事' : 'Describe it in one sentence', title: isZh ? '這件事是…' : 'This situation is…' },
     { key: 'mine', type: 'text', title: isZh ? '哪些部分是我可以負責的？' : 'What parts are mine to handle?' },
     { key: 'notmine', type: 'text', title: isZh ? '哪些部分不是我能控制的？' : 'What parts are outside my control?' }
   ];
   if (id === 'repair') return [
-    { key: 'step', type: 'text', title: isZh ? '衝突後我想先做的一件事' : 'One thing I want to do first after the conflict' },
+    { key: 'step', type: 'text', hint: isZh ? '不用完美，先想一件願意做的事' : 'Not perfect — just one thing you are willing to try', title: isZh ? '衝突後我想先做的一件事' : 'One thing I want to do first after the conflict' },
     { key: 'phrase', type: 'text', title: isZh ? '我可以怎麼說？' : 'How can I phrase it?' }
   ];
   if (id === 'goodenough') return [
@@ -208,7 +209,7 @@ function getSteps(id) {
     { key: 'stop', type: 'text', title: isZh ? '做到這樣就夠了，之後可以停' : 'Once I reach this, I can stop' }
   ];
   if (id === 'phone') return [
-    { key: 'trigger', type: 'text', title: isZh ? '我最容易無意識滑手機的時間／情境' : 'When/where I scroll mindlessly most' },
+    { key: 'trigger', type: 'text', hint: isZh ? '例：等車時、睡前、無聊時' : 'e.g. waiting for the bus, before bed, when bored', title: isZh ? '我最容易無意識滑手機的時間／情境' : 'When/where I scroll mindlessly most' },
     { key: 'rule', type: 'text', title: isZh ? '我想設定的暫停規則' : 'The pause rule I want to set' },
     { key: 'alt', type: 'text', title: isZh ? '如果想滑，我可以改做什麼？' : 'If I want to scroll, I can instead…' }
   ];
@@ -224,14 +225,15 @@ function getSteps(id) {
     { key: 'p3', type: 'text', title: isZh ? '第三句：給自己一句溫柔的話' : 'Phrase 3: Offer yourself a kind phrase', placeholder: isZh ? '例：願我對自己溫柔一點' : 'e.g. May I be kind to myself' }
   ];
   if (id === 'bodycheck') return [
-    { key: 'areas', type: 'multi', max: 5, title: isZh ? '哪個部位現在有感覺？' : 'Where do you notice sensation?', options: isZh ? ['頭／臉','肩膀／頸','胸口','肚子','手／手臂','腿／腳','全身'] : ['Head/Face','Shoulders/Neck','Chest','Belly','Hands/Arms','Legs/Feet','Whole body'] },
+    { key: 'areas', type: 'multi', max: 5, hint: isZh ? '選有感覺的就好，不用全部' : 'Just the ones you notice — no need for all', title: isZh ? '哪個部位現在有感覺？' : 'Where do you notice sensation?', options: isZh ? ['頭／臉','肩膀／頸','胸口','肚子','手／手臂','腿／腳','全身'] : ['Head/Face','Shoulders/Neck','Chest','Belly','Hands/Arms','Legs/Feet','Whole body'] },
     { key: 'sensation', type: 'text', title: isZh ? '簡單描述感覺（選填）' : 'Briefly describe the sensation (optional)' }
   ];
   if (id === 'sleep') return [
-    { key: 'steps', type: 'multi', max: 3, title: isZh ? '為今晚選 2–3 個放鬆步驟' : 'Choose 2–3 wind-down steps for tonight', options: isZh ? ['調暗燈光','關掉螢幕','簡單伸展','寫下明天一件事','聽輕柔聲音','喝溫水','深呼吸 5 次'] : ['Dim lights','Turn off screens','Gentle stretch','Write one thing for tomorrow','Listen to soft sound','Drink warm water','5 deep breaths'] }
+    { key: 'steps', type: 'multi', max: 3, hint: isZh ? '選 2–3 個就好，不用全部做' : 'Pick 2–3 — no need to do all', title: isZh ? '為今晚選 2–3 個放鬆步驟' : 'Choose 2–3 wind-down steps for tonight', options: isZh ? ['調暗燈光','關掉螢幕','簡單伸展','寫下明天一件事','聽輕柔聲音','喝溫水','深呼吸 5 次'] : ['Dim lights','Turn off screens','Gentle stretch','Write one thing for tomorrow','Listen to soft sound','Drink warm water','5 deep breaths'] },
+    { key: 'when', type: 'text', hint: isZh ? '例：洗完澡後、上床前' : 'e.g. After shower, before bed', title: isZh ? '大概什麼時候開始？' : 'Roughly when will you start?', placeholder: isZh ? '例：晚上十點半' : 'e.g. Around 10:30 pm' }
   ];
   if (id === 'counselprep') return [
-    { key: 'topics', type: 'text', title: isZh ? '我希望這次輔導談什麼？' : 'What do I hope to talk about?' },
+    { key: 'topics', type: 'text', hint: isZh ? '可以列幾個想談的主題' : 'List a few topics you want to discuss', title: isZh ? '我希望這次輔導談什麼？' : 'What do I hope to talk about?' },
     { key: 'main', type: 'text', title: isZh ? '我目前最困擾的是…' : 'What is bothering me most right now?' },
     { key: 'note', type: 'text', title: isZh ? '有什麼我希望輔導師知道的？' : 'Anything I want the counselor to know?' }
   ];
