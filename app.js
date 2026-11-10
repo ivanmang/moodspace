@@ -1119,6 +1119,8 @@ const examples = {
   convo: { zh: '主題：共同空間的整理安排\n注意到：這週有幾次餐具留在桌上\n影響：想用桌子前要先整理，覺得有點困擾\n討論：能否約定收拾的時間\n開場：我想和你討論一下桌面的使用，現在方便嗎？', en: 'Topic: shared space cleanup\nNoticed: dishes left several times\nImpact: have to clear table first, a bit bothered\nDiscuss: can we agree on cleanup time\nOpening: I want to discuss the table, is now okay?' },
   askhelp: { zh: '類型：聽我說\n對象：朋友\n內容：最近有些事想說\n溫和說法：我最近有些事想說，想找人聽一聽。你方便找個時間聊一下嗎？', en: 'Type: listen\nWho: friend\nWhat: some things I want to talk about\nGentle: I have some things I want to talk about. Do you have time to chat?' },
   repair: { zh: '發生的事：我們為了週末安排起爭執\n影響：之後沒再說話\n我負責的：我提高了音量\n不由我決定的：對方的感受\n我能做的：傳一句「我需要一點時間」', en: 'What happened: we argued about weekend\nImpact: stopped talking\nMy part: I raised my voice\nNot mine: their feelings\nI can do: send "I need some time"' },
+  problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
+  gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
   phone: { zh: '情況：睡前滑不停\n原本想做：查一個資料\n停下提示：看完這一則\n放下後：把手機翻面放桌上', en: 'Situation: scroll before bed\nWanted: look something up\nStop cue: after this one\nAfter: place phone face down' },
   smallstep: { zh: '我想處理：整理房間\n卡在：太大了\n第一小步：先整理桌面的一個角落\n開始時機：晚餐後\n做到這裡先停：桌面清出可以放筆電的空間', en: 'Task: tidy the room\nStuck: too big\nFirst step: tidy one corner of the desk\nWhen: after dinner\nStop: when there is space for laptop' },
@@ -1129,6 +1131,8 @@ const examples = {
   convo: { zh: '主題：共同空間的整理安排\n注意到：這週有幾次餐具留在桌上\n影響：想用桌子前要先整理，覺得有點困擾\n討論：能否約定收拾的時間\n開場：我想和你討論一下桌面的使用，現在方便嗎？', en: 'Topic: shared space cleanup\nNoticed: dishes left several times\nImpact: have to clear table first, a bit bothered\nDiscuss: can we agree on cleanup time\nOpening: I want to discuss the table, is now okay?' },
   askhelp: { zh: '類型：聽我說\n對象：朋友\n內容：最近有些事想說\n溫和說法：我最近有些事想說，想找人聽一聽。你方便找個時間聊一下嗎？', en: 'Type: listen\nWho: friend\nWhat: some things I want to talk about\nGentle: I have some things I want to talk about. Do you have time to chat?' },
   repair: { zh: '發生的事：我們為了週末安排起爭執\n影響：之後沒再說話\n我負責的：我提高了音量\n不由我決定的：對方的感受\n我能做的：傳一句「我需要一點時間」', en: 'What happened: we argued about weekend\nImpact: stopped talking\nMy part: I raised my voice\nNot mine: their feelings\nI can do: send "I need some time"' },
+  problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
+  gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
   phone: { zh: '情況：睡前滑不停\n原本想做：查一個資料\n停下提示：看完這一則\n放下後：把手機翻面放桌上', en: 'Situation: scroll before bed\nWanted: look something up\nStop cue: after this one\nAfter: place phone face down' },
   smallstep: { zh: '想做的事：整理房間\n卡在：太大了不知道從哪開始\n最小一步：先整理桌面的一個角落', en: 'Big thing: tidy the room\nStuck: too big, don\'t know where to start\nSmallest step: just tidy one corner of the desk' },
@@ -1444,6 +1448,8 @@ function renderSinglePageForm(toolId) {
     convo: { zh: '主題：共同空間的整理安排\n注意到：這週有幾次餐具留在桌上\n影響：想用桌子前要先整理，覺得有點困擾\n討論：能否約定收拾的時間\n開場：我想和你討論一下桌面的使用，現在方便嗎？', en: 'Topic: shared space cleanup\nNoticed: dishes left several times\nImpact: have to clear table first, a bit bothered\nDiscuss: can we agree on cleanup time\nOpening: I want to discuss the table, is now okay?' },
   askhelp: { zh: '類型：聽我說\n對象：朋友\n內容：最近有些事想說\n溫和說法：我最近有些事想說，想找人聽一聽。你方便找個時間聊一下嗎？', en: 'Type: listen\nWho: friend\nWhat: some things I want to talk about\nGentle: I have some things I want to talk about. Do you have time to chat?' },
   repair: { zh: '發生的事：我們為了週末安排起爭執\n影響：之後沒再說話\n我負責的：我提高了音量\n不由我決定的：對方的感受\n我能做的：傳一句「我需要一點時間」', en: 'What happened: we argued about weekend\nImpact: stopped talking\nMy part: I raised my voice\nNot mine: their feelings\nI can do: send "I need some time"' },
+  problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
+  gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
   phone: { zh: '情況：睡前滑不停\n原本想做：查一個資料\n停下提示：看完這一則\n放下後：把手機翻面放桌上', en: 'Situation: scroll before bed\nWanted: look something up\nStop cue: after this one\nAfter: place phone face down' },
   smallstep: {
@@ -1507,6 +1513,8 @@ function renderSinglePageForm(toolId) {
   convo: { zh: '主題：共同空間的整理安排\n注意到：這週有幾次餐具留在桌上\n影響：想用桌子前要先整理，覺得有點困擾\n討論：能否約定收拾的時間\n開場：我想和你討論一下桌面的使用，現在方便嗎？', en: 'Topic: shared space cleanup\nNoticed: dishes left several times\nImpact: have to clear table first, a bit bothered\nDiscuss: can we agree on cleanup time\nOpening: I want to discuss the table, is now okay?' },
   askhelp: { zh: '類型：聽我說\n對象：朋友\n內容：最近有些事想說\n溫和說法：我最近有些事想說，想找人聽一聽。你方便找個時間聊一下嗎？', en: 'Type: listen\nWho: friend\nWhat: some things I want to talk about\nGentle: I have some things I want to talk about. Do you have time to chat?' },
   repair: { zh: '發生的事：我們為了週末安排起爭執\n影響：之後沒再說話\n我負責的：我提高了音量\n不由我決定的：對方的感受\n我能做的：傳一句「我需要一點時間」', en: 'What happened: we argued about weekend\nImpact: stopped talking\nMy part: I raised my voice\nNot mine: their feelings\nI can do: send "I need some time"' },
+  problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
+  gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
   phone: { zh: '情況：睡前滑不停\n原本想做：查一個資料\n停下提示：看完這一則\n放下後：把手機翻面放桌上', en: 'Situation: scroll before bed\nWanted: look something up\nStop cue: after this one\nAfter: place phone face down' },
   smallstep: { zh: '我想處理：整理房間\n卡在：太大了\n第一小步：先整理桌面的一個角落\n開始時機：晚餐後\n做到這裡先停：桌面清出可以放筆電的空間', en: 'Task: tidy the room\nStuck: too big\nFirst step: tidy one corner of the desk\nWhen: after dinner\nStop: when there is space for laptop' },
@@ -1544,6 +1552,8 @@ function renderSinglePageForm(toolId) {
       ]
     },
     repair: { zh: '發生的事：我們為了週末安排起爭執\n影響：之後沒再說話\n我負責的：我提高了音量\n不由我決定的：對方的感受\n我能做的：傳一句「我需要一點時間」', en: 'What happened: we argued about weekend\nImpact: stopped talking\nMy part: I raised my voice\nNot mine: their feelings\nI can do: send "I need some time"' },
+  problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
+  gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
   phone: {
       fields: [
@@ -1577,7 +1587,9 @@ function renderSinglePageForm(toolId) {
         { key: 'message', type: 'text', label: isZh ? '我的說法' : 'My message', placeholder: isZh ? '例：我想請你幫我看一下…' : 'e.g. Could you help me check...' }
       ]
     },
-    relpause: {
+    problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
+  gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
+  relpause: {
       fields: [
         { key: 'known', type: 'text', label: isZh ? '已知的事' : 'What I know', placeholder: isZh ? '例：晚上九點傳的訊息還沒回' : 'e.g. sent at 9pm, no reply' },
         { key: 'guess', type: 'text', label: isZh ? '我的猜測' : 'My guesses', placeholder: isZh ? '例：他是不是生氣了' : 'e.g. is he angry' },
@@ -1677,6 +1689,9 @@ const toolNotes = {
   convo: '從自己的角度說，避免評價對方。我訊息是：具體事件 + 感受 + 影響 + 提議。',
   askhelp: '對方可以拒絕或協商；不把回應當作是否在乎的證明。',
   repair: '不是每次衝突都要立刻和好。自己能負責的是具體言行，不是把整件事的錯都攬在身上。',
+  problemsolve: '先說清楚問題，再列出幾個可能的做法，選一個先試。想不到方法時，一個也可以。',
+  lowenergy: '選「沒力氣時也有可能做到」的活動。不是作業，今天做不到也沒關係。',
+  gratitude: '只記一件小事即可。沒有想到也沒關係，可先留白或記讓自己喘口氣的事。',
   relpause: '這張卡不判斷對方愛不愛你。猜測不代表事實，寫下來只是讓它被看見。',
   phone: '不需戒掉手機，而是先規劃使用範圍。為單次使用設結束點。',
   values: '排序沒有標準答案，也不分析個人類型。排序只代表「現在」，過一陣子改變很正常。'
@@ -1717,6 +1732,14 @@ const toolFAQ = {
     { q: '一定要道歉嗎？', a: '不用。修復不等於強迫道歉。承認自己做了什麼、停止重複的行為、先尊重距離，都可以是修復的一步。' },
     { q: '什麼情況不適合主動聯絡？', a: '如果有暴力、威脅、跟蹤、控制，或擔心聯絡會更不安全，先不要主動聯絡。先照顧自己的安全。' }
   ],
+  problemsolve: [
+    { q: '想不到第二個方法怎麼辦？', a: '一個方法也可以完成。可以想想如果是朋友會建議什麼，或回想以前有幫助的做法。' },
+    { q: '問題不是自己能控制的怎麼辦？', a: '可以整理情緒和支持資源，或只針對能做的小部分。' }
+  ],
+  gratitude: [
+    { q: '一定要寫三件嗎？', a: '不用。寫一件就完成了，想多寫可以寫到三件。' },
+    { q: '沒有值得感謝的事怎麼辦？', a: '可以留白，或記一件讓自己稍微喘口氣的事。不需要勉強。' }
+  ],
   relpause: [
     { q: '這張卡會告訴我對方是不是不愛我嗎？', a: '不會。這裡只幫你把知道的事和猜測分開，不判斷對方的想法或感情。' },
     { q: '暫時不回應是比較成熟嗎？', a: '不一定。它只是其中一個選項；有時候直接說出感受，或找朋友聊聊，會更適合。' }
@@ -1743,6 +1766,14 @@ const toolFAQ = {
   repair: [
     { q: '一定要道歉嗎？', a: '不用。修復不等於強迫道歉。承認自己做了什麼、停止重複的行為、先尊重距離，都可以是修復的一步。' },
     { q: '什麼情況不適合主動聯絡？', a: '如果有暴力、威脅、跟蹤、控制，或擔心聯絡會更不安全，先不要主動聯絡。先照顧自己的安全。' }
+  ],
+  problemsolve: [
+    { q: '想不到第二個方法怎麼辦？', a: '一個方法也可以完成。可以想想如果是朋友會建議什麼，或回想以前有幫助的做法。' },
+    { q: '問題不是自己能控制的怎麼辦？', a: '可以整理情緒和支持資源，或只針對能做的小部分。' }
+  ],
+  gratitude: [
+    { q: '一定要寫三件嗎？', a: '不用。寫一件就完成了，想多寫可以寫到三件。' },
+    { q: '沒有值得感謝的事怎麼辦？', a: '可以留白，或記一件讓自己稍微喘口氣的事。不需要勉強。' }
   ],
   relpause: [
     { q: '這張卡會告訴我對方是不是不愛我嗎？', a: '不會。這裡只幫你把知道的事和猜測分開，不判斷對方的想法或感情。' },
