@@ -63,7 +63,7 @@ const tools = [
   { id: 'compassion', icon: '💚', cat: 'emotions', zh: { name: '對自己換一句話', desc: '常常責備自己？試著找到一種比較能接受的方式回應自己。' }, en: { name: 'Self-Compassion Response', desc: 'Write a harsh self-talk, then rephrase it as if talking to a friend' } },
   { id: 'gratitude', icon: '🙏', cat: 'emotions', zh: { name: '感恩日記', desc: '記下今天值得感謝，或讓你覺得還不錯的一件小事。' }, en: { name: 'Gratitude Journal', desc: 'Note things you appreciate, one at a time' } },
   { id: 'thoughtcheck', icon: '🔍', cat: 'emotions', zh: { name: '想法核對練習', desc: '一個想法讓你很難受？整理有哪些線索支持它，還有哪些可能的看法。' }, en: { name: 'Thought Check', desc: 'Write the thought, find evidence for and against, then write a balanced version' } },
-  { id: 'boundary', icon: '🚧', cat: 'communication', zh: { name: '界線表達練習', desc: '有些話很難開口？先找出符合處境、自己也說得出口的表達方式。' }, en: { name: 'Boundary Expression', desc: 'Clarify the boundary, then practice a short phrase to express it' } },
+  { id: 'boundary', icon: '🚧', cat: 'communication', zh: { name: '界線表達練習', desc: '有些話很難開口，可以先在這裡練習。整理你的需求，找到比較像自己會說的方式。' }, en: { name: 'Boundary Expression', desc: 'Clarify the boundary, then practice a short phrase to express it' } },
   { id: 'convo', icon: '💬', cat: 'communication', zh: { name: '對話前整理紙', desc: '有件事想談，怕一開口就亂了？先寫下要談的重點與自己的需求。' }, en: { name: 'Conversation Prep', desc: 'Clarify who, what outcome you want, and key points before talking' } },
   { id: 'smallstep', icon: '👣', cat: 'actions', zh: { name: '把事情拆成第一小步', desc: '一件事拖了很久還沒開始？試著找出現在做得到的第一步。' }, en: { name: 'First Small Step', desc: 'Write the bigger goal, then name the smallest step you can take today' } },
   { id: 'decision', icon: '⚖️', cat: 'actions', zh: { name: '選擇比較', desc: '先寫出兩個選項，再分別列出好處與風險' }, en: { name: 'Decision Comparer', desc: 'Name two options, then list pros and cons for each' } },
@@ -204,9 +204,11 @@ function getSteps(id) {
     { key: 'balanced', type: 'text', explain: isZh ? '試著寫一個比較完整的看法。找不到也可以留白。' : 'Try writing a more complete view. Leaving it blank is okay.', title: isZh ? '更平衡的想法可能是…' : 'A more balanced thought might be…' }
   ];
   if (id === 'boundary') return [
-    { key: 'situation', type: 'text', explain: isZh ? '是什麼情況讓你想設定界線？寫下來幫助自己釐清。' : 'What situation makes you want to set a boundary? Writing it helps clarify.', hint: isZh ? '例：下班後收到非緊急訊息、被問私事' : 'e.g. non-urgent messages after work, personal questions', title: isZh ? '是什麼情況讓你想設定界線？' : 'What situation makes you want to set a boundary?', placeholder: isZh ? '例：下班後收到非緊急訊息' : 'e.g. Non-urgent messages after work' },
-    { key: 'boundary', type: 'text', explain: isZh ? '具體一點會比較容易表達。寫下你想保留或拒絕的是什麼。' : 'Being specific makes it easier to express. Write what you want to keep or decline.', hint: isZh ? '具體一點會比較容易表達' : 'Being specific makes it easier to express', title: isZh ? '我想設定的界線是…' : 'The boundary I want to set is…', placeholder: isZh ? '例：保留下班後的休息時間' : 'e.g. Keep my rest time after work' },
-    { key: 'phrase', type: 'text', explain: isZh ? '先寫一句你說得出口的話。之後可以再調整。' : 'Write a phrase you can actually say. You can adjust it later.', hint: isZh ? '可以先寫溫和的說法，之後再調整' : 'Start with a gentle version, adjust later', title: isZh ? '我可以這樣說：' : 'I can say it like this:', placeholder: isZh ? '例：我下班後需要休息，明天再回你' : 'e.g. I need rest after work, I\'ll reply tomorrow' }
+    { key: 'relation', type: 'single', explain: isZh ? '選一種關係。也可以跳過，直接看全部範例。' : 'Select a relationship type. Or skip to see all examples.', title: isZh ? '關係類型' : 'Relationship type', options: isZh ? ['職場','家人','伴侶','朋友','跳過，看全部'] : ['Work','Family','Partner','Friend','Skip, see all'] },
+    { key: 'situation', type: 'single', explain: isZh ? '選一個情境。' : 'Select a situation.', title: isZh ? '情境' : 'Situation', options: isZh ? ['下班後收到非緊急訊息','臨時增加工作','被問不想回答的私事','反覆詢問感情或婚育','希望我答應每次聚會','未先詢問就動用我的物品','要求立刻回訊息','爭執時想先暫停','需要獨處時間','借錢但我不願意','沒有餘力繼續聽對方傾訴','不想接受邀約'] : ['Non-urgent messages after work','Sudden extra work','Personal questions I don\'t want to answer','Repeated questions about relationship or kids','Expected to attend every gathering','Using my things without asking','Demanding instant replies','Want to pause during conflict','Need alone time','Asked to lend money but unwilling','No capacity to keep listening','Don\'t want to accept invitation'] },
+    { key: 'need', type: 'text', explain: isZh ? '確認你想表達的需求。可以改成自己的話。' : 'Confirm the need you want to express. Rewrite in your own words.', title: isZh ? '我想表達的需求' : 'The need I want to express', placeholder: isZh ? '例：保留下班後的休息時間' : 'e.g. Keep rest time after work' },
+    { key: 'style', type: 'single', explain: isZh ? '選一種說法風格，再改成你的語氣。' : 'Pick a style, then adjust to your tone.', title: isZh ? '說法風格' : 'Phrase style', options: isZh ? ['溫和說明','簡短直接','再次重申'] : ['Gentle explanation','Short and direct','Restate firmly'] },
+    { key: 'phrase', type: 'text', explain: isZh ? '改成你的語氣，寫下來。可以複製帶走。' : 'Adjust to your tone and write it down. You can copy it.', title: isZh ? '我的說法' : 'My phrase', placeholder: isZh ? '例：我看到訊息了。這件事如果不是緊急，我會在下一個工作時段回覆。' : 'e.g. I saw the message. If it is not urgent, I will reply during the next work period.' }
   ];
   if (id === 'convo') return [
     { key: 'who', type: 'text', explain: isZh ? '寫名字或關係都可以，如「主管」「媽媽」。' : 'Name or relationship is fine, e.g. manager, mom.', hint: isZh ? '可以寫名字或關係，如「主管」「媽媽」' : 'Name or relationship is fine, e.g. manager, mom', title: isZh ? '對話對象是誰？' : 'Who will I talk to?' },
@@ -914,7 +916,10 @@ const examples = {
   worry: { zh: '擔心：明天會議會不會出錯\n可以行動：準備議程、提早到\n先放著：如果大家覺得我說得不好\n擔心時間：每天晚上八點，十分鐘', en: 'Worry: What if the meeting goes badly\nCan act: prepare agenda, arrive early\nPark: What if people think I spoke poorly\nWorry time: 8 pm daily, 10 minutes' },
   compassion: { zh: '嚴厲的話：我怎麼又搞砸了\n遇到的困難：工作量突然增加\n對朋友會說：你已經盡力了，這次真的很多', en: 'Harsh: I messed up again\nDifficulty: workload suddenly increased\nTo a friend: You did your best, this was a lot' },
   smallstep: { zh: '想做的事：整理房間\n卡在：太大了不知道從哪開始\n最小一步：先整理桌面的一個角落', en: 'Big thing: tidy the room\nStuck: too big, don\'t know where to start\nSmallest step: just tidy one corner of the desk' },
-  boundary: { zh: '情況：下班後收到非緊急訊息\n界線：保留下班後的休息時間\n可以這樣說：我下班後需要休息，明天再回你', en: 'Situation: non-urgent messages after work\nBoundary: keep rest time after work\nCan say: I need rest after work, I\'ll reply tomorrow' }
+  boundary: { 
+    zh: '【職場・下班後收到非緊急訊息】\n需求：保留下班後的休息時間\n\n溫和說明：我看到訊息了。這件事如果不是緊急狀況，我會在下一個工作時段回覆。\n\n簡短直接：非緊急工作訊息，我會在工作時間處理。\n\n再次重申：我理解你希望盡快確認；我仍會在下一個工作時段處理。',
+    en: '[Work · Non-urgent messages after work]\nNeed: Keep rest time after work\n\nGentle: I saw the message. If it is not urgent, I will reply during the next work period.\n\nDirect: Non-urgent work messages, I will handle during work hours.\n\nRestate: I understand you want confirmation soon; I will still handle it during the next work period.'
+  }
 };
 
 function showExample(toolId) {
