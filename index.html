@@ -26,6 +26,14 @@
     </div>
 
     
+    
+    <div id="onboarding" class="onboarding" style="background:var(--accent-light); border-radius:8px; padding:1rem; margin-bottom:1.5rem; font-size:0.95rem;">
+      <p style="margin:0 0 0.5rem;"><strong>歡迎使用免費練習室</strong></p>
+      <p style="margin:0; color:var(--text-soft);">這裡有免費練習工具，幫你釐清感受、準備對話，或先做一件小事。不需要註冊，資料只留在你的瀏覽器裡。選一個練習開始，或先回答上方的問題找到適合的工具。</p>
+      <button onclick="document.getElementById('onboarding').style.display='none'; localStorage.setItem('moodspace-onboarded','1')" style="margin-top:0.8rem; background:var(--accent); color:white; border:none; padding:0.4rem 0.8rem; border-radius:6px; cursor:pointer; font-size:0.85rem;">知道了</button>
+    </div>
+    <script>if(localStorage.getItem('moodspace-onboarded')) document.getElementById('onboarding').style.display='none';</script>
+
     <div id="guided-entry" class="guided-entry">
       <h2 style="font-size:1.3rem; margin-bottom:0.3rem;">不知道先選哪個？</h2>
       <p style="color:var(--text-soft); margin-bottom:1rem;">回答幾個問題，幫你找到適合的練習。</p>
