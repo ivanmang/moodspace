@@ -1223,30 +1223,52 @@ function renderBodyMap() {
   window.bodyView = window.bodyView || 'front';
   
   const frontParts = [
-    { id: 'head', label: '頭部', cx: 100, cy: 35, rx: 22, ry: 26 },
-    { id: 'face', label: '臉部', cx: 100, cy: 42, rx: 14, ry: 12 },
-    { id: 'neck', label: '頸部', x: 90, y: 60, w: 20, h: 15 },
-    { id: 'lshoulder', label: '左肩', x: 55, y: 75, w: 30, h: 18, rx: 5 },
-    { id: 'rshoulder', label: '右肩', x: 115, y: 75, w: 30, h: 18, rx: 5 },
-    { id: 'chest', label: '胸前', x: 70, y: 93, w: 60, h: 30, rx: 5 },
-    { id: 'abdomen', label: '腹部', x: 75, y: 123, w: 50, h: 35, rx: 5 },
-    { id: 'larm', label: '左手', x: 28, y: 85, w: 20, h: 70, rx: 8 },
-    { id: 'rarm', label: '右手', x: 152, y: 85, w: 20, h: 70, rx: 8 },
-    { id: 'lleg', label: '左腿', x: 75, y: 158, w: 20, h: 85, rx: 5 },
-    { id: 'rleg', label: '右腿', x: 105, y: 158, w: 20, h: 85, rx: 5 },
-    { id: 'feet', label: '雙腳', cx: 100, cy: 255, rx: 35, ry: 10 }
+    { id: 'head', label: '頭部', cx: 100, cy: 28, rx: 20, ry: 22 },
+    { id: 'forehead', label: '額頭', cx: 100, cy: 22, rx: 14, ry: 8 },
+    { id: 'face', label: '臉部', cx: 100, cy: 38, rx: 12, ry: 10 },
+    { id: 'jaw', label: '下顎', cx: 100, cy: 48, rx: 10, ry: 6 },
+    { id: 'neck', label: '頸部', x: 92, y: 50, w: 16, h: 14 },
+    { id: 'lshoulder', label: '左肩', x: 52, y: 64, w: 28, h: 16, rx: 4 },
+    { id: 'rshoulder', label: '右肩', x: 120, y: 64, w: 28, h: 16, rx: 4 },
+    { id: 'chest', label: '胸前', x: 72, y: 80, w: 56, h: 28, rx: 4 },
+    { id: 'upperabd', label: '上腹', x: 76, y: 108, w: 48, h: 18, rx: 3 },
+    { id: 'lowerabd', label: '下腹', x: 78, y: 126, w: 44, h: 20, rx: 3 },
+    { id: 'lupperarm', label: '左上臂', x: 30, y: 72, w: 16, h: 32, rx: 6 },
+    { id: 'rlowerarm', label: '左前臂', x: 28, y: 104, w: 14, h: 35, rx: 5 },
+    { id: 'rupperarm', label: '右上臂', x: 154, y: 72, w: 16, h: 32, rx: 6 },
+    { id: 'rlowerarm', label: '右前臂', x: 158, y: 104, w: 14, h: 35, rx: 5 },
+    { id: 'lhand', label: '左手', cx: 35, cy: 148, rx: 8, ry: 6 },
+    { id: 'rhand', label: '右手', cx: 165, cy: 148, rx: 8, ry: 6 },
+    { id: 'lhip', label: '左臀', x: 72, y: 146, w: 22, h: 16, rx: 3 },
+    { id: 'rhip', label: '右臀', x: 106, y: 146, w: 22, h: 16, rx: 3 },
+    { id: 'lthigh', label: '左大腿', x: 74, y: 162, w: 18, h: 40, rx: 4 },
+    { id: 'rthigh', label: '右大腿', x: 108, y: 162, w: 18, h: 40, rx: 4 },
+    { id: 'lknee', label: '左膝', cx: 83, cy: 208, rx: 10, ry: 8 },
+    { id: 'rknee', label: '右膝', cx: 117, cy: 208, rx: 10, ry: 8 },
+    { id: 'lcalf', label: '左小腿', x: 76, y: 216, w: 14, h: 35, rx: 4 },
+    { id: 'rcalf', label: '右小腿', x: 110, y: 216, w: 14, h: 35, rx: 4 },
+    { id: 'lfoot', label: '左腳', cx: 83, cy: 260, rx: 12, ry: 6 },
+    { id: 'rfoot', label: '右腳', cx: 117, cy: 260, rx: 12, ry: 6 }
   ];
   
   const backParts = [
-    { id: 'head', label: '後腦', cx: 100, cy: 35, rx: 22, ry: 26 },
-    { id: 'neck', label: '後頸', x: 90, y: 60, w: 20, h: 15 },
-    { id: 'ushoulder', label: '上背', x: 60, y: 75, w: 80, h: 25, rx: 5 },
-    { id: 'mback', label: '中背', x: 70, y: 100, w: 60, h: 30, rx: 5 },
-    { id: 'lback', label: '下背', x: 75, y: 130, w: 50, h: 30, rx: 5 },
-    { id: 'larm', label: '左臂後', x: 28, y: 85, w: 20, h: 70, rx: 8 },
-    { id: 'rarm', label: '右臂後', x: 152, y: 85, w: 20, h: 70, rx: 8 },
-    { id: 'lleg', label: '左腿後', x: 75, y: 160, w: 20, h: 85, rx: 5 },
-    { id: 'rleg', label: '右腿後', x: 105, y: 160, w: 20, h: 85, rx: 5 }
+    { id: 'backhead', label: '後腦', cx: 100, cy: 28, rx: 20, ry: 22 },
+    { id: 'backneck', label: '後頸', x: 92, y: 50, w: 16, h: 14 },
+    { id: 'upperback', label: '上背', x: 58, y: 64, w: 84, h: 22, rx: 4 },
+    { id: 'midback', label: '中背', x: 68, y: 86, w: 64, h: 28, rx: 4 },
+    { id: 'lowerback', label: '下背', x: 74, y: 114, w: 52, h: 24, rx: 3 },
+    { id: 'lscapula', label: '左肩胛', x: 58, y: 70, w: 28, h: 20, rx: 3 },
+    { id: 'rscapula', label: '右肩胛', x: 114, y: 70, w: 28, h: 20, rx: 3 },
+    { id: 'lbackarm', label: '左臂後', x: 30, y: 72, w: 16, h: 65, rx: 6 },
+    { id: 'rbackarm', label: '右臂後', x: 154, y: 72, w: 16, h: 65, rx: 6 },
+    { id: 'lbuttock', label: '左臀', x: 72, y: 138, w: 24, h: 18, rx: 4 },
+    { id: 'rbuttock', label: '右臀', x: 104, y: 138, w: 24, h: 18, rx: 4 },
+    { id: 'lbackthigh', label: '左大腿後', x: 74, y: 156, w: 18, h: 45, rx: 4 },
+    { id: 'rbackthigh', label: '右大腿後', x: 108, y: 156, w: 18, h: 45, rx: 4 },
+    { id: 'lbackcalf', label: '左小腿後', x: 76, y: 201, w: 14, h: 40, rx: 4 },
+    { id: 'rbackcalf', label: '右小腿後', x: 110, y: 201, w: 14, h: 40, rx: 4 },
+    { id: 'lheel', label: '左腳跟', cx: 83, cy: 250, rx: 10, ry: 6 },
+    { id: 'rheel', label: '右腳跟', cx: 117, cy: 250, rx: 10, ry: 6 }
   ];
   
   const parts = window.bodyView === 'front' ? frontParts : backParts;
