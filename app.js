@@ -2,7 +2,7 @@
 const translations = {
   zh: {
     homeTitle: "免費練習室",
-    homeSub: "有些事情想不清楚、說不出口，或不知道從哪開始？這裡有免費練習工具，一步一步幫你釐清感受、準備對話，或先做一件小事。不需要註冊，資料只留在你的瀏覽器裡。",
+    homeSub: "有些事情想不清楚、說不出口，或不知道從哪開始？這裡有免費練習工具，幫你釐清感受、準備一段對話，或先做一件小事，不需要註冊。有些工具可以填寫，再自行複製或列印帶走；呼吸與三分鐘五感練習不必寫字，跟著提示就好。",
     back: "返回練習室",
     langBtn: "EN",
     copy: "複製",
@@ -47,29 +47,29 @@ let currentStep = 0;
 let answers = {};
 
 const tools = [
-  { id: 'feelings', cat: 'emotions', zh: { name: '情緒與需要整理卡', desc: '選出感受、寫下發生的事、找出需要，再決定下一步' }, en: { name: 'Feelings & Needs Card', desc: 'Name feelings, note what happened, identify needs, then choose one next step' } },
-  { id: 'worry', cat: 'emotions', zh: { name: '擔心整理', desc: '把擔心列出來，再判斷哪些可以行動、哪些先擱置' }, en: { name: 'Worry Sorter', desc: 'List your worries, then sort what you can act on' } },
-  { id: 'compassion', cat: 'emotions', zh: { name: '對自己換一句話', desc: '先寫出對自己說的嚴厲話，再改寫成對朋友會說的話' }, en: { name: 'Self-Compassion Response', desc: 'Write a harsh self-talk, then rephrase it as if talking to a friend' } },
-  { id: 'gratitude', cat: 'emotions', zh: { name: '感恩日記', desc: '一次寫一件值得感謝的事' }, en: { name: 'Gratitude Journal', desc: 'Note things you appreciate, one at a time' } },
-  { id: 'thoughtcheck', cat: 'emotions', zh: { name: '想法核對', desc: '寫下想法、找出支持與反對的證據，再寫出更平衡的版本' }, en: { name: 'Thought Check', desc: 'Write the thought, find evidence for and against, then write a balanced version' } },
-  { id: 'boundary', cat: 'communication', zh: { name: '界線表達', desc: '先清楚說出界線是什麼，再練習用一句話表達' }, en: { name: 'Boundary Expression', desc: 'Clarify the boundary, then practice a short phrase to express it' } },
-  { id: 'convo', cat: 'communication', zh: { name: '對話前整理', desc: '先想好對象、目的和想說的重點，再開始對話' }, en: { name: 'Conversation Prep', desc: 'Clarify who, what outcome you want, and key points before talking' } },
-  { id: 'smallstep', cat: 'actions', zh: { name: '第一小步', desc: '把大目標寫下來，再找出今天就能做的最小一步' }, en: { name: 'First Small Step', desc: 'Write the bigger goal, then name the smallest step you can take today' } },
+  { id: 'feelings', cat: 'emotions', zh: { name: '情緒與需要整理卡', desc: '不太確定自己在想什麼、感受什麼？選幾個詞，整理此刻可能的需要。' }, en: { name: 'Feelings & Needs Card', desc: 'Name feelings, note what happened, identify needs, then choose one next step' } },
+  { id: 'worry', cat: 'emotions', zh: { name: '擔心整理＋擔心時間', desc: '擔心的事反覆出現？先記下來，區分可以處理和暫時放下的部分。' }, en: { name: 'Worry Sorter', desc: 'List your worries, then sort what you can act on' } },
+  { id: 'compassion', cat: 'emotions', zh: { name: '對自己換一句話', desc: '常常責備自己？試著找到一種比較能接受的方式回應自己。' }, en: { name: 'Self-Compassion Response', desc: 'Write a harsh self-talk, then rephrase it as if talking to a friend' } },
+  { id: 'gratitude', cat: 'emotions', zh: { name: '感恩日記', desc: '記下今天值得感謝，或讓你覺得還不錯的一件小事。' }, en: { name: 'Gratitude Journal', desc: 'Note things you appreciate, one at a time' } },
+  { id: 'thoughtcheck', cat: 'emotions', zh: { name: '想法核對練習', desc: '一個想法讓你很難受？整理有哪些線索支持它，還有哪些可能的看法。' }, en: { name: 'Thought Check', desc: 'Write the thought, find evidence for and against, then write a balanced version' } },
+  { id: 'boundary', cat: 'communication', zh: { name: '界線表達練習', desc: '有些話很難開口？先找出符合處境、自己也說得出口的表達方式。' }, en: { name: 'Boundary Expression', desc: 'Clarify the boundary, then practice a short phrase to express it' } },
+  { id: 'convo', cat: 'communication', zh: { name: '對話前整理紙', desc: '有件事想談，怕一開口就亂了？先寫下要談的重點與自己的需求。' }, en: { name: 'Conversation Prep', desc: 'Clarify who, what outcome you want, and key points before talking' } },
+  { id: 'smallstep', cat: 'actions', zh: { name: '把事情拆成第一小步', desc: '一件事拖了很久還沒開始？試著找出現在做得到的第一步。' }, en: { name: 'First Small Step', desc: 'Write the bigger goal, then name the smallest step you can take today' } },
   { id: 'decision', cat: 'actions', zh: { name: '選擇比較', desc: '先寫出兩個選項，再分別列出好處與風險' }, en: { name: 'Decision Comparer', desc: 'Name two options, then list pros and cons for each' } },
-  { id: 'values', cat: 'actions', zh: { name: '我現在最在意什麼', desc: '從清單中選出目前最重要的三個價值' }, en: { name: 'Values Sort', desc: 'Select the three values that matter most to you right now' } },
-  { id: 'breathing', cat: 'pause', zh: { name: '呼吸練習', desc: '跟著節奏慢慢呼吸' }, en: { name: 'Breathing Exercise', desc: 'Follow a calm breathing rhythm' } },
-  { id: 'fivesenses', cat: 'pause', zh: { name: '五感練習', desc: '一步一步把注意力帶回當下' }, en: { name: 'Five Senses Practice', desc: 'Ground yourself one sense at a time' } },
-  { id: 'anger', cat: 'pause', zh: { name: '生氣暫停', desc: '先暫停 60 秒再決定' }, en: { name: 'Anger Pause', desc: 'Pause for 60 seconds before responding' } },
-  { id: 'supportcard', cat: 'help', zh: { name: '支持資源卡', desc: '列出可以找的人和其他支援資源' }, en: { name: 'Support Resource Card', desc: 'List people you can reach and other support resources' } },
-  { id: 'tasksep', cat: 'emotions', zh: { name: '分清哪些是我的事', desc: '寫下情況，再分開哪些是你能負責的，哪些不是' }, en: { name: 'What is Mine to Handle', desc: 'Describe the situation, then separate what you can handle from what you cannot' } },
-  { id: 'repair', cat: 'communication', zh: { name: '衝突後修復', desc: '想好衝突後想先做的一件事，再練習怎麼說' }, en: { name: 'Conflict Repair', desc: 'Decide one first step after a conflict, then practice how to say it' } },
-  { id: 'goodenough', cat: 'actions', zh: { name: '夠好就好', desc: '為一件事寫下「夠好」的標準，以及做到哪裡就可以停' }, en: { name: 'Good-Enough Standard', desc: 'Define what good enough looks like for a task, and when you can stop' } },
-  { id: 'phone', cat: 'actions', zh: { name: '手機暫停計畫', desc: '找出容易滑手機的時機，設定暫停規則和替代行動' }, en: { name: 'Phone Pause Plan', desc: 'Identify when you scroll mindlessly, then set a pause rule and alternative' } },
-  { id: 'problemsolve', cat: 'actions', zh: { name: '問題解決', desc: '寫出問題、列出可能解法、選一個先試，並決定何時開始' }, en: { name: 'Problem Solving', desc: 'Define the problem, list solutions, pick one to try, and set a time' } },
+  { id: 'values', cat: 'actions', zh: { name: '我現在最在意什麼', desc: '事情擠在一起時，先排出目前最在意、最需要處理的事。' }, en: { name: 'Values Sort', desc: 'Select the three values that matter most to you right now' } },
+  { id: 'breathing', cat: 'pause', zh: { name: '呼吸練習', desc: '不想填寫文字時，可以跟著畫面輕輕呼吸，或照自己的速度進行。' }, en: { name: 'Breathing Exercise', desc: 'Follow a calm breathing rhythm' } },
+  { id: 'fivesenses', cat: 'pause', zh: { name: '三分鐘五感練習', desc: '跟著提示留意周圍看見、聽見的事物；任何一步都可以跳過。' }, en: { name: 'Five Senses Practice', desc: 'Ground yourself one sense at a time' } },
+  { id: 'anger', cat: 'pause', zh: { name: '生氣時的情緒暫停器', desc: '正在生氣、怕一開口就後悔時，先暫停一下再決定。' }, en: { name: 'Anger Pause', desc: 'Pause for 60 seconds before responding' } },
+  { id: 'supportcard', cat: 'help', zh: { name: '我的支持資源卡', desc: '把遇到困難時可以聯絡的人、機構和聯絡方式整理在一起。' }, en: { name: 'Support Resource Card', desc: 'List people you can reach and other support resources' } },
+  { id: 'tasksep', cat: 'emotions', zh: { name: '課題分離整理器', desc: '有件事牽涉別人的決定？分清自己能做的事，以及需要一起討論的部分。' }, en: { name: 'What is Mine to Handle', desc: 'Describe the situation, then separate what you can handle from what you cannot' } },
+  { id: 'repair', cat: 'communication', zh: { name: '衝突後關係修復卡', desc: '吵完架不知道該不該聯絡？先整理發生的事、自己願意負責的部分和想採取的修復方式。' }, en: { name: 'Conflict Repair', desc: 'Decide one first step after a conflict, then practice how to say it' } },
+  { id: 'goodenough', cat: 'actions', zh: { name: '夠好就好標準卡', desc: '常因為擔心不夠好而做個不停？先決定做到哪裡可以暫時停下。' }, en: { name: 'Good-Enough Standard', desc: 'Define what good enough looks like for a task, and when you can stop' } },
+  { id: 'phone', cat: 'actions', zh: { name: '手機滑不停暫停計畫', desc: '一拿起手機就停不下來？選這次原本想做什麼、想在哪裡先停、放下後的第一個動作。' }, en: { name: 'Phone Pause Plan', desc: 'Identify when you scroll mindlessly, then set a pause rule and alternative' } },
+  { id: 'problemsolve', cat: 'actions', zh: { name: '問題解決五步驟', desc: '有件事卡住了？說清楚問題、列出方法，選一個先試。' }, en: { name: 'Problem Solving', desc: 'Define the problem, list solutions, pick one to try, and set a time' } },
   { id: 'selfbreak', cat: 'emotions', zh: { name: '自我同理休息', desc: '用三句話給自己一點空間：承認困難、看到共同性、給自己溫柔' }, en: { name: 'Self-Compassion Break', desc: 'Offer yourself three phrases: acknowledge difficulty, note shared experience, be kind' } },
-  { id: 'bodycheck', cat: 'emotions', zh: { name: '身體覺察', desc: '快速掃描身體，標出有感覺的部位，再簡單描述' }, en: { name: 'Body Awareness', desc: 'Quickly scan your body, mark where you notice sensation, then describe it' } },
-  { id: 'sleep', cat: 'pause', zh: { name: '睡前放鬆', desc: '為今晚選 2–3 個簡單的放鬆步驟' }, en: { name: 'Bedtime Wind-Down', desc: 'Choose 2–3 simple wind-down steps for tonight' } },
-  { id: 'counselprep', cat: 'help', zh: { name: '輔導前準備', desc: '整理想談的主題、目前最困擾的事，以及希望輔導者知道的事' }, en: { name: 'Counseling Prep', desc: 'Organize topics, main concern, and anything you want the counselor to know' } },
+  { id: 'bodycheck', cat: 'emotions', zh: { name: '身體覺察地圖', desc: '想看看現在身體哪裡緊、哪裡有感覺？選部位，記下感覺，整理成一張覺察卡。' }, en: { name: 'Body Awareness', desc: 'Quickly scan your body, mark where you notice sensation, then describe it' } },
+  { id: 'sleep', cat: 'pause', zh: { name: '睡前放鬆流程產生器', desc: '睡前腦袋停不下來時，選想做的活動，排出一份今晚的睡前流程。' }, en: { name: 'Bedtime Wind-Down', desc: 'Choose 2–3 simple wind-down steps for tonight' } },
+  { id: 'counselprep', cat: 'help', zh: { name: '第一次諮商準備包', desc: '正在考慮心理諮商？先整理想談的內容和想問的問題。' }, en: { name: 'Counseling Prep', desc: 'Organize topics, main concern, and anything you want the counselor to know' } },
 ];
 
 function t(key) { return translations[lang][key] || key; }
@@ -350,7 +350,7 @@ function buildCard(id, a) {
       (isZh ? '我願意先試的一件事：' : 'One thing to try: ') + (a.try || '—');
   }
   if (id === 'worry') {
-    return (isZh ? '擔心整理\n\n' : 'Worry Sorter\n\n') + (a.worries || '—') + '\n\n' +
+    return (isZh ? '擔心整理＋擔心時間\n\n' : 'Worry Sorter\n\n') + (a.worries || '—') + '\n\n' +
       (isZh ? '行動傾向：' : 'Action tendency: ') + (a.action || '—');
   }
   if (id === 'compassion') {
@@ -363,25 +363,25 @@ function buildCard(id, a) {
     return (isZh ? '感恩日記\n\n' : 'Gratitude Journal\n\n') + items.map((it, i) => `${i + 1}. ${it}`).join('\n') || '—';
   }
   if (id === 'thoughtcheck') {
-    return (isZh ? '想法核對\n\n' : 'Thought Check\n\n') +
+    return (isZh ? '想法核對練習\n\n' : 'Thought Check\n\n') +
       (isZh ? '想法：' : 'Thought: ') + (a.thought || '—') + '\n\n' +
       (isZh ? '支持：\n' : 'Supporting:\n') + (a.for || '—') + '\n\n' +
       (isZh ? '不支持：\n' : 'Against:\n') + (a.against || '—') + '\n\n' +
       (isZh ? '更平衡：' : 'Balanced: ') + (a.balanced || '—');
   }
   if (id === 'boundary') {
-    return (isZh ? '界線表達\n\n' : 'Boundary Expression\n\n') +
+    return (isZh ? '界線表達練習\n\n' : 'Boundary Expression\n\n') +
       (isZh ? '界線：' : 'Boundary: ') + (a.boundary || '—') + '\n' +
       (isZh ? '可以這樣說：\n' : 'Phrasing:\n') + (a.phrase || '—');
   }
   if (id === 'convo') {
-    return (isZh ? '對話前整理\n\n' : 'Conversation Prep\n\n') +
+    return (isZh ? '對話前整理紙\n\n' : 'Conversation Prep\n\n') +
       (isZh ? '對象：' : 'With: ') + (a.who || '—') + '\n' +
       (isZh ? '目的：' : 'Goal: ') + (a.goal || '—') + '\n\n' +
       (isZh ? '重點：\n' : 'Key points:\n') + (a.points || '—');
   }
   if (id === 'smallstep') {
-    return (isZh ? '第一小步\n\n' : 'First Small Step\n\n') +
+    return (isZh ? '把事情拆成第一小步\n\n' : 'First Small Step\n\n') +
       (isZh ? '大目標：' : 'Bigger goal: ') + (a.big || '—') + '\n' +
       (isZh ? '最小一步：' : 'Smallest step: ') + (a.small || '—');
   }
@@ -393,36 +393,36 @@ function buildCard(id, a) {
     return (isZh ? '我現在最在意：\n' : 'What matters most:\n') + ((a.values || []).join('\n') || '—');
   }
   if (id === 'supportcard') {
-    return (isZh ? '支持資源卡\n\n' : 'Support Resource Card\n\n') +
+    return (isZh ? '我的支持資源卡\n\n' : 'Support Resource Card\n\n') +
       (isZh ? '人：\n' : 'People:\n') + (a.people || '—') + '\n\n' +
       (isZh ? '其他資源：\n' : 'Other:\n') + (a.resources || '—');
   }
 
   if (id === 'tasksep') {
-    return (isZh ? '分清哪些是我的事\n\n' : 'What is Mine to Handle\n\n') +
+    return (isZh ? '課題分離整理器\n\n' : 'What is Mine to Handle\n\n') +
       (isZh ? '情況：' : 'Situation: ') + (a.situation || '—') + '\n\n' +
       (isZh ? '我的課題：\n' : 'Mine:\n') + (a.mine || '—') + '\n\n' +
       (isZh ? '不是我的：\n' : 'Not mine:\n') + (a.notmine || '—');
   }
   if (id === 'repair') {
-    return (isZh ? '衝突後修復\n\n' : 'Conflict Repair\n\n') +
+    return (isZh ? '衝突後關係修復卡\n\n' : 'Conflict Repair\n\n') +
       (isZh ? '先做的一步：' : 'First step: ') + (a.step || '—') + '\n' +
       (isZh ? '可以這樣說：\n' : 'Phrasing:\n') + (a.phrase || '—');
   }
   if (id === 'goodenough') {
-    return (isZh ? '夠好就好\n\n' : 'Good-Enough Standard\n\n') +
+    return (isZh ? '夠好就好標準卡\n\n' : 'Good-Enough Standard\n\n') +
       (isZh ? '任務：' : 'Task: ') + (a.task || '—') + '\n' +
       (isZh ? '夠好的標準：\n' : 'Good enough:\n') + (a.standard || '—') + '\n' +
       (isZh ? '可以停的點：' : 'Stop when: ') + (a.stop || '—');
   }
   if (id === 'phone') {
-    return (isZh ? '手機暫停計畫\n\n' : 'Phone Pause Plan\n\n') +
+    return (isZh ? '手機滑不停暫停計畫\n\n' : 'Phone Pause Plan\n\n') +
       (isZh ? '容易滑的時機：' : 'Trigger: ') + (a.trigger || '—') + '\n' +
       (isZh ? '暫停規則：' : 'Rule: ') + (a.rule || '—') + '\n' +
       (isZh ? '替代行動：' : 'Instead: ') + (a.alt || '—');
   }
   if (id === 'problemsolve') {
-    return (isZh ? '問題解決\n\n' : 'Problem Solving\n\n') +
+    return (isZh ? '問題解決五步驟\n\n' : 'Problem Solving\n\n') +
       (isZh ? '問題：' : 'Problem: ') + (a.problem || '—') + '\n\n' +
       (isZh ? '可能解法：\n' : 'Solutions:\n') + (a.solutions || '—') + '\n\n' +
       (isZh ? '先試：' : 'Try first: ') + (a.first || '—') + '\n' +
@@ -433,7 +433,7 @@ function buildCard(id, a) {
       '1. ' + (a.p1 || '—') + '\n2. ' + (a.p2 || '—') + '\n3. ' + (a.p3 || '—');
   }
   if (id === 'bodycheck') {
-    return (isZh ? '身體覺察\n\n' : 'Body Awareness\n\n') +
+    return (isZh ? '身體覺察地圖\n\n' : 'Body Awareness\n\n') +
       (isZh ? '有感覺的部位：' : 'Areas: ') + ((a.areas || []).join('、') || '—') + '\n' +
       (isZh ? '描述：' : 'Description: ') + (a.sensation || '—');
   }
@@ -442,7 +442,7 @@ function buildCard(id, a) {
     return (isZh ? '今晚睡前流程\n\n' : 'Tonight\'s Wind-Down\n\n') + steps.map((s,i) => `${i+1}. ${s}`).join('\n') || '—';
   }
   if (id === 'counselprep') {
-    return (isZh ? '輔導前準備\n\n' : 'Counseling Prep\n\n') +
+    return (isZh ? '第一次諮商準備包\n\n' : 'Counseling Prep\n\n') +
       (isZh ? '想談的：\n' : 'Topics:\n') + (a.topics || '—') + '\n\n' +
       (isZh ? '最困擾：' : 'Main concern: ') + (a.main || '—') + '\n' +
       (isZh ? '其他：' : 'Other: ') + (a.note || '—');
