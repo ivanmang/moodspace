@@ -1113,6 +1113,9 @@ function resetGuided() {
 
 // Example cards
 const examples = {
+  thoughtcheck: { zh: '發生的事：週一會議上，主管說報告要重做一部分\n當下的想法：我一定又搞砸了\n支持的線索：報告確實有一段要重寫\n不太支持的線索：主管只點出其中一段；上個月的報告他說做得很清楚\n比較完整的看法：這次有一段需要修改，不代表我整體能力不夠', en: 'Event: Manager said report needs partial rework\nThought: I must have messed up\nSupporting: One section needs rewrite\nAgainst: Manager only pointed out one section; last month he said it was clear\nBalanced: One section needs work, does not mean I am not capable' },
+  compassion: { zh: '原本的話：你怎麼又拖到最後一刻，真的很沒用\n遇到的困難：這週有三個截止日，晚上又睡不好\n我需要：休息、多一點時間\n新的說法：這週真的很多，我已經盡力了。拖到現在不代表我沒用\n小行動：今天先完成最急的那一份', en: 'Harsh: Why did you leave it to the last minute\nDifficulty: Three deadlines this week, poor sleep\nNeed: Rest, more time\nNew: This week was a lot, I did my best\nAction: Finish the most urgent one today' },
+  tasksep: { zh: '事件：家人希望我每週末都回家，但我也需要休息\n我能決定：先確認這個月自己有空的週末\n由對方決定：家人是否喜歡我的安排\n需要一起協商：探望頻率與其他聯絡方式\n我願意做的：先提出這個月可以回家的日期', en: 'Event: Family wants me home every weekend, but I need rest\nI can decide: Check which weekends I am free\nThey decide: Whether they like my arrangement\nNegotiate: Visit frequency and other contact\nI will do: Propose dates I can come home' },
   feelings: { zh: '我記下的事情：原本的安排臨時改變\n我注意到的感受：失望、困惑\n我現在可能需要：更清楚的資訊\n我願意先試的一件事：先確認新的安排', en: 'What happened: Plans changed suddenly\nFeelings: disappointed, confused\nNeed: clearer information\nWilling to try: confirm the new arrangement' },
   worry: { zh: '擔心：明天會議會不會出錯\n可以行動：準備議程、提早到\n先放著：如果大家覺得我說得不好\n擔心時間：每天晚上八點，十分鐘', en: 'Worry: What if the meeting goes badly\nCan act: prepare agenda, arrive early\nPark: What if people think I spoke poorly\nWorry time: 8 pm daily, 10 minutes' },
   compassion: { zh: '嚴厲的話：我怎麼又搞砸了\n遇到的困難：工作量突然增加\n對朋友會說：你已經盡力了，這次真的很多', en: 'Harsh: I messed up again\nDifficulty: workload suddenly increased\nTo a friend: You did your best, this was a lot' },
@@ -1615,7 +1618,7 @@ function submitSingleForm(toolId) {
   }
   result += `<div class="actions" style="margin-top:1rem;"><button class="btn" onclick="window.print()">${isZh ? '列印' : 'Print'}</button></div></div>`;
   
-  document.getElementById('form-result').innerHTML = result + renderFollowup(toolId) + renderToolFAQ(toolId);
+  document.getElementById('form-result').innerHTML = result + renderToolNote(toolId) + renderFollowup(toolId) + renderToolFAQ(toolId);
 }
 
 
@@ -1633,6 +1636,22 @@ function renderFollowup(toolId) {
   if (!fn) return '';
   const text = fn(lang === 'zh');
   return `<p style="margin-top:1rem; padding:0.8rem; background:var(--accent-light); border-radius:6px; font-size:0.9rem;">${text}</p>`;
+}
+
+
+// Educational notes for tools
+const toolNotes = {
+  thoughtcheck: '這不是要你「正面思考」，也不是證明自己想錯了。找不到其他看法也沒關係，可以先停在這裡。',
+  compassion: '不用勉強說服自己「我很棒」，新的說法只要比原來溫和一點、讀了能接受就好。',
+  tasksep: '分清楚不代表別人的感受與你無關；共同生活、照顧或工作分工，常常需要一起討論。',
+  worry: '不是要你停止擔心，而是讓擔心有地方放。',
+  boundary: '表達界線不能保證對方接受。你可以決定自己如何回應。'
+};
+
+function renderToolNote(toolId) {
+  const note = toolNotes[toolId];
+  if (!note) return '';
+  return `<p style="margin-top:1rem; padding:0.8rem; background:var(--surface); border-left:3px solid var(--accent); font-size:0.9rem; color:var(--text-soft);">${note}</p>`;
 }
 
 // FAQ for tools
