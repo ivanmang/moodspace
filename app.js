@@ -1220,37 +1220,59 @@ function showSection(section) {
 // Body map
 function renderBodyMap() {
   window.selectedBodyParts = window.selectedBodyParts || [];
+  window.bodyView = window.bodyView || 'front';
   
-  const parts = [
-    { id: 'head', label: '頭部', shape: 'ellipse', cx: 100, cy: 40, rx: 25, ry: 30 },
-    { id: 'neck', label: '頸部', shape: 'rect', x: 88, y: 68, w: 24, h: 18 },
-    { id: 'shoulders', label: '肩膀', shape: 'rect', x: 55, y: 86, w: 90, h: 20, rx: 5 },
-    { id: 'chest', label: '胸前', shape: 'rect', x: 65, y: 106, w: 70, h: 35, rx: 5 },
-    { id: 'abdomen', label: '腹部', shape: 'rect', x: 70, y: 141, w: 60, h: 40, rx: 5 },
-    { id: 'leftarm', label: '左手', shape: 'rect', x: 25, y: 95, w: 22, h: 75, rx: 8 },
-    { id: 'rightarm', label: '右手', shape: 'rect', x: 153, y: 95, w: 22, h: 75, rx: 8 },
-    { id: 'leftleg', label: '左腿', shape: 'rect', x: 72, y: 181, w: 22, h: 90, rx: 5 },
-    { id: 'rightleg', label: '右腿', shape: 'rect', x: 106, y: 181, w: 22, h: 90, rx: 5 },
-    { id: 'feet', label: '雙腳', shape: 'ellipse', cx: 100, cy: 285, rx: 40, ry: 12 }
+  const frontParts = [
+    { id: 'head', label: '頭部', cx: 100, cy: 35, rx: 22, ry: 26 },
+    { id: 'face', label: '臉部', cx: 100, cy: 42, rx: 14, ry: 12 },
+    { id: 'neck', label: '頸部', x: 90, y: 60, w: 20, h: 15 },
+    { id: 'lshoulder', label: '左肩', x: 55, y: 75, w: 30, h: 18, rx: 5 },
+    { id: 'rshoulder', label: '右肩', x: 115, y: 75, w: 30, h: 18, rx: 5 },
+    { id: 'chest', label: '胸前', x: 70, y: 93, w: 60, h: 30, rx: 5 },
+    { id: 'abdomen', label: '腹部', x: 75, y: 123, w: 50, h: 35, rx: 5 },
+    { id: 'larm', label: '左手', x: 28, y: 85, w: 20, h: 70, rx: 8 },
+    { id: 'rarm', label: '右手', x: 152, y: 85, w: 20, h: 70, rx: 8 },
+    { id: 'lleg', label: '左腿', x: 75, y: 158, w: 20, h: 85, rx: 5 },
+    { id: 'rleg', label: '右腿', x: 105, y: 158, w: 20, h: 85, rx: 5 },
+    { id: 'feet', label: '雙腳', cx: 100, cy: 255, rx: 35, ry: 10 }
   ];
+  
+  const backParts = [
+    { id: 'head', label: '後腦', cx: 100, cy: 35, rx: 22, ry: 26 },
+    { id: 'neck', label: '後頸', x: 90, y: 60, w: 20, h: 15 },
+    { id: 'ushoulder', label: '上背', x: 60, y: 75, w: 80, h: 25, rx: 5 },
+    { id: 'mback', label: '中背', x: 70, y: 100, w: 60, h: 30, rx: 5 },
+    { id: 'lback', label: '下背', x: 75, y: 130, w: 50, h: 30, rx: 5 },
+    { id: 'larm', label: '左臂後', x: 28, y: 85, w: 20, h: 70, rx: 8 },
+    { id: 'rarm', label: '右臂後', x: 152, y: 85, w: 20, h: 70, rx: 8 },
+    { id: 'lleg', label: '左腿後', x: 75, y: 160, w: 20, h: 85, rx: 5 },
+    { id: 'rleg', label: '右腿後', x: 105, y: 160, w: 20, h: 85, rx: 5 }
+  ];
+  
+  const parts = window.bodyView === 'front' ? frontParts : backParts;
   
   let svgParts = parts.map(p => {
     const selected = window.selectedBodyParts.includes(p.label);
-    const fill = selected ? 'var(--accent)' : 'var(--accent-light)';
-    const stroke = selected ? 'var(--accent-dark)' : 'var(--accent)';
-    if (p.shape === 'ellipse') {
+    const fill = selected ? '#5b8c7a' : '#e8f3ef';
+    const stroke = selected ? '#3d6b5a' : '#5b8c7a';
+    if (p.cx) {
       return `<ellipse cx="${p.cx}" cy="${p.cy}" rx="${p.rx}" ry="${p.ry}" fill="${fill}" stroke="${stroke}" stroke-width="2" style="cursor:pointer;" onclick="toggleBodyPart('${p.label}')" />`;
     } else {
       return `<rect x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" rx="${p.rx || 0}" fill="${fill}" stroke="${stroke}" stroke-width="2" style="cursor:pointer;" onclick="toggleBodyPart('${p.label}')" />`;
     }
   }).join('');
   
+  const viewBtn = window.bodyView === 'front' 
+    ? `<button class="btn secondary" onclick="window.bodyView='back'; renderWizard();" style="font-size:0.85rem; padding:0.3rem 0.6rem;">看背面</button>`
+    : `<button class="btn secondary" onclick="window.bodyView='front'; renderWizard();" style="font-size:0.85rem; padding:0.3rem 0.6rem;">看正面</button>`;
+  
   return `<div style="text-align:center; margin:1rem 0;">
-    <p style="font-size:0.9rem; color:var(--text-soft); margin-bottom:0.5rem;">點選身體部位（已選：${window.selectedBodyParts.length}）</p>
-    <svg viewBox="0 0 200 310" style="width:100%; max-width:180px; margin:0 auto; display:block;">
+    <p style="font-size:0.9rem; color:var(--text-soft); margin-bottom:0.5rem;">點選身體部位（已選：${window.selectedBodyParts.length}/8）</p>
+    <svg viewBox="0 0 200 280" style="width:100%; max-width:160px; margin:0 auto; display:block;">
       ${svgParts}
     </svg>
-    <p style="font-size:0.8rem; color:var(--text-soft); margin-top:0.5rem;">${window.selectedBodyParts.join('、') || '尚未選擇'}</p>
+    <div style="margin-top:0.5rem;">${viewBtn}</div>
+    <p style="font-size:0.8rem; color:var(--accent); margin-top:0.5rem;">${window.selectedBodyParts.join('、') || '尚未選擇'}</p>
   </div>`;
 }
 
