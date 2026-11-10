@@ -664,8 +664,126 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+
+// Guided entry
+const guidedQuestions = {
+  zh: [
+    {
+      q: '現在最接近的狀態是？',
+      options: [
+        { text: '情緒有些亂，想整理一下', tags: ['emotions'] },
+        { text: '有話想說，但不知道怎麼開口', tags: ['communication'] },
+        { text: '事情很多，不知道從哪開始', tags: ['actions'] },
+        { text: '只想先停一下，不想寫字', tags: ['pause'] },
+        { text: '想準備求助或看診', tags: ['help'] }
+      ]
+    },
+    {
+      q: '更具體一點？',
+      options: [
+        { text: '擔心或想法一直轉', tags: ['worry', 'thoughtcheck'] },
+        { text: '對自己很嚴厲', tags: ['compassion', 'selfbreak'] },
+        { text: '想設定界線或準備對話', tags: ['boundary', 'convo'] },
+        { text: '有件事一直沒開始', tags: ['smallstep', 'tasksorter'] },
+        { text: '身體很緊或不舒服', tags: ['bodycheck', 'pmr', 'breathing'] },
+        { text: '不確定，讓我看看全部', tags: [] }
+      ]
+    }
+  ],
+  en: [
+    {
+      q: 'What feels closest right now?',
+      options: [
+        { text: 'Emotions feel messy, want to sort them', tags: ['emotions'] },
+        { text: 'Have something to say but don\'t know how', tags: ['communication'] },
+        { text: 'Too many things, don\'t know where to start', tags: ['actions'] },
+        { text: 'Just want to pause, no writing', tags: ['pause'] },
+        { text: 'Want to prepare for help or a visit', tags: ['help'] }
+      ]
+    },
+    {
+      q: 'A bit more specific?',
+      options: [
+        { text: 'Worries or thoughts keep looping', tags: ['worry', 'thoughtcheck'] },
+        { text: 'Being hard on myself', tags: ['compassion', 'selfbreak'] },
+        { text: 'Want to set a boundary or prepare a talk', tags: ['boundary', 'convo'] },
+        { text: 'Something I keep not starting', tags: ['smallstep', 'tasksorter'] },
+        { text: 'Body feels tense or uncomfortable', tags: ['bodycheck', 'pmr', 'breathing'] },
+        { text: 'Not sure, show me everything', tags: [] }
+      ]
+    }
+  ]
+};
+
+let guidedStep = 0;
+let guidedTags = [];
+
+function renderGuided() {
+  const container = document.getElementById('guided-content');
+  if (!container) return;
+  
+  const questions = guidedQuestions[lang];
+  
+  if (guidedStep >= questions.length) {
+    // Show recommendations
+    const recommended = getRecommendedTools();
+    let html = `<div class="guided-result"><h3>${lang === 'zh' ? '這些可能適合你：' : 'These might fit:'}</h3>`;
+    recommended.forEach(tool => {
+      html += `<a href="#" class="tool-link" onclick="event.preventDefault(); openTool('${tool.id}')">${tool.icon || ''} ${tool[lang].name}</a>`;
+    });
+    html += `<p style="margin-top:0.8rem; font-size:0.9rem;"><a href="#" onclick="event.preventDefault(); resetGuided()" style="color:var(--accent);">${lang === 'zh' ? '重新選擇' : 'Start over'}</a></p></div>`;
+    container.innerHTML = html;
+    return;
+  }
+  
+  const q = questions[guidedStep];
+  let html = `<p style="font-weight:500; margin-bottom:0.8rem;">${q.q}</p><div class="options">`;
+  q.options.forEach((opt, i) => {
+    html += `<button class="option-btn" onclick="selectGuided(${i})">${opt.text}</button>`;
+  });
+  html += '</div>';
+  if (guidedStep > 0) {
+    html += `<p style="margin-top:0.5rem;"><a href="#" onclick="event.preventDefault(); guidedStep--; renderGuided()" style="color:var(--text-soft); font-size:0.9rem;">${lang === 'zh' ? '← 上一步' : '← Back'}</a></p>`;
+  }
+  container.innerHTML = html;
+}
+
+function selectGuided(index) {
+  const questions = guidedQuestions[lang];
+  const opt = questions[guidedStep].options[index];
+  guidedTags = guidedTags.concat(opt.tags);
+  guidedStep++;
+  renderGuided();
+}
+
+function getRecommendedTools() {
+  if (guidedTags.length === 0) {
+    // Return a few popular ones
+    return tools.filter(t => ['feelings', 'worry', 'smallstep', 'breathing'].includes(t.id)).slice(0, 4);
+  }
+  
+  // Score tools by matching tags
+  const scored = tools.map(tool => {
+    let score = 0;
+    if (guidedTags.includes(tool.cat)) score += 2;
+    if (guidedTags.includes(tool.id)) score += 3;
+    return { tool, score };
+  }).filter(s => s.score > 0).sort((a, b) => b.score - a.score);
+  
+  return scored.slice(0, 4).map(s => s.tool);
+}
+
+function resetGuided() {
+  guidedStep = 0;
+  guidedTags = [];
+  renderGuided();
+}
+
+// Call on init
+
 // Init
 applyTheme();
+renderGuided();
 document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
 renderHome();
 window.addEventListener('load', () => {
