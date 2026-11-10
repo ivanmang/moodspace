@@ -1441,6 +1441,55 @@ function renderSinglePageForm(toolId) {
         { key: 'kind', type: 'text', label: isZh ? '我能接受的新說法' : 'A new phrase I can accept', placeholder: isZh ? '例：這週真的很多，我已經盡力了' : 'e.g. This week was a lot, I did my best' },
         { key: 'action', type: 'text', label: isZh ? '一個小行動（選填）' : 'One small action (optional)', placeholder: isZh ? '例：今天先完成最急的' : 'e.g. Finish the most urgent today' }
       ]
+    },
+    gratitude: {
+      fields: [
+        { key: 'thing', type: 'text', label: isZh ? '今天想留下的一件事' : 'One thing to note today', placeholder: isZh ? '例：午餐很好吃' : 'e.g. lunch was good' },
+        { key: 'meaning', type: 'text', label: isZh ? '這件事的意義（選填）' : 'Meaning (optional)', placeholder: isZh ? '例：提醒我還是有小事值得開心' : 'e.g. reminds me small things count' },
+        { key: 'feeling', type: 'text', label: isZh ? '我注意到的感受（選填）' : 'Feelings (optional)', placeholder: isZh ? '例：滿足、平靜' : 'e.g. content, calm' }
+      ]
+    },
+    thoughtcheck: {
+      fields: [
+        { key: 'event', type: 'text', label: isZh ? '發生了什麼事？' : 'What happened?', placeholder: isZh ? '例：主管說報告要重做' : 'e.g. manager said report needs rework' },
+        { key: 'thought', type: 'text', label: isZh ? '當下冒出來的想法' : 'The thought that came up', placeholder: isZh ? '例：我一定又搞砸了' : 'e.g. I must have messed up' },
+        { key: 'support', type: 'text', label: isZh ? '支持這個想法的線索' : 'Evidence supporting', placeholder: isZh ? '例：主管在會議上說的' : 'e.g. what the manager said' },
+        { key: 'against', type: 'text', label: isZh ? '不太支持的線索' : 'Evidence against', placeholder: isZh ? '例：過去類似的經驗' : 'e.g. past similar experiences' },
+        { key: 'balanced', type: 'text', label: isZh ? '比較完整的看法' : 'More complete view', placeholder: isZh ? '例：這次沒做好，不代表我不行' : 'e.g. one time does not define me' }
+      ]
+    },
+    values: {
+      fields: [
+        { key: 'values', type: 'multi', max: 5, label: isZh ? '現在在意的方向（最多 5 個）' : 'Directions you care about (up to 5)', options: isZh ? ['身體健康','休息與放鬆','家人','伴侶關係','朋友','工作表現','學習與成長','經濟穩定','自由與選擇','創作與興趣','幫助別人','誠實做自己','內心平靜','好玩與新鮮','社群與歸屬','接近自然'] : ['Health','Rest','Family','Partner','Friends','Work','Learning','Financial','Freedom','Creativity','Helping','Authenticity','Peace','Fun','Community','Nature'] },
+        { key: 'action', type: 'text', label: isZh ? '這週做得到的一件小事' : 'One small thing this week', placeholder: isZh ? '例：這週運動一次' : 'e.g. exercise once this week' }
+      ]
+    },
+    goodenough: {
+      fields: [
+        { key: 'task', type: 'text', label: isZh ? '是哪一件事？' : 'Which task?', placeholder: isZh ? '例：週五要交的簡報' : 'e.g. Friday presentation' },
+        { key: 'purpose', type: 'text', label: isZh ? '這件事是為了什麼？' : 'What is this for?', placeholder: isZh ? '例：讓團隊了解進度' : 'e.g. update the team' },
+        { key: 'must', type: 'text', label: isZh ? '一定要有的（最多 3 項）' : 'Must have (up to 3)', placeholder: isZh ? '例：目標、進度、下一步' : 'e.g. goal, progress, next step' },
+        { key: 'nice', type: 'text', label: isZh ? '有很好，沒有也可以（選填）' : 'Nice to have (optional)', placeholder: isZh ? '例：精美的圖表' : 'e.g. polished charts' },
+        { key: 'stop', type: 'single', label: isZh ? '什麼時候停手？' : 'When to stop?', options: isZh ? ['到一個時間就停','檢查固定次數就停','花固定時間就停'] : ['Stop at a set time','Stop after set checks','Stop after set duration'] }
+      ]
+    },
+    convo: {
+      fields: [
+        { key: 'topic', type: 'text', label: isZh ? '這次想談的主題' : 'Topic', placeholder: isZh ? '例：家事分工' : 'e.g. household chores' },
+        { key: 'notice', type: 'text', label: isZh ? '我具體注意到什麼？' : 'What did I notice?', placeholder: isZh ? '例：這週有幾次餐具留在桌上' : 'e.g. dishes left several times' },
+        { key: 'impact', type: 'text', label: isZh ? '對我的影響或感受' : 'Impact or feelings', placeholder: isZh ? '例：想用桌子前要先整理' : 'e.g. have to clear table first' },
+        { key: 'discuss', type: 'text', label: isZh ? '我希望一起討論什麼？' : 'What to discuss', placeholder: isZh ? '例：能不能約定收拾時間' : 'e.g. can we agree on cleanup time' },
+        { key: 'opening', type: 'text', label: isZh ? '我想怎麼開頭？（選填）' : 'How to start? (optional)', placeholder: isZh ? '例：有件事想跟你聊聊' : 'e.g. there is something I want to talk about' }
+      ]
+    },
+    tasksep: {
+      fields: [
+        { key: 'situation', type: 'text', label: isZh ? '我現在在意的一件事' : 'One thing I care about', placeholder: isZh ? '例：家人希望我每週末都回家' : 'e.g. family wants me home every weekend' },
+        { key: 'mine', type: 'text', label: isZh ? '我能決定的' : 'What I can decide', placeholder: isZh ? '例：我的時間安排' : 'e.g. my schedule' },
+        { key: 'theirs', type: 'text', label: isZh ? '由對方決定的' : 'What they decide', placeholder: isZh ? '例：對方是否接受' : 'e.g. whether they accept' },
+        { key: 'together', type: 'text', label: isZh ? '需要一起協商的' : 'Need to negotiate', placeholder: isZh ? '例：週末的安排' : 'e.g. weekend arrangements' },
+        { key: 'action', type: 'text', label: isZh ? '我願意先做的（選填）' : 'What I will do first (optional)', placeholder: isZh ? '例：這週先說我需要休息' : 'e.g. say I need rest this week' }
+      ]
     }
   };
   
