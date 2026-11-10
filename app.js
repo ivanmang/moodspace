@@ -194,9 +194,9 @@ function getSteps(id) {
     { key: 'action', type: 'text', explain: isZh ? '一個小行動。選填。' : 'One small action. Optional.', title: isZh ? '一個小行動（選填）' : 'One small action (optional)', placeholder: isZh ? '例：今天先完成最急的那一份' : 'e.g. Finish the most urgent one today' }
   ];
   if (id === 'gratitude') return [
-    { key: 'g1', type: 'text', explain: isZh ? '小事也可以。寫得出來就好，不用想很大的事。' : 'Small things count. Just write what comes to mind.', hint: isZh ? '小事也可以，寫得出來就好' : 'Small things count — just write what comes to mind', title: isZh ? '第一件值得感謝的事' : 'First thing I appreciate' },
-    { key: 'g2', type: 'text', explain: isZh ? '選填。有想到再寫。' : 'Optional. Write if something comes to mind.', title: isZh ? '第二件（選填）' : 'Second (optional)' },
-    { key: 'g3', type: 'text', explain: isZh ? '選填。有想到再寫。' : 'Optional. Write if something comes to mind.', title: isZh ? '第三件（選填）' : 'Third (optional)' }
+    { key: 'thing', type: 'text', explain: isZh ? '今天想留下的一件小事。' : 'One small thing to note today.', title: isZh ? '今天想留下的一件事' : 'One thing to note today', placeholder: isZh ? '例：午餐很好吃' : 'e.g. lunch was good' },
+    { key: 'meaning', type: 'text', explain: isZh ? '這件事對我有什麼意義？選填。' : 'What does this mean to me? Optional.', title: isZh ? '這件事的意義（選填）' : 'Meaning (optional)', placeholder: isZh ? '例：提醒我還是有小事值得開心' : 'e.g. reminds me small things can still be good' },
+    { key: 'feeling', type: 'text', explain: isZh ? '我注意到的感受。選填。' : 'Feelings I noticed. Optional.', title: isZh ? '我注意到的感受（選填）' : 'Feelings noticed (optional)', placeholder: isZh ? '例：滿足、平靜' : 'e.g. content, calm' }
   ];
   if (id === 'thoughtcheck') return [
     { key: 'event', type: 'text', explain: isZh ? '時間、地點、誰說了什麼或做了什麼，盡量像旁觀者一樣描述。' : 'Time, place, who said or did what. Describe like an observer.', title: isZh ? '1. 發生了什麼事？' : '1. What happened?', placeholder: isZh ? '例：主管在會議上說報告要重做' : 'e.g. Manager said the report needs rework' },
