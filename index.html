@@ -27,6 +27,84 @@
       <h2 style="font-size:1.4rem; margin-bottom:0.5rem;">不知道先選哪個？</h2>
       <p style="color:var(--text-soft); margin-bottom:1.2rem;">回答幾個問題，幫你找到適合的練習。</p>
       <div id="guided-content"></div>
+    <details style="margin-top:1rem;">
+      <summary style="cursor:pointer; color:var(--accent); font-size:0.95rem;">查看流程圖</summary>
+      <div style="margin-top:1rem; overflow-x:auto;">
+        <svg id="flowchart" viewBox="0 0 800 420" style="width:100%; max-width:800px; height:auto;">
+          <!-- Background -->
+          <rect width="800" height="420" fill="transparent"/>
+          
+          <!-- Start -->
+          <rect x="340" y="10" width="120" height="36" rx="18" fill="var(--accent)" />
+          <text x="400" y="33" text-anchor="middle" fill="white" font-size="13" font-weight="500">開始</text>
+          
+          <!-- Q1 -->
+          <rect x="300" y="70" width="200" height="40" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="400" y="95" text-anchor="middle" fill="var(--text)" font-size="12">現在最接近的狀態？</text>
+          
+          <!-- Lines from Q1 -->
+          <line x1="400" y1="110" x2="400" y2="130" stroke="var(--border)" stroke-width="1.5"/>
+          
+          <!-- Q1 Options -->
+          <rect x="20" y="140" width="140" height="32" rx="4" fill="var(--accent-light)" stroke="var(--border)"/>
+          <text x="90" y="161" text-anchor="middle" fill="var(--text)" font-size="11">情緒有些亂</text>
+          
+          <rect x="175" y="140" width="140" height="32" rx="4" fill="var(--accent-light)" stroke="var(--border)"/>
+          <text x="245" y="161" text-anchor="middle" fill="var(--text)" font-size="11">有話想說</text>
+          
+          <rect x="330" y="140" width="140" height="32" rx="4" fill="var(--accent-light)" stroke="var(--border)"/>
+          <text x="400" y="161" text-anchor="middle" fill="var(--text)" font-size="11">事情很多</text>
+          
+          <rect x="485" y="140" width="140" height="32" rx="4" fill="var(--accent-light)" stroke="var(--border)"/>
+          <text x="555" y="161" text-anchor="middle" fill="var(--text)" font-size="11">想先停一下</text>
+          
+          <rect x="640" y="140" width="140" height="32" rx="4" fill="var(--accent-light)" stroke="var(--border)"/>
+          <text x="710" y="161" text-anchor="middle" fill="var(--text)" font-size="11">想求助</text>
+          
+          <!-- Lines to Q2 -->
+          <line x1="90" y1="172" x2="90" y2="200" stroke="var(--border)" stroke-width="1"/>
+          <line x1="245" y1="172" x2="245" y2="200" stroke="var(--border)" stroke-width="1"/>
+          <line x1="400" y1="172" x2="400" y2="200" stroke="var(--border)" stroke-width="1"/>
+          <line x1="555" y1="172" x2="555" y2="200" stroke="var(--border)" stroke-width="1"/>
+          <line x1="710" y1="172" x2="710" y2="200" stroke="var(--border)" stroke-width="1"/>
+          
+          <!-- Q2 -->
+          <rect x="300" y="200" width="200" height="36" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="400" y="223" text-anchor="middle" fill="var(--text)" font-size="12">更具體一點？</text>
+          
+          <!-- Lines to results -->
+          <line x1="400" y1="236" x2="400" y2="260" stroke="var(--border)" stroke-width="1.5"/>
+          
+          <!-- Result boxes -->
+          <rect x="50" y="270" width="150" height="50" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1"/>
+          <text x="125" y="292" text-anchor="middle" fill="var(--text)" font-size="11" font-weight="500">擔心整理</text>
+          <text x="125" y="308" text-anchor="middle" fill="var(--text-soft)" font-size="10">想法核對</text>
+          
+          <rect x="220" y="270" width="150" height="50" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1"/>
+          <text x="295" y="292" text-anchor="middle" fill="var(--text)" font-size="11" font-weight="500">界線表達</text>
+          <text x="295" y="308" text-anchor="middle" fill="var(--text-soft)" font-size="10">對話前整理</text>
+          
+          <rect x="390" y="270" width="150" height="50" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1"/>
+          <text x="465" y="292" text-anchor="middle" fill="var(--text)" font-size="11" font-weight="500">第一小步</text>
+          <text x="465" y="308" text-anchor="middle" fill="var(--text-soft)" font-size="10">待辦整理器</text>
+          
+          <rect x="560" y="270" width="150" height="50" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1"/>
+          <text x="635" y="292" text-anchor="middle" fill="var(--text)" font-size="11" font-weight="500">呼吸練習</text>
+          <text x="635" y="308" text-anchor="middle" fill="var(--text-soft)" font-size="10">身體覺察</text>
+          
+          <!-- Connecting lines from Q2 to results -->
+          <line x1="125" y1="260" x2="125" y2="270" stroke="var(--border)" stroke-width="1"/>
+          <line x1="295" y1="260" x2="295" y2="270" stroke="var(--border)" stroke-width="1"/>
+          <line x1="465" y1="260" x2="465" y2="270" stroke="var(--border)" stroke-width="1"/>
+          <line x1="635" y1="260" x2="635" y2="270" stroke="var(--border)" stroke-width="1"/>
+          
+          <!-- Legend -->
+          <text x="400" y="360" text-anchor="middle" fill="var(--text-soft)" font-size="11">選擇後會推薦 3–4 個適合的練習</text>
+          <text x="400" y="380" text-anchor="middle" fill="var(--text-soft)" font-size="11">也可以直接瀏覽下方所有工具</text>
+        </svg>
+      </div>
+    </details>
+
     </div>
 
     <div class="categories" id="categories"></div>
