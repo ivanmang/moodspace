@@ -234,9 +234,11 @@ function getSteps(id) {
     { key: 'action', type: 'text', explain: isZh ? '挑一個方向，寫一件這週做得到的小事。' : 'Pick one direction and write one small action for this week.', hint: isZh ? '越小越好，這週做得到的就好' : 'Smaller is better — something doable this week', title: isZh ? '這週想多照顧哪個？寫一件小事' : 'Which one do you want to care for more this week? Write one small action', placeholder: isZh ? '例：這週有兩個晚上十一點前關電腦睡覺' : 'e.g. Two nights this week, close the laptop before 11' }
   ];
   if (id === 'supportcard') return [
-    { key: 'people', type: 'text', explain: isZh ? '寫名字和怎麼聯絡，方便之後找。' : 'Write names and how to reach them, for later.', hint: isZh ? '寫名字和怎麼聯絡，方便之後找' : 'Name and how to reach them, for later', title: isZh ? '我可以找的人（名字＋怎麼聯絡）' : 'People I can reach (name + how to contact)', placeholder: isZh ? '例：媽媽 電話／WhatsApp' : 'e.g. Mom, phone / WhatsApp' },
-    { key: 'resources', type: 'text', explain: isZh ? '專線、機構、網站都可以。寫下來方便之後找。' : 'Hotlines, centers, websites all count. Write them down for later.', hint: isZh ? '專線、機構、網站都可以' : 'Hotlines, centers, websites all count', title: isZh ? '其他資源（專線、機構、網站）' : 'Other resources (hotlines, centers, sites)', placeholder: isZh ? '例：情緒通 18111、撒瑪利亞會 2896 0000' : 'e.g. Emotional Support 18111' },
-    { key: 'note', type: 'text', explain: isZh ? '選填。寫給自己看的提醒。' : 'Optional. A note for yourself.', hint: isZh ? '選填，寫給自己看的提醒' : 'Optional — a note for yourself', title: isZh ? '其他想記下來的（選填）' : 'Anything else to note (optional)', placeholder: isZh ? '例：週末可以找朋友喝咖啡' : 'e.g. Can meet a friend for coffee on weekends' }
+    { key: 'name', type: 'text', explain: isZh ? '稱呼。' : 'Name.', title: isZh ? '稱呼' : 'Name', placeholder: isZh ? '例：媽媽、朋友小明' : 'e.g. Mom, friend Ming' },
+    { key: 'contact', type: 'text', explain: isZh ? '聯絡方式。' : 'Contact method.', title: isZh ? '聯絡方式' : 'Contact', placeholder: isZh ? '例：電話、WhatsApp' : 'e.g. phone, WhatsApp' },
+    { key: 'help', type: 'text', explain: isZh ? '可以請對方協助什麼？' : 'What can I ask them for?', title: isZh ? '可以請對方協助什麼' : 'What they can help with', placeholder: isZh ? '例：聽我說、陪我去' : 'e.g. listen, accompany me' },
+    { key: 'time', type: 'text', explain: isZh ? '我知道的方便時段。選填。' : 'Convenient times I know. Optional.', title: isZh ? '方便時段（選填）' : 'Convenient times (optional)', placeholder: isZh ? '例：晚上、週末' : 'e.g. evenings, weekends' },
+    { key: 'resource', type: 'text', explain: isZh ? '機構或資源名稱。選填。' : 'Organization or resource name. Optional.', title: isZh ? '機構或資源（選填）' : 'Organization (optional)', placeholder: isZh ? '例：情緒通 18111' : 'e.g. Emotional Support 18111' }
   ];
 
   if (id === 'tasksep') return [
