@@ -273,8 +273,8 @@ details[open] summary {
 .guided-entry {
   background: var(--surface);
   border-radius: var(--radius);
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
   box-shadow: var(--shadow);
   border: 1px solid var(--border);
 }
