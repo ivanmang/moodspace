@@ -1116,11 +1116,17 @@ const examples = {
   thoughtcheck: { zh: '發生的事：週一會議上，主管說報告要重做一部分\n當下的想法：我一定又搞砸了\n支持的線索：報告確實有一段要重寫\n不太支持的線索：主管只點出其中一段；上個月的報告他說做得很清楚\n比較完整的看法：這次有一段需要修改，不代表我整體能力不夠', en: 'Event: Manager said report needs partial rework\nThought: I must have messed up\nSupporting: One section needs rewrite\nAgainst: Manager only pointed out one section; last month he said it was clear\nBalanced: One section needs work, does not mean I am not capable' },
   compassion: { zh: '原本的話：你怎麼又拖到最後一刻，真的很沒用\n遇到的困難：這週有三個截止日，晚上又睡不好\n我需要：休息、多一點時間\n新的說法：這週真的很多，我已經盡力了。拖到現在不代表我沒用\n小行動：今天先完成最急的那一份', en: 'Harsh: Why did you leave it to the last minute\nDifficulty: Three deadlines this week, poor sleep\nNeed: Rest, more time\nNew: This week was a lot, I did my best\nAction: Finish the most urgent one today' },
   goodenough: { zh: '這件事：週五要交的企劃簡報\n目的：讓團隊了解進度\n一定要有：目標、進度、下一步\n有很好沒有也可以：精美的圖表\n停手：到一個時間就停', en: 'Task: Friday presentation\nPurpose: Update the team\nMust have: goal, progress, next step\nNice to have: polished charts\nStop: at a set time' },
+  convo: { zh: '主題：共同空間的整理安排\n注意到：這週有幾次餐具留在桌上\n影響：想用桌子前要先整理，覺得有點困擾\n討論：能否約定收拾的時間\n開場：我想和你討論一下桌面的使用，現在方便嗎？', en: 'Topic: shared space cleanup\nNoticed: dishes left several times\nImpact: have to clear table first, a bit bothered\nDiscuss: can we agree on cleanup time\nOpening: I want to discuss the table, is now okay?' },
+  askhelp: { zh: '類型：聽我說\n對象：朋友\n內容：最近有些事想說\n溫和說法：我最近有些事想說，想找人聽一聽。你方便找個時間聊一下嗎？', en: 'Type: listen\nWho: friend\nWhat: some things I want to talk about\nGentle: I have some things I want to talk about. Do you have time to chat?' },
+  phone: { zh: '情況：睡前滑不停\n原本想做：查一個資料\n停下提示：看完這一則\n放下後：把手機翻面放桌上', en: 'Situation: scroll before bed\nWanted: look something up\nStop cue: after this one\nAfter: place phone face down' },
   smallstep: { zh: '我想處理：整理房間\n卡在：太大了\n第一小步：先整理桌面的一個角落\n開始時機：晚餐後\n做到這裡先停：桌面清出可以放筆電的空間', en: 'Task: tidy the room\nStuck: too big\nFirst step: tidy one corner of the desk\nWhen: after dinner\nStop: when there is space for laptop' },
   tasksep: { zh: '事件：家人希望我每週末都回家，但我也需要休息\n我能決定：先確認這個月自己有空的週末\n由對方決定：家人是否喜歡我的安排\n需要一起協商：探望頻率與其他聯絡方式\n我願意做的：先提出這個月可以回家的日期', en: 'Event: Family wants me home every weekend, but I need rest\nI can decide: Check which weekends I am free\nThey decide: Whether they like my arrangement\nNegotiate: Visit frequency and other contact\nI will do: Propose dates I can come home' },
   feelings: { zh: '我記下的事情：原本的安排臨時改變\n我注意到的感受：失望、困惑\n我現在可能需要：更清楚的資訊\n我願意先試的一件事：先確認新的安排', en: 'What happened: Plans changed suddenly\nFeelings: disappointed, confused\nNeed: clearer information\nWilling to try: confirm the new arrangement' },
   worry: { zh: '擔心：明天會議會不會出錯\n可以行動：準備議程、提早到\n先放著：如果大家覺得我說得不好\n擔心時間：每天晚上八點，十分鐘', en: 'Worry: What if the meeting goes badly\nCan act: prepare agenda, arrive early\nPark: What if people think I spoke poorly\nWorry time: 8 pm daily, 10 minutes' },
   compassion: { zh: '嚴厲的話：我怎麼又搞砸了\n遇到的困難：工作量突然增加\n對朋友會說：你已經盡力了，這次真的很多', en: 'Harsh: I messed up again\nDifficulty: workload suddenly increased\nTo a friend: You did your best, this was a lot' },
+  convo: { zh: '主題：共同空間的整理安排\n注意到：這週有幾次餐具留在桌上\n影響：想用桌子前要先整理，覺得有點困擾\n討論：能否約定收拾的時間\n開場：我想和你討論一下桌面的使用，現在方便嗎？', en: 'Topic: shared space cleanup\nNoticed: dishes left several times\nImpact: have to clear table first, a bit bothered\nDiscuss: can we agree on cleanup time\nOpening: I want to discuss the table, is now okay?' },
+  askhelp: { zh: '類型：聽我說\n對象：朋友\n內容：最近有些事想說\n溫和說法：我最近有些事想說，想找人聽一聽。你方便找個時間聊一下嗎？', en: 'Type: listen\nWho: friend\nWhat: some things I want to talk about\nGentle: I have some things I want to talk about. Do you have time to chat?' },
+  phone: { zh: '情況：睡前滑不停\n原本想做：查一個資料\n停下提示：看完這一則\n放下後：把手機翻面放桌上', en: 'Situation: scroll before bed\nWanted: look something up\nStop cue: after this one\nAfter: place phone face down' },
   smallstep: { zh: '想做的事：整理房間\n卡在：太大了不知道從哪開始\n最小一步：先整理桌面的一個角落', en: 'Big thing: tidy the room\nStuck: too big, don\'t know where to start\nSmallest step: just tidy one corner of the desk' },
   bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
   boundary: { 
@@ -1431,7 +1437,10 @@ function renderSinglePageForm(toolId) {
         { key: 'worrytime', type: 'text', label: isZh ? '擔心時間（選填）' : 'Worry time (optional)', placeholder: isZh ? '例：每天晚上八點，十分鐘' : 'e.g. 8pm daily, 10 min' }
       ]
     },
-    smallstep: {
+    convo: { zh: '主題：共同空間的整理安排\n注意到：這週有幾次餐具留在桌上\n影響：想用桌子前要先整理，覺得有點困擾\n討論：能否約定收拾的時間\n開場：我想和你討論一下桌面的使用，現在方便嗎？', en: 'Topic: shared space cleanup\nNoticed: dishes left several times\nImpact: have to clear table first, a bit bothered\nDiscuss: can we agree on cleanup time\nOpening: I want to discuss the table, is now okay?' },
+  askhelp: { zh: '類型：聽我說\n對象：朋友\n內容：最近有些事想說\n溫和說法：我最近有些事想說，想找人聽一聽。你方便找個時間聊一下嗎？', en: 'Type: listen\nWho: friend\nWhat: some things I want to talk about\nGentle: I have some things I want to talk about. Do you have time to chat?' },
+  phone: { zh: '情況：睡前滑不停\n原本想做：查一個資料\n停下提示：看完這一則\n放下後：把手機翻面放桌上', en: 'Situation: scroll before bed\nWanted: look something up\nStop cue: after this one\nAfter: place phone face down' },
+  smallstep: {
       fields: [
         { key: 'task', type: 'text', label: isZh ? '我想處理的一件事' : 'The thing I want to handle', placeholder: isZh ? '例：整理房間' : 'e.g. tidy the room' },
         { key: 'stuck', type: 'single', label: isZh ? '現在卡在哪裡？（可略過）' : 'Where stuck? (optional)', options: isZh ? ['太大了','不知道第一步','缺資訊或資源','現在沒力氣','擔心做不好','還不確定'] : ['Too big','Don\'t know first step','Missing info','No energy','Afraid','Not sure'] },
@@ -1489,6 +1498,9 @@ function renderSinglePageForm(toolId) {
       ]
     },
     goodenough: { zh: '這件事：週五要交的企劃簡報\n目的：讓團隊了解進度\n一定要有：目標、進度、下一步\n有很好沒有也可以：精美的圖表\n停手：到一個時間就停', en: 'Task: Friday presentation\nPurpose: Update the team\nMust have: goal, progress, next step\nNice to have: polished charts\nStop: at a set time' },
+  convo: { zh: '主題：共同空間的整理安排\n注意到：這週有幾次餐具留在桌上\n影響：想用桌子前要先整理，覺得有點困擾\n討論：能否約定收拾的時間\n開場：我想和你討論一下桌面的使用，現在方便嗎？', en: 'Topic: shared space cleanup\nNoticed: dishes left several times\nImpact: have to clear table first, a bit bothered\nDiscuss: can we agree on cleanup time\nOpening: I want to discuss the table, is now okay?' },
+  askhelp: { zh: '類型：聽我說\n對象：朋友\n內容：最近有些事想說\n溫和說法：我最近有些事想說，想找人聽一聽。你方便找個時間聊一下嗎？', en: 'Type: listen\nWho: friend\nWhat: some things I want to talk about\nGentle: I have some things I want to talk about. Do you have time to chat?' },
+  phone: { zh: '情況：睡前滑不停\n原本想做：查一個資料\n停下提示：看完這一則\n放下後：把手機翻面放桌上', en: 'Situation: scroll before bed\nWanted: look something up\nStop cue: after this one\nAfter: place phone face down' },
   smallstep: { zh: '我想處理：整理房間\n卡在：太大了\n第一小步：先整理桌面的一個角落\n開始時機：晚餐後\n做到這裡先停：桌面清出可以放筆電的空間', en: 'Task: tidy the room\nStuck: too big\nFirst step: tidy one corner of the desk\nWhen: after dinner\nStop: when there is space for laptop' },
   tasksep: {
       fields: [
@@ -1652,6 +1664,9 @@ const toolNotes = {
   boundary: '表達界線不能保證對方接受。你可以決定自己如何回應。',
   goodenough: '認真不是問題，問題是沒有終點。這張卡是幫你畫一條終點線。做到「一定要有的」，就是完成了。',
   smallstep: '不用一次做完，先找一個你願意開始的動作。小步驟是為了讓開始比較可行。',
+  convo: '從自己的角度說，避免評價對方。我訊息是：具體事件 + 感受 + 影響 + 提議。',
+  askhelp: '對方可以拒絕或協商；不把回應當作是否在乎的證明。',
+  phone: '不需戒掉手機，而是先規劃使用範圍。為單次使用設結束點。',
   values: '排序沒有標準答案，也不分析個人類型。排序只代表「現在」，過一陣子改變很正常。'
 
 };
@@ -1679,6 +1694,17 @@ const toolFAQ = {
     { q: '對方不接受怎麼辦？', a: '句型不能控制對方反應。你可以先暫停，想想自己能採取的下一步或需要的支持。' },
     { q: '工具會替我傳訊息嗎？', a: '不會。內容由你編輯與複製，是否使用由你決定。' }
   ],
+  convo: [
+    { q: '這和界線表達有什麼不同？', a: '我訊息用於開啟討論找安排，界線表達著重能接受與不能接受的範圍。可搭配使用。' }
+  ],
+  askhelp: [
+    { q: '工具會替我傳訊息嗎？', a: '不會。內容由你編輯與複製，是否送出由你決定。' },
+    { q: '對方拒絕了怎麼辦？', a: '對方可以拒絕或協商。可以說「謝謝你告訴我，我會再想其他安排」。' }
+  ],
+  phone: [
+    { q: '這會鎖我的手機嗎？', a: '不會。這只是幫你為單次使用設一個結束點。' },
+    { q: '我需要戒手機嗎？', a: '不用。手機是工具，只是規劃這次怎麼用。' }
+  ],
   smallstep: [
     { q: '第一小步要多小？', a: '小到你現在做得到。五分鐘、一個角落、一件事，都可以。' },
     { q: '今天先不開始可以嗎？', a: '可以。有時候先決定「今天不做」也是一種整理。' }
@@ -1686,6 +1712,17 @@ const toolFAQ = {
   goodenough: [
     { q: '這是叫我隨便做嗎？', a: '不是。這張卡是先訂好「做到哪裡算完成」，讓你把力氣放在真正重要的地方。' },
     { q: '如果交出去被說不夠好怎麼辦？', a: '可以把回饋寫下來，下次的標準就會更準。被說需要修改，也不代表你不夠好。' }
+  ],
+  convo: [
+    { q: '這和界線表達有什麼不同？', a: '我訊息用於開啟討論找安排，界線表達著重能接受與不能接受的範圍。可搭配使用。' }
+  ],
+  askhelp: [
+    { q: '工具會替我傳訊息嗎？', a: '不會。內容由你編輯與複製，是否送出由你決定。' },
+    { q: '對方拒絕了怎麼辦？', a: '對方可以拒絕或協商。可以說「謝謝你告訴我，我會再想其他安排」。' }
+  ],
+  phone: [
+    { q: '這會鎖我的手機嗎？', a: '不會。這只是幫你為單次使用設一個結束點。' },
+    { q: '我需要戒手機嗎？', a: '不用。手機是工具，只是規劃這次怎麼用。' }
   ],
   smallstep: [
     { q: '一定要選卡點嗎？', a: '不用。略過時會用通用提示。' },
