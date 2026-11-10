@@ -1115,6 +1115,8 @@ function resetGuided() {
 const examples = {
   thoughtcheck: { zh: '發生的事：週一會議上，主管說報告要重做一部分\n當下的想法：我一定又搞砸了\n支持的線索：報告確實有一段要重寫\n不太支持的線索：主管只點出其中一段；上個月的報告他說做得很清楚\n比較完整的看法：這次有一段需要修改，不代表我整體能力不夠', en: 'Event: Manager said report needs partial rework\nThought: I must have messed up\nSupporting: One section needs rewrite\nAgainst: Manager only pointed out one section; last month he said it was clear\nBalanced: One section needs work, does not mean I am not capable' },
   compassion: { zh: '原本的話：你怎麼又拖到最後一刻，真的很沒用\n遇到的困難：這週有三個截止日，晚上又睡不好\n我需要：休息、多一點時間\n新的說法：這週真的很多，我已經盡力了。拖到現在不代表我沒用\n小行動：今天先完成最急的那一份', en: 'Harsh: Why did you leave it to the last minute\nDifficulty: Three deadlines this week, poor sleep\nNeed: Rest, more time\nNew: This week was a lot, I did my best\nAction: Finish the most urgent one today' },
+  goodenough: { zh: '這件事：週五要交的企劃簡報\n目的：讓團隊了解進度\n一定要有：目標、進度、下一步\n有很好沒有也可以：精美的圖表\n停手：到一個時間就停', en: 'Task: Friday presentation\nPurpose: Update the team\nMust have: goal, progress, next step\nNice to have: polished charts\nStop: at a set time' },
+  smallstep: { zh: '我想處理：整理房間\n卡在：太大了\n第一小步：先整理桌面的一個角落\n開始時機：晚餐後\n做到這裡先停：桌面清出可以放筆電的空間', en: 'Task: tidy the room\nStuck: too big\nFirst step: tidy one corner of the desk\nWhen: after dinner\nStop: when there is space for laptop' },
   tasksep: { zh: '事件：家人希望我每週末都回家，但我也需要休息\n我能決定：先確認這個月自己有空的週末\n由對方決定：家人是否喜歡我的安排\n需要一起協商：探望頻率與其他聯絡方式\n我願意做的：先提出這個月可以回家的日期', en: 'Event: Family wants me home every weekend, but I need rest\nI can decide: Check which weekends I am free\nThey decide: Whether they like my arrangement\nNegotiate: Visit frequency and other contact\nI will do: Propose dates I can come home' },
   feelings: { zh: '我記下的事情：原本的安排臨時改變\n我注意到的感受：失望、困惑\n我現在可能需要：更清楚的資訊\n我願意先試的一件事：先確認新的安排', en: 'What happened: Plans changed suddenly\nFeelings: disappointed, confused\nNeed: clearer information\nWilling to try: confirm the new arrangement' },
   worry: { zh: '擔心：明天會議會不會出錯\n可以行動：準備議程、提早到\n先放著：如果大家覺得我說得不好\n擔心時間：每天晚上八點，十分鐘', en: 'Worry: What if the meeting goes badly\nCan act: prepare agenda, arrive early\nPark: What if people think I spoke poorly\nWorry time: 8 pm daily, 10 minutes' },
@@ -1486,7 +1488,9 @@ function renderSinglePageForm(toolId) {
         { key: 'opening', type: 'text', label: isZh ? '我想怎麼開頭？（選填）' : 'How to start? (optional)', placeholder: isZh ? '例：有件事想跟你聊聊' : 'e.g. there is something I want to talk about' }
       ]
     },
-    tasksep: {
+    goodenough: { zh: '這件事：週五要交的企劃簡報\n目的：讓團隊了解進度\n一定要有：目標、進度、下一步\n有很好沒有也可以：精美的圖表\n停手：到一個時間就停', en: 'Task: Friday presentation\nPurpose: Update the team\nMust have: goal, progress, next step\nNice to have: polished charts\nStop: at a set time' },
+  smallstep: { zh: '我想處理：整理房間\n卡在：太大了\n第一小步：先整理桌面的一個角落\n開始時機：晚餐後\n做到這裡先停：桌面清出可以放筆電的空間', en: 'Task: tidy the room\nStuck: too big\nFirst step: tidy one corner of the desk\nWhen: after dinner\nStop: when there is space for laptop' },
+  tasksep: {
       fields: [
         { key: 'situation', type: 'text', label: isZh ? '我現在在意的一件事' : 'One thing I care about', placeholder: isZh ? '例：家人希望我每週末都回家' : 'e.g. family wants me home every weekend' },
         { key: 'mine', type: 'text', label: isZh ? '我能決定的' : 'What I can decide', placeholder: isZh ? '例：我的時間安排' : 'e.g. my schedule' },
@@ -1645,7 +1649,11 @@ const toolNotes = {
   compassion: '不用勉強說服自己「我很棒」，新的說法只要比原來溫和一點、讀了能接受就好。',
   tasksep: '分清楚不代表別人的感受與你無關；共同生活、照顧或工作分工，常常需要一起討論。',
   worry: '不是要你停止擔心，而是讓擔心有地方放。',
-  boundary: '表達界線不能保證對方接受。你可以決定自己如何回應。'
+  boundary: '表達界線不能保證對方接受。你可以決定自己如何回應。',
+  goodenough: '認真不是問題，問題是沒有終點。這張卡是幫你畫一條終點線。做到「一定要有的」，就是完成了。',
+  smallstep: '不用一次做完，先找一個你願意開始的動作。小步驟是為了讓開始比較可行。',
+  values: '排序沒有標準答案，也不分析個人類型。排序只代表「現在」，過一陣子改變很正常。'
+
 };
 
 function renderToolNote(toolId) {
@@ -1674,6 +1682,14 @@ const toolFAQ = {
   smallstep: [
     { q: '第一小步要多小？', a: '小到你現在做得到。五分鐘、一個角落、一件事，都可以。' },
     { q: '今天先不開始可以嗎？', a: '可以。有時候先決定「今天不做」也是一種整理。' }
+  ],
+  goodenough: [
+    { q: '這是叫我隨便做嗎？', a: '不是。這張卡是先訂好「做到哪裡算完成」，讓你把力氣放在真正重要的地方。' },
+    { q: '如果交出去被說不夠好怎麼辦？', a: '可以把回饋寫下來，下次的標準就會更準。被說需要修改，也不代表你不夠好。' }
+  ],
+  smallstep: [
+    { q: '一定要選卡點嗎？', a: '不用。略過時會用通用提示。' },
+    { q: '今天真的沒力氣怎麼辦？', a: '選「今天先不開始」，不會被記成失敗。' }
   ],
   compassion: [
     { q: '寫不出來怎麼辦？', a: '可以先空著，或只寫你能接受的部分。不用完美。' },
