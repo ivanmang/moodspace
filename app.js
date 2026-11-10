@@ -599,6 +599,7 @@ function renderBoundaryPage() {
   
   html += `<p style="margin-top:2rem; color:var(--text-soft); font-size:0.9rem;">${isZh ? '表達界線不能保證對方接受。如果你擔心說出口會受到威脅或傷害，可以先暫停練習，尋求可信任的人或適當支持。' : 'Setting boundaries cannot guarantee acceptance. If you worry about safety, pause and seek support.'}</p>`;
   
+  html += renderToolFAQ('boundary');
   return html;
 }
 
@@ -1614,7 +1615,63 @@ function submitSingleForm(toolId) {
   }
   result += `<div class="actions" style="margin-top:1rem;"><button class="btn" onclick="window.print()">${isZh ? '列印' : 'Print'}</button></div></div>`;
   
-  document.getElementById('form-result').innerHTML = result;
+  document.getElementById('form-result').innerHTML = result + renderFollowup(toolId) + renderToolFAQ(toolId);
+}
+
+
+
+
+// Follow-up suggestions
+const toolFollowup = {
+  worry: isZh => isZh ? '如果常常睡前想太多，可以試著把擔心時間排在睡前一兩個小時以前。如果擔心已經讓你很難睡、很難工作，可以找專業人員聊聊。' : 'If you worry a lot before bed, try scheduling worry time earlier. If worry affects sleep or work, consider talking to a professional.',
+  feelings: isZh => isZh ? '整理完可以試著做一件照顧自己的小事，或找人聊聊。' : 'After sorting, try one small self-care thing or talk to someone.',
+  smallstep: isZh => isZh ? '做完第一小步後，可以再回來寫下一個小步。' : 'After the first step, come back to write the next one.'
+};
+
+function renderFollowup(toolId) {
+  const fn = toolFollowup[toolId];
+  if (!fn) return '';
+  const text = fn(lang === 'zh');
+  return `<p style="margin-top:1rem; padding:0.8rem; background:var(--accent-light); border-radius:6px; font-size:0.9rem;">${text}</p>`;
+}
+
+// FAQ for tools
+const toolFAQ = {
+  feelings: [
+    { q: '可以同時選相反的感受嗎？', a: '可以。不同感受可以同時存在，工具不會替你解釋矛盾。' },
+    { q: '這會分析我的情緒嗎？', a: '不會。沒有評分、不產生病名，也不會從選項推論原因。' },
+    { q: '什麼都沒選可以繼續嗎？', a: '可以。結果會寫「尚未整理」，不會自動幫你填。' }
+  ],
+  worry: [
+    { q: '擔心時間真的有用嗎？', a: '這是公共衛生單位常推薦的自助方法，很多人覺得有幫助，但不是每個人都適合。試一兩週看看，不適合就換別的方法。' },
+    { q: '擔心的事情是真的，不是想太多，也能用嗎？', a: '可以。這個方法不是在說你的擔心不合理，而是讓你不用整天被它追著跑。' },
+    { q: '我寫的擔心會被存起來嗎？', a: '不會。內容只在這次頁面操作裡，重新整理就不見了；想留著請複製或列印。' }
+  ],
+  boundary: [
+    { q: '這句話適合所有人嗎？', a: '不一定。請按關係、處境與自己的安全感調整，不需要照著念。' },
+    { q: '對方不接受怎麼辦？', a: '句型不能控制對方反應。你可以先暫停，想想自己能採取的下一步或需要的支持。' },
+    { q: '工具會替我傳訊息嗎？', a: '不會。內容由你編輯與複製，是否使用由你決定。' }
+  ],
+  smallstep: [
+    { q: '第一小步要多小？', a: '小到你現在做得到。五分鐘、一個角落、一件事，都可以。' },
+    { q: '今天先不開始可以嗎？', a: '可以。有時候先決定「今天不做」也是一種整理。' }
+  ],
+  compassion: [
+    { q: '寫不出來怎麼辦？', a: '可以先空著，或只寫你能接受的部分。不用完美。' },
+    { q: '這會讓我變得不努力嗎？', a: '不會。對自己溫和不是放棄，是給自己繼續的空間。' }
+  ]
+};
+
+function renderToolFAQ(toolId) {
+  const faqs = toolFAQ[toolId];
+  if (!faqs) return '';
+  const isZh = lang === 'zh';
+  let html = `<details style="margin-top:2rem;"><summary style="cursor:pointer; font-weight:500; color:var(--accent);">${isZh ? '常見問題' : 'FAQ'}</summary><div style="margin-top:1rem;">`;
+  faqs.forEach(f => {
+    html += `<p style="margin:0.8rem 0;"><strong>${f.q}</strong><br><span style="color:var(--text-soft);">${f.a}</span></p>`;
+  });
+  html += '</div></details>';
+  return html;
 }
 
 
