@@ -67,7 +67,9 @@ header {
   color: var(--accent-dark);
   font-size: 0.9rem;
 }
-.lang-toggle:hover, .theme-toggle:hover { background: #d4ebe3; }
+.lang-toggle, .theme-toggle { transition: transform 0.15s ease, background 0.15s ease; }
+.lang-toggle:hover, .theme-toggle:hover { background: #d4ebe3; transform: scale(1.05); }
+.lang-toggle:active, .theme-toggle:active { transform: scale(0.98); }
 main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
 h1 { font-size: 2rem; margin: 0 0 0.5rem; color: var(--accent-dark); }
 .subtitle { color: var(--text-soft); margin-bottom: 2rem; font-size: 1.05rem; }
@@ -87,12 +89,21 @@ h1 { font-size: 2rem; margin: 0 0 0.5rem; color: var(--accent-dark); }
   border-radius: 8px;
   padding: 1rem;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   text-decoration: none;
   color: inherit;
   display: block;
 }
-.tool-card:hover { border-color: var(--accent); background: var(--accent-light); transform: translateY(-2px); }
+.tool-card:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+.tool-card:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
 .tool-card h3 { margin: 0 0 0.3rem; font-size: 1rem; }
 .tool-card p { margin: 0; font-size: 0.85rem; color: var(--text-soft); }
 #tool-view { display: none; }
@@ -123,12 +134,17 @@ h1 { font-size: 2rem; margin: 0 0 0.5rem; color: var(--accent-dark); }
   padding: 0.4rem 0.9rem;
   cursor: pointer;
   font-size: 0.9rem;
-  transition: all 0.1s;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.option-btn:hover {
+  border-color: var(--accent);
+  transform: scale(1.04);
 }
 .option-btn.selected {
   background: var(--accent);
   color: white;
   border-color: var(--accent);
+  transform: scale(1.02);
 }
 textarea, input[type="text"] {
   width: 100%;
@@ -159,7 +175,9 @@ textarea:focus, input:focus { outline: none; border-color: var(--accent); }
   cursor: pointer;
   font-weight: 500;
 }
-.btn:hover { background: var(--accent-dark); }
+.btn { transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease; }
+.btn:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 3px 10px rgba(91,140,122,0.25); }
+.btn:active { transform: translateY(0); box-shadow: none; }
 .btn.secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 .timer-display {
   font-size: 3.5rem;
@@ -203,4 +221,14 @@ footer {
   main { padding: 1.2rem 1rem; }
   h1 { font-size: 1.6rem; }
   .tools { grid-template-columns: 1fr; }
+}
+
+details summary {
+  transition: color 0.15s ease;
+}
+details summary:hover {
+  color: var(--accent);
+}
+details[open] summary {
+  color: var(--accent-dark);
 }
