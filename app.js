@@ -411,14 +411,18 @@ function getSteps(id) {
   ];
 
   if (id === 'sayingno') return [
-    { key: 'request', type: 'text', explain: isZh ? '對方要求什麼？' : 'What are they asking?', title: isZh ? '對方的要求是…' : 'They are asking…', placeholder: isZh ? '例：週末加班、借錢、參加聚會' : 'e.g. work overtime, lend money, attend a gathering' },
-    { key: 'reason', type: 'text', explain: isZh ? '你想拒絕的原因。可以只寫給自己看。' : 'Why you want to say no. This can be just for yourself.', title: isZh ? '我想拒絕因為…' : 'I want to say no because…', placeholder: isZh ? '例：已經有安排、沒有餘力、不想去' : 'e.g. already have plans, no capacity, don\'t want to' },
-    { key: 'phrase', type: 'text', explain: isZh ? '練習一句說得出口的拒絕。' : 'Practice a refusal you can actually say.', hint: isZh ? '可以溫和，也可以直接' : 'Can be gentle or direct', title: isZh ? '我可以這樣說：' : 'I can say:', placeholder: isZh ? '例：這次我沒辦法，謝謝你想到我' : 'e.g. I can\'t this time, thanks for thinking of me' }
+    { key: 'request', type: 'text', explain: isZh ? '對方要求什麼？' : 'What are they asking?', title: isZh ? '1. 對方的要求' : '1. The request', placeholder: isZh ? '例：週末加班、借錢、參加聚會' : 'e.g. overtime, lend money, attend gathering' },
+    { key: 'feeling', type: 'text', explain: isZh ? '你的感覺是？' : 'How do you feel?', title: isZh ? '2. 我的感覺' : '2. My feeling', placeholder: isZh ? '例：不想去、沒有餘力、不舒服' : 'e.g. don\'t want to, no capacity, uncomfortable' },
+    { key: 'reason', type: 'text', explain: isZh ? '想拒絕的原因。可以只寫給自己看。' : 'Why you want to say no. Can be just for yourself.', title: isZh ? '3. 原因' : '3. Reason', placeholder: isZh ? '例：已經有安排、需要休息' : 'e.g. already have plans, need rest' },
+    { key: 'phrase', type: 'text', explain: isZh ? '練習一句說得出口的拒絕。' : 'Practice a refusal you can say.', title: isZh ? '4. 我可以這樣說' : '4. I can say', placeholder: isZh ? '例：這次我沒辦法，謝謝你想到我' : 'e.g. I can\'t this time, thanks for thinking of me' },
+    { key: 'backup', type: 'text', explain: isZh ? '如果對方繼續要求？選填。' : 'If they keep asking? Optional.', title: isZh ? '5. 如果繼續要求（選填）' : '5. If they persist (optional)', placeholder: isZh ? '例：轉換話題、找藉口離開' : 'e.g. change topic, find excuse to leave' }
   ];
   if (id === 'apology') return [
-    { key: 'what', type: 'text', explain: isZh ? '發生了什麼事？只寫你記得的。' : 'What happened? Just what you remember.', title: isZh ? '發生了什麼？' : 'What happened?', placeholder: isZh ? '例：我遲到了，讓大家等' : 'e.g. I was late and made everyone wait' },
-    { key: 'my part', type: 'text', explain: isZh ? '你願意負責的部分。' : 'The part you are willing to own.', title: isZh ? '我的部分是…' : 'My part is…', placeholder: isZh ? '例：我沒有提早出門' : 'e.g. I didn\'t leave early enough' },
-    { key: 'phrase', type: 'text', explain: isZh ? '寫一句道歉。不用完美。' : 'Write an apology. Not perfect.', title: isZh ? '我想說：' : 'I want to say:', placeholder: isZh ? '例：抱歉讓你們等，下次我會提早出門' : 'e.g. Sorry for making you wait, I\'ll leave earlier next time' }
+    { key: 'what', type: 'text', explain: isZh ? '發生了什麼事？' : 'What happened?', title: isZh ? '1. 發生了什麼' : '1. What happened', placeholder: isZh ? '例：我遲到了，讓大家等' : 'e.g. I was late, made everyone wait' },
+    { key: 'impact', type: 'text', explain: isZh ? '這件事的影響？' : 'The impact?', title: isZh ? '2. 影響' : '2. Impact', placeholder: isZh ? '例：大家等了十五分鐘' : 'e.g. everyone waited 15 minutes' },
+    { key: 'mypart', type: 'text', explain: isZh ? '你願意負責的部分。' : 'Your part.', title: isZh ? '3. 我的部分' : '3. My part', placeholder: isZh ? '例：我沒有提早出門' : 'e.g. I didn\'t leave early enough' },
+    { key: 'phrase', type: 'text', explain: isZh ? '寫一句道歉。' : 'Write an apology.', title: isZh ? '4. 我想說' : '4. I want to say', placeholder: isZh ? '例：抱歉讓你們等，下次我會提早出門' : 'e.g. sorry for making you wait, I\'ll leave earlier' },
+    { key: 'next', type: 'text', explain: isZh ? '之後可以做什麼？選填。' : 'What can I do after? Optional.', title: isZh ? '5. 之後（選填）' : '5. After (optional)', placeholder: isZh ? '例：設定提早出門的提醒' : 'e.g. set a reminder to leave earlier' }
   ];
   if (id === 'threegood') return [
     { key: 'g1', type: 'text', explain: isZh ? '第一件。小事也可以。' : 'First one. Small things count.', title: isZh ? '第一件好事' : 'First good thing', placeholder: isZh ? '例：午餐很好吃' : 'e.g. lunch was good' },
@@ -426,24 +430,35 @@ function getSteps(id) {
     { key: 'g3', type: 'text', explain: isZh ? '第三件。' : 'Third one.', title: isZh ? '第三件好事' : 'Third good thing', placeholder: isZh ? '例：準時下班' : 'e.g. left work on time' }
   ];
   if (id === 'stresscheck') return [
-    { key: 'sources', type: 'text', explain: isZh ? '列出目前的壓力來源。一行一個。' : 'List current stress sources. One per line.', title: isZh ? '壓力來源' : 'Stress sources', placeholder: isZh ? '例：工作截止日期、家裡的事、睡眠不好' : 'e.g. work deadline, family matters, poor sleep' },
-    { key: 'one', type: 'text', explain: isZh ? '挑一個可以先處理的。' : 'Pick one you can address first.', title: isZh ? '我可以先處理…' : 'I can address first…', placeholder: isZh ? '例：今晚早點睡' : 'e.g. sleep earlier tonight' }
+    { key: 'sources', type: 'text', explain: isZh ? '列出目前的壓力來源。一行一個。' : 'List stress sources. One per line.', title: isZh ? '1. 壓力來源' : '1. Stress sources', placeholder: isZh ? '例：工作截止日期、家裡的事、睡眠不好' : 'e.g. work deadline, family, poor sleep' },
+    { key: 'impact', type: 'multi', max: 3, explain: isZh ? '這些壓力影響到什麼？' : 'What do these affect?', title: isZh ? '2. 影響到' : '2. Affects', options: isZh ? ['睡眠','食慾','情緒','專注','人際','身體'] : ['Sleep','Appetite','Mood','Focus','Relationships','Body'] },
+    { key: 'control', type: 'single', explain: isZh ? '哪些是我能做點什麼的？' : 'Which can I do something about?', title: isZh ? '3. 我能做點什麼的' : '3. What I can address', options: isZh ? ['大部分可以','只有少數','大部分先擱置','還不確定'] : ['Most','Only a few','Most can wait','Not sure'] },
+    { key: 'one', type: 'text', explain: isZh ? '挑一個可以先處理的。' : 'Pick one to address first.', title: isZh ? '4. 我可以先處理' : '4. Address first', placeholder: isZh ? '例：今晚早點睡' : 'e.g. sleep earlier tonight' }
   ];
   if (id === 'energycheck') return [
-    { key: 'level', type: 'single', explain: isZh ? '現在的能量大概在哪？' : 'Where is your energy right now?', title: isZh ? '現在的能量' : 'Energy right now', options: isZh ? ['很高，可以做難的事','普通，可以做簡單的事','偏低，只想做輕鬆的','很低，需要休息'] : ['High, can do hard things','Okay, can do simple things','Low, only easy things','Very low, need rest'] },
-    { key: 'fit', type: 'text', explain: isZh ? '根據能量，現在適合做什麼？' : 'Based on your energy, what fits right now?', title: isZh ? '現在適合做…' : 'What fits right now…', placeholder: isZh ? '例：回幾封簡單的信、休息一下' : 'e.g. reply to a few simple emails, rest a bit' }
+    { key: 'level', type: 'single', explain: isZh ? '現在的能量大概在哪？' : 'Where is your energy?', title: isZh ? '1. 現在的能量' : '1. Energy now', options: isZh ? ['很高，可以做難的事','普通，可以做簡單的事','偏低，只想做輕鬆的','很低，需要休息'] : ['High','Okay','Low','Very low'] },
+    { key: 'body', type: 'text', explain: isZh ? '身體有什麼感覺？選填。' : 'Body sensations? Optional.', title: isZh ? '2. 身體感覺（選填）' : '2. Body (optional)', placeholder: isZh ? '例：肩膀緊、眼睛累' : 'e.g. tight shoulders, tired eyes' },
+    { key: 'fit', type: 'text', explain: isZh ? '根據能量，現在適合做什麼？' : 'What fits right now?', title: isZh ? '3. 現在適合做' : '3. What fits', placeholder: isZh ? '例：回幾封簡單的信、休息一下' : 'e.g. reply to simple emails, rest' },
+    { key: 'avoid', type: 'text', explain: isZh ? '現在不適合做什麼？選填。' : 'What to avoid? Optional.', title: isZh ? '4. 先不做（選填）' : '4. Avoid (optional)', placeholder: isZh ? '例：重要的決定、長時間會議' : 'e.g. important decisions, long meetings' }
   ];
   if (id === 'socialbattery') return [
-    { key: 'level', type: 'single', explain: isZh ? '社交後的感覺？' : 'How do you feel after socializing?', title: isZh ? '現在的社交電量' : 'Social battery now', options: isZh ? ['還有電，可以繼續','有點累，但還可以','很累，想獨處','完全沒電，需要充電'] : ['Still charged, can continue','A bit tired, but okay','Very tired, want to be alone','Empty, need to recharge'] },
-    { key: 'action', type: 'text', explain: isZh ? '根據電量，你想怎麼做？' : 'Based on your battery, what do you want to do?', title: isZh ? '我決定…' : 'I decide to…', placeholder: isZh ? '例：早點回家、約下次再聚' : 'e.g. go home early, plan to meet another time' }
+    { key: 'level', type: 'single', explain: isZh ? '社交後的感覺？' : 'How do you feel after socializing?', title: isZh ? '1. 現在的社交電量' : '1. Social battery', options: isZh ? ['還有電，可以繼續','有點累，但還可以','很累，想獨處','完全沒電，需要充電'] : ['Still charged','A bit tired','Very tired','Empty'] },
+    { key: 'signs', type: 'multi', max: 3, explain: isZh ? '你注意到什麼？' : 'What do you notice?', title: isZh ? '2. 我注意到' : '2. I notice', options: isZh ? ['不想說話','想回家','容易煩躁','頭有點痛','還可以'] : ['Don\'t want to talk','Want to go home','Easily irritated','Slight headache','Still okay'] },
+    { key: 'action', type: 'text', explain: isZh ? '根據電量，你想怎麼做？' : 'What do you want to do?', title: isZh ? '3. 我決定' : '3. I decide', placeholder: isZh ? '例：早點回家、約下次再聚' : 'e.g. go home early, meet another time' },
+    { key: 'recharge', type: 'text', explain: isZh ? '之後怎麼充電？選填。' : 'How to recharge later? Optional.', title: isZh ? '4. 充電方式（選填）' : '4. Recharge (optional)', placeholder: isZh ? '例：回家休息、聽歌、獨處' : 'e.g. rest at home, listen to music, be alone' }
   ];
   if (id === 'goalreview') return [
-    { key: 'goal', type: 'text', explain: isZh ? '你的目標是什麼？' : 'What is your goal?', title: isZh ? '目標' : 'Goal', placeholder: isZh ? '例：每週運動三次' : 'e.g. exercise three times a week' },
-    { key: 'now', type: 'text', explain: isZh ? '現在在哪？' : 'Where are you now?', title: isZh ? '目前進度' : 'Current progress', placeholder: isZh ? '例：這週動了一次' : 'e.g. exercised once this week' },
-    { key: 'next', type: 'text', explain: isZh ? '下一步是什麼？' : 'What is the next step?', title: isZh ? '下一步' : 'Next step', placeholder: isZh ? '例：明天早上出門前做十分鐘' : 'e.g. do ten minutes before leaving tomorrow' }
+    { key: 'goal', type: 'text', explain: isZh ? '你的目標是什麼？' : 'What is your goal?', title: isZh ? '1. 目標' : '1. Goal', placeholder: isZh ? '例：每週運動三次' : 'e.g. exercise three times a week' },
+    { key: 'why', type: 'text', explain: isZh ? '為什麼這個目標重要？' : 'Why is this important?', title: isZh ? '2. 為什麼重要' : '2. Why important', placeholder: isZh ? '例：想要更有精神' : 'e.g. want more energy' },
+    { key: 'now', type: 'text', explain: isZh ? '現在在哪？' : 'Where are you now?', title: isZh ? '3. 目前進度' : '3. Progress', placeholder: isZh ? '例：這週動了一次' : 'e.g. exercised once this week' },
+    { key: 'block', type: 'text', explain: isZh ? '卡在哪裡？選填。' : 'Where are you stuck? Optional.', title: isZh ? '4. 卡點（選填）' : '4. Block (optional)', placeholder: isZh ? '例：下班後太累' : 'e.g. too tired after work' },
+    { key: 'next', type: 'text', explain: isZh ? '下一步是什麼？' : 'What is the next step?', title: isZh ? '5. 下一步' : '5. Next step', placeholder: isZh ? '例：明天早上出門前做十分鐘' : 'e.g. do ten minutes before leaving' }
   ];
   if (id === 'selfaffirm') return [
-    { key: 'affirm', type: 'text', explain: isZh ? '對自己說一句真實的話。不用完美，寫得出來就好。' : 'Say one true thing to yourself. Not perfect — just something you can accept.', hint: isZh ? '可以是很小的事' : 'Can be something small', title: isZh ? '我對自己說：' : 'I say to myself:', placeholder: isZh ? '例：我今天有努力、我已經盡力了' : 'e.g. I tried today, I did my best' }
+    { key: 'context', type: 'text', explain: isZh ? '最近發生了什麼，讓你想對自己說一句話？' : 'What happened recently that makes you want to say something to yourself?', title: isZh ? '1. 背景' : '1. Context', placeholder: isZh ? '例：工作沒做完、和人起衝突' : 'e.g. didn\'t finish work, had a conflict' },
+    { key: 'harsh', type: 'text', explain: isZh ? '你對自己說了什麼？' : 'What did you say to yourself?', title: isZh ? '2. 對自己說的話' : '2. What I said', placeholder: isZh ? '例：我怎麼這麼沒用' : 'e.g. why am I so useless' },
+    { key: 'affirm', type: 'text', explain: isZh ? '試著說一句真實的、你能接受的話。' : 'Try saying something true that you can accept.', title: isZh ? '3. 我對自己說' : '3. I say to myself', placeholder: isZh ? '例：我今天有努力、這件事確實很難' : 'e.g. I tried today, this was hard' },
+    { key: 'action', type: 'text', explain: isZh ? '一個小行動。選填。' : 'One small action. Optional.', title: isZh ? '4. 小行動（選填）' : '4. Small action (optional)', placeholder: isZh ? '例：休息一下、喝杯水' : 'e.g. rest a bit, drink water' }
   ];
   return [];
 }
