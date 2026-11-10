@@ -69,6 +69,17 @@ const tools = [
   { id: 'selfbreak', cat: 'emotions', zh: { name: '自我同理休息', desc: '用三句話給自己一點空間：承認困難、看到共同性、給自己溫柔' }, en: { name: 'Self-Compassion Break', desc: 'Offer yourself three phrases: acknowledge difficulty, note shared experience, be kind' } },
   { id: 'bodycheck', cat: 'emotions', zh: { name: '身體覺察地圖', desc: '想看看現在身體哪裡緊、哪裡有感覺？選部位，記下感覺，整理成一張覺察卡。' }, en: { name: 'Body Awareness', desc: 'Quickly scan your body, mark where you notice sensation, then describe it' } },
   { id: 'sleep', cat: 'pause', zh: { name: '睡前放鬆流程產生器', desc: '睡前腦袋停不下來時，選想做的活動，排出一份今晚的睡前流程。' }, en: { name: 'Bedtime Wind-Down', desc: 'Choose 2–3 simple wind-down steps for tonight' } },
+
+  { id: 'tasksorter', cat: 'emotions', zh: { name: '腦中待辦整理器', desc: '待辦事情太多？先分成四類，再挑出今天想處理的一件事。' }, en: { name: 'Task Sorter', desc: 'Too many tasks? Sort into four categories, then pick one for today.' } },
+  { id: 'askhelp', cat: 'communication', zh: { name: '開口求助練習', desc: '想請別人幫忙，卻不知道怎麼開口？先整理一段可以修改的訊息。' }, en: { name: 'Asking for Help', desc: 'Want to ask for help but don\'t know how? Draft a message you can edit.' } },
+  { id: 'careguide', cat: 'communication', zh: { name: '我的陪伴說明書', desc: '想讓身邊的人知道你低落時需要什麼？整理適合自己的陪伴方式。' }, en: { name: 'My Care Guide', desc: 'Want others to know how to support you when you are low? Write your care preferences.' } },
+  { id: 'lowenergy', cat: 'actions', zh: { name: '低能量活動菜單', desc: '提不起勁時，從負擔較小的活動中挑一件目前做得到的事。' }, en: { name: 'Low Energy Menu', desc: 'When energy is low, pick one small activity you can do right now.' } },
+  { id: 'docprep', cat: 'help', zh: { name: '看診前準備單', desc: '準備看身心科或回診？先記下近期變化、用藥情況和要問醫師的事。' }, en: { name: 'Doctor Visit Prep', desc: 'Preparing for a doctor visit? Note recent changes, medications, and questions.' } },
+  { id: 'breakup', cat: 'emotions', zh: { name: '分手後這一週', desc: '剛結束一段關係？找出最難熬的時段，替每一段先準備一件小事。' }, en: { name: 'After a Breakup', desc: 'Just ended a relationship? Identify hard moments and prepare one small thing for each.' } },
+  { id: 'transition', cat: 'emotions', zh: { name: '生活變動適應卡', desc: '搬家、轉職、畢業或家裡有變化？把想保留、可以調整和還不確定的事分開寫。' }, en: { name: 'Life Transition Card', desc: 'Moving, changing jobs, graduating? Sort what to keep, adjust, and what is still unclear.' } },
+  { id: 'relpause', cat: 'communication', zh: { name: '關係不安時的暫停卡', desc: '訊息還沒回，心裡有些不安？先整理感受，再決定如何回應。' }, en: { name: 'Relationship Pause Card', desc: 'Message not replied, feeling uneasy? Organize feelings, then decide how to respond.' } },
+  { id: 'examprep', cat: 'actions', zh: { name: '考試、面試前準備清單', desc: '考試或面試快到了？依還有幾天整理出要確認的事。' }, en: { name: 'Exam / Interview Prep', desc: 'Exam or interview coming up? Organize what to check based on days remaining.' } },
+  { id: 'pmr', cat: 'pause', zh: { name: '漸進式肌肉放鬆', desc: '身體一直很緊時，跟著提示一組一組收緊再放開。不舒服的部位隨時跳過。' }, en: { name: 'Progressive Muscle Relaxation', desc: 'Body tense? Follow prompts to tense and release muscle groups. Skip any that feel uncomfortable.' } },
   { id: 'counselprep', cat: 'help', zh: { name: '第一次諮商準備包', desc: '正在考慮心理諮商？先整理想談的內容和想問的問題。' }, en: { name: 'Counseling Prep', desc: 'Organize topics, main concern, and anything you want the counselor to know' } },
 ];
 
@@ -246,6 +257,52 @@ function getSteps(id) {
     { key: 'note', type: 'text', title: isZh ? '有什麼我希望輔導師知道的？' : 'Anything I want the counselor to know?' }
   ];
 
+
+  if (id === 'tasksorter') return [
+    { key: 'tasks', type: 'text', explain: isZh ? '把腦中的事情一件件寫下來，一行一個。' : 'Write each task on its own line.', hint: isZh ? '最多寫 10 件就好' : 'Up to 10 is enough', title: isZh ? '腦中有哪些待辦？' : 'What tasks are on your mind?', placeholder: isZh ? '例：回覆訊息、整理房間、準備會議' : 'e.g. reply to messages, tidy room, prepare meeting' },
+    { key: 'today', type: 'text', explain: isZh ? '從上面挑一件今天有意願也有條件處理的。' : 'Pick one you are willing and able to handle today.', title: isZh ? '今天想先處理哪一件？' : 'Which one do you want to handle today?', placeholder: isZh ? '例：回覆確認時間的信' : 'e.g. reply to confirm the time' },
+    { key: 'first', type: 'text', explain: isZh ? '寫下第一個可執行的小動作。' : 'Write the first actionable step.', hint: isZh ? '越小越好' : 'Smaller is better', title: isZh ? '第一小步是什麼？' : 'What is the first small step?', placeholder: isZh ? '例：打開信件，先確認可行的時間' : 'e.g. open the email, check available times' }
+  ];
+  if (id === 'askhelp') return [
+    { key: 'who', type: 'text', explain: isZh ? '你想請誰幫忙？' : 'Who do you want to ask?', title: isZh ? '想請誰幫忙？' : 'Who do you want to ask for help?', placeholder: isZh ? '例：同事、朋友、家人' : 'e.g. colleague, friend, family' },
+    { key: 'what', type: 'text', explain: isZh ? '具體說明需要什麼幫忙。' : 'Be specific about what help you need.', title: isZh ? '需要什麼幫忙？' : 'What help do you need?', placeholder: isZh ? '例：幫我看一下這份文件有沒有問題' : 'e.g. Can you check if this document has issues' },
+    { key: 'message', type: 'text', explain: isZh ? '整理成一段可以修改的訊息。' : 'Draft a message you can edit.', hint: isZh ? '寫下來就好，不一定要現在傳' : 'Just write it — you don\'t have to send it now', title: isZh ? '我可以這樣說：' : 'I can say it like this:', placeholder: isZh ? '例：你好，我想請你幫我看一下…' : 'e.g. Hi, could you help me check…' }
+  ];
+  if (id === 'careguide') return [
+    { key: 'signs', type: 'multi', max: 4, explain: isZh ? '低落時別人可能會看到的樣子。' : 'What others might notice when you are low.', title: isZh ? '我狀態不好的時候，你可能會看到' : 'When I am not okay, you might notice', options: isZh ? ['話變少、不太回訊息','一直待在房間或床上','容易煩躁、講話比較衝','一直說「我沒事」','吃很少或吃很多','睡很多或睡不著','一直道歉、覺得自己很糟'] : ['Talk less, reply slowly','Stay in room or bed','Get irritable easily','Keep saying I am fine','Eat very little or a lot','Sleep a lot or not at all','Apologize a lot, feel bad about myself'] },
+    { key: 'helpful', type: 'multi', max: 4, explain: isZh ? '選對你有幫助的陪伴方式。' : 'Pick ways of support that help you.', title: isZh ? '這些陪法對我有幫助' : 'These ways of support help me', options: isZh ? ['陪我坐著就好，不用一直說話','傳一句「我在」，不用急著等我回','問我想被安慰還是被聽','聽我說完再回應','幫我買飯或提醒我吃東西','給我一點空間，但讓我知道你在'] : ['Just sit with me, no need to talk','Send a message saying you are there','Ask if I want comfort or just listening','Listen fully before responding','Help with food or remind me to eat','Give me space but let me know you are around'] },
+    { key: 'note', type: 'text', explain: isZh ? '其他想讓對方知道的。選填。' : 'Anything else you want them to know. Optional.', title: isZh ? '其他想說的（選填）' : 'Anything else (optional)', placeholder: isZh ? '例：這些不代表我在生你的氣' : 'e.g. This does not mean I am angry at you' }
+  ];
+  if (id === 'lowenergy') return [
+    { key: 'activity', type: 'single', explain: isZh ? '從負擔較小的活動中挑一件目前做得到的。' : 'Pick one low-effort activity you can do right now.', title: isZh ? '現在做得到的一件事' : 'One thing I can do right now', options: isZh ? ['喝一杯水','開窗透氣','站起來伸展','洗把臉','聽一首歌','寫下一件事','什麼都不做，休息一下'] : ['Drink a glass of water','Open a window','Stand and stretch','Wash my face','Listen to one song','Write down one thing','Do nothing, just rest'] }
+  ];
+  if (id === 'docprep') return [
+    { key: 'changes', type: 'text', explain: isZh ? '近期有什麼變化？睡眠、情緒、生活都可以。' : 'Any recent changes? Sleep, mood, daily life all count.', title: isZh ? '近期有什麼變化？' : 'Any recent changes?', placeholder: isZh ? '例：這兩週睡不好，容易醒來' : 'e.g. Sleep has been poor these two weeks' },
+    { key: 'meds', type: 'text', explain: isZh ? '目前用藥情況。選填。' : 'Current medications. Optional.', title: isZh ? '目前用藥（選填）' : 'Current medications (optional)', placeholder: isZh ? '例：沒有／正在吃…' : 'e.g. None / Currently taking…' },
+    { key: 'questions', type: 'text', explain: isZh ? '想問醫師的問題。' : 'Questions you want to ask the doctor.', title: isZh ? '想問醫師的事' : 'Questions for the doctor', placeholder: isZh ? '例：這個症狀需要調整藥物嗎？' : 'e.g. Does this symptom need a medication adjustment?' }
+  ];
+  if (id === 'breakup') return [
+    { key: 'hardtime', type: 'text', explain: isZh ? '這一週最難熬的時段是什麼時候？' : 'When is the hardest time this week?', title: isZh ? '最難熬的時段' : 'The hardest time', placeholder: isZh ? '例：晚上獨處時、看到共同朋友時' : 'e.g. evenings alone, seeing mutual friends' },
+    { key: 'prepare', type: 'text', explain: isZh ? '為那個時段準備一件小事。' : 'Prepare one small thing for that time.', hint: isZh ? '越小越好' : 'Smaller is better', title: isZh ? '我可以先準備…' : 'I can prepare…', placeholder: isZh ? '例：準備一張播放清單、約朋友吃飯' : 'e.g. prepare a playlist, plan a meal with a friend' }
+  ];
+  if (id === 'transition') return [
+    { key: 'keep', type: 'text', explain: isZh ? '這次變動中，你想保留的是什麼？' : 'In this change, what do you want to keep?', title: isZh ? '想保留的' : 'What I want to keep', placeholder: isZh ? '例：和朋友的聯絡、運動習慣' : 'e.g. staying in touch with friends, exercise habit' },
+    { key: 'adjust', type: 'text', explain: isZh ? '哪些可以慢慢調整？' : 'What can you adjust gradually?', title: isZh ? '可以慢慢調整的' : 'What I can adjust gradually', placeholder: isZh ? '例：作息時間、通勤方式' : 'e.g. sleep schedule, commute' },
+    { key: 'unclear', type: 'text', explain: isZh ? '還不確定的事。可以先放著。' : 'Things that are still unclear. They can wait.', title: isZh ? '還不確定的' : 'Still unclear', placeholder: isZh ? '例：新環境的人際關係' : 'e.g. relationships in the new environment' }
+  ];
+  if (id === 'relpause') return [
+    { key: 'feeling', type: 'text', explain: isZh ? '訊息沒回時，你注意到什麼感受？' : 'When the message is not replied, what do you notice?', title: isZh ? '我注意到的感受' : 'What I notice', placeholder: isZh ? '例：不安、擔心被忽略' : 'e.g. uneasy, worried about being ignored' },
+    { key: 'check', type: 'single', explain: isZh ? '先問自己：這是事實，還是我的解讀？' : 'Ask yourself: is this a fact, or my interpretation?', title: isZh ? '這是事實還是解讀？' : 'Fact or interpretation?', options: isZh ? ['還不確定','比較像是我的解讀','有一些事實依據'] : ['Not sure yet','More like my interpretation','Has some factual basis'] },
+    { key: 'respond', type: 'text', explain: isZh ? '決定現在要不要回應。可以先不回。' : 'Decide whether to respond now. Not responding is okay.', title: isZh ? '我決定…' : 'I decide to…', placeholder: isZh ? '例：先等一下再看、傳一句簡單的訊息' : 'e.g. wait a bit, send a simple message' }
+  ];
+  if (id === 'examprep') return [
+    { key: 'type', type: 'single', explain: isZh ? '是考試還是面試？' : 'Is it an exam or interview?', title: isZh ? '類型' : 'Type', options: isZh ? ['考試','面試','其他'] : ['Exam','Interview','Other'] },
+    { key: 'days', type: 'text', explain: isZh ? '還有幾天？' : 'How many days left?', title: isZh ? '還有幾天？' : 'Days remaining?', placeholder: isZh ? '例：3 天' : 'e.g. 3 days' },
+    { key: 'check', type: 'text', explain: isZh ? '這幾天要確認的事。' : 'Things to check in the coming days.', title: isZh ? '要確認的事' : 'Things to check', placeholder: isZh ? '例：帶證件、確認地點、準備問題' : 'e.g. bring ID, confirm location, prepare questions' }
+  ];
+  if (id === 'pmr') return [
+    { key: 'start', type: 'single', explain: isZh ? '找一個舒服的姿勢，跟著提示做。不舒服的部位隨時跳過。' : 'Find a comfortable position and follow the prompts. Skip any area that feels uncomfortable.', title: isZh ? '準備好了嗎？' : 'Ready?', options: isZh ? ['開始','先休息一下'] : ['Start','Rest first'] }
+  ];
   return [];
 }
 
