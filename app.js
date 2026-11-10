@@ -250,9 +250,11 @@ function getSteps(id) {
     { key: 'action', type: 'text', explain: isZh ? '我願意負責或先做的一件事。選填。' : 'One thing I am willing to do first. Optional.', title: isZh ? '我願意先做的（選填）' : 'What I will do first (optional)', placeholder: isZh ? '例：這週先跟家人說我需要一個週末休息' : 'e.g. tell family I need one weekend off' }
   ];
   if (id === 'repair') return [
-    { key: 'what', type: 'text', explain: isZh ? '只寫你記得的部分，不用完整。' : 'Just what you remember — no need to be complete.', hint: isZh ? '只寫你記得的部分，不用完整' : 'Just what you remember — no need to be complete', title: isZh ? '發生了什麼事？' : 'What happened?', placeholder: isZh ? '例：我們為了週末安排起爭執' : 'e.g. We argued about weekend plans' },
-    { key: 'step', type: 'text', explain: isZh ? '不用完美，先想一件願意做的事。' : 'Not perfect — just one thing you are willing to try.', hint: isZh ? '不用完美，先想一件願意做的事' : 'Not perfect — just one thing you are willing to try', title: isZh ? '衝突後我想先做的一件事' : 'One thing I want to do first after the conflict', placeholder: isZh ? '例：先傳一句訊息問對方還好嗎' : 'e.g. Send a message asking if they are okay' },
-    { key: 'phrase', type: 'text', explain: isZh ? '寫下來就好，不一定要現在傳。' : 'Just write it down — you don\'t have to send it now.', hint: isZh ? '可以先寫下來，不一定要現在傳' : 'Write it down — you don\'t have to send it now', title: isZh ? '我可以怎麼說？' : 'How can I phrase it?', placeholder: isZh ? '例：剛才的事我有些後悔，想跟你聊聊' : 'e.g. I regret what happened, can we talk?' }
+    { key: 'what', type: 'text', explain: isZh ? '用看得到、聽得到的事實寫下發生的事。' : 'Write what happened in observable facts.', title: isZh ? '我記得發生的事' : 'What I remember', placeholder: isZh ? '例：我們為了週末安排起爭執' : 'e.g. we argued about weekend plans' },
+    { key: 'impact', type: 'text', explain: isZh ? '這件事帶來的影響。' : 'The impact of this.', title: isZh ? '這件事帶來的影響' : 'Impact', placeholder: isZh ? '例：之後沒再說話' : 'e.g. we stopped talking after' },
+    { key: 'mypart', type: 'text', explain: isZh ? '我願意負責的具體言行。' : 'Specific actions I am willing to own.', title: isZh ? '我願意負責的部分' : 'My part', placeholder: isZh ? '例：我提高了音量' : 'e.g. I raised my voice' },
+    { key: 'notmine', type: 'text', explain: isZh ? '不由我單方面決定的事。' : 'Things not mine alone to decide.', title: isZh ? '不由我決定的' : 'Not mine to decide', placeholder: isZh ? '例：對方的感受' : 'e.g. their feelings' },
+    { key: 'step', type: 'text', explain: isZh ? '我能做的一步。' : 'One step I can take.', title: isZh ? '我能做的一步' : 'One step I can take', placeholder: isZh ? '例：傳一句訊息問對方還好嗎' : 'e.g. send a message asking if they are okay' }
   ];
   if (id === 'goodenough') return [
     { key: 'task', type: 'text', explain: isZh ? '是哪一件事？' : 'Which task?', title: isZh ? '1. 是哪一件事？' : '1. Which task?', placeholder: isZh ? '例：週五要交的企劃簡報' : 'e.g. Friday presentation' },
@@ -268,10 +270,11 @@ function getSteps(id) {
     { key: 'after', type: 'text', explain: isZh ? '放下手機後的第一個動作。' : 'First action after putting the phone down.', title: isZh ? '4. 放下手機後' : '4. After putting phone down', placeholder: isZh ? '例：把手機背面朝上放在桌上' : 'e.g. place phone face down on the table' }
   ];
   if (id === 'problemsolve') return [
-    { key: 'problem', type: 'text', explain: isZh ? '用一句話說清楚問題是什麼。' : 'State the problem in one sentence.', title: isZh ? '問題是什麼？（一句話）' : 'What is the problem? (one sentence)' },
-    { key: 'solutions', type: 'text', explain: isZh ? '先不用判斷好壞，至少寫兩個可能。寫下來就好。' : 'No need to judge yet — list at least two possibilities. Just write them down.', hint: isZh ? '先不用判斷好壞，至少寫兩個可能' : 'No need to judge yet — just list at least two possibilities', title: isZh ? '可能的解法（至少 2 個）' : 'Possible solutions (at least 2)' },
-    { key: 'first', type: 'text', explain: isZh ? '選一個願意先試的解法。不用完美，先試就好。' : 'Pick one solution to try first. Not perfect — just try.', title: isZh ? '我願意先試的一個解法' : 'The one solution I will try first' },
-    { key: 'when', type: 'text', explain: isZh ? '決定什麼時候開始。寫下來幫助自己行動。' : 'Decide when to start. Writing it helps you act.', title: isZh ? '第一步什麼時候做？' : 'When will I take the first step?' }
+    { key: 'type', type: 'single', explain: isZh ? '這件事比較像哪一種？' : 'What kind of situation?', title: isZh ? '1. 這件事比較像' : '1. This is more like', options: isZh ? ['我能做一些事','需要和別人共同決定','主要是我不能掌控的','有安全上的擔心'] : ['I can do something','Need to decide together','Mostly outside my control','Safety concern'] },
+    { key: 'problem', type: 'text', explain: isZh ? '想處理的問題。' : 'The problem.', title: isZh ? '2. 我想處理的問題' : '2. The problem', placeholder: isZh ? '例：工作量太大，來不及完成' : 'e.g. too much work, cannot finish' },
+    { key: 'solutions', type: 'text', explain: isZh ? '列出方法。1–5 個。' : 'List solutions. 1–5.', title: isZh ? '3. 我想得到的方法' : '3. Solutions', placeholder: isZh ? '例：跟主管談、延後部分、請人幫忙' : 'e.g. talk to manager, delay some, ask for help' },
+    { key: 'first', type: 'text', explain: isZh ? '選一個先試。' : 'Pick one to try first.', title: isZh ? '4. 我想先試' : '4. Try first', placeholder: isZh ? '例：跟主管談優先順序' : 'e.g. talk to manager about priorities' },
+    { key: 'review', type: 'text', explain: isZh ? '什麼時候回顧？怎樣算有改善？' : 'When to review? What counts as improvement?', title: isZh ? '5. 回顧' : '5. Review', placeholder: isZh ? '例：下週五，工作量有減少' : 'e.g. next Friday, workload reduced' }
   ];
   if (id === 'selfbreak') return [
     { key: 'p1', type: 'text', explain: isZh ? '可以沿用例子，或改寫成自己的話。承認困難是第一步。' : 'Use the example or rewrite it. Acknowledging difficulty is the first step.', hint: isZh ? '可以沿用例子，或改寫成自己的話' : 'You can use the example or rewrite it in your own words', title: isZh ? '第一句：承認這是困難的時刻' : 'Phrase 1: Acknowledge this is a difficult moment', placeholder: isZh ? '例：這是一個困難的時刻' : 'e.g. This is a moment of difficulty' },
