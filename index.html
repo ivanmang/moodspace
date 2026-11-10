@@ -12,7 +12,12 @@
 <body>
 <header>
   <a href="#" class="logo" onclick="showHome(); return false;">MoodSpace</a>
-  <div class="header-actions">
+  <nav style="display:flex; gap:1rem; margin-right:1rem;">
+      <a href="#" onclick="event.preventDefault(); showSection('home')" style="color:var(--text); text-decoration:none; font-size:0.9rem;">練習</a>
+      <a href="#" onclick="event.preventDefault(); showSection('glossary')" style="color:var(--text); text-decoration:none; font-size:0.9rem;">名詞</a>
+      <a href="#" onclick="event.preventDefault(); showSection('resources')" style="color:var(--text); text-decoration:none; font-size:0.9rem;">資源</a>
+    </nav>
+    <div class="header-actions">
     <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
     <button class="lang-toggle" id="langBtn" onclick="toggleLang()">中文</button>
   </div>
@@ -90,6 +95,18 @@
     </div>
   </div>
 
+  <div id="glossary-view" style="display:none;">
+    <h1>心理學名詞小辭典</h1>
+    <p class="subtitle">常見名詞的白話說明。不是診斷，只是幫助理解。</p>
+    <div id="glossary-content"></div>
+  </div>
+  
+  <div id="resources-view" style="display:none;">
+    <h1>資源與支持</h1>
+    <p class="subtitle">香港的心理支持資源。資訊可能變動，撥打前請確認。</p>
+    <div id="resources-content"></div>
+  </div>
+  
   <div id="tool-view">
     <button class="back-btn" onclick="showHome()">← <span id="backText">返回練習室</span></button>
     <div id="tool-content"></div>
