@@ -201,11 +201,21 @@ function getSteps(id) {
     { key: 'pattern', type: 'multi', max: 2, explain: isZh ? '這個想法比較接近哪種模式？' : 'Which pattern?', title: isZh ? '3. 思考模式' : '3. Thinking pattern', options: isZh ? ['全有或全無','過度概括','讀心術','災難化','應該思考','個人化','忽略正面','情緒推理'] : ['All-or-nothing','Overgeneralizing','Mind reading','Catastrophizing','Should statements','Personalizing','Discounting positive','Emotional reasoning'] },
     { key: 'balanced', type: 'single', explain: isZh ? '比較完整的看法可能是？' : 'A more complete view?', title: isZh ? '4. 比較完整的看法' : '4. More complete view', options: isZh ? ['這次沒做好，不代表我不行','別人的反應有很多可能','最壞的情況不一定會發生','我已經盡力了','還不確定'] : ['One time does not define me','Others may react differently','Worst case may not happen','I did my best','Not sure'] }
   ];
-  if (id === 'boundary') return [
-    { key: 'relation', type: 'single', explain: isZh ? '選一種關係。' : 'Select a relationship.', title: isZh ? '1. 關係類型' : '1. Relationship', options: isZh ? ['職場','家人','伴侶','朋友'] : ['Work','Family','Partner','Friend'] },
-    { key: 'situation', type: 'single', explain: isZh ? '選一個情境，會顯示三種說法範例。' : 'Select a situation to see phrase examples.', title: isZh ? '2. 情境' : '2. Situation', options: isZh ? ['下班後收到非緊急訊息','臨時增加工作','被問不想回答的私事','反覆詢問感情或婚育安排','希望我答應每次聚會','未先詢問就動用我的物品','要求立刻回訊息','爭執時想先暫停','需要獨處時間','借錢但我不願意','我沒有餘力繼續聽對方傾訴','不想接受邀約'] : ['Non-urgent messages after work','Sudden extra work','Personal questions','Repeated questions about relationship','Expected to attend every gathering','Using things without asking','Demanding instant replies','Want to pause during conflict','Need alone time','Asked to lend money','No capacity to listen','Don\'t want invitation'] },
-    { key: 'style', type: 'single', explain: isZh ? '選一種說法風格。' : 'Pick a style.', title: isZh ? '3. 說法風格' : '3. Style', options: isZh ? ['溫和說明','簡短直接','再次重申'] : ['Gentle','Direct','Restate'] }
-  ];
+  if (id === 'boundary') {
+    const situations = {
+      '職場': ['下班後收到非緊急訊息','臨時增加工作','被問不想回答的私事'],
+      '家人': ['反覆詢問感情或婚育安排','希望我答應每次聚會','未先詢問就動用我的物品'],
+      '伴侶': ['要求立刻回訊息','爭執時想先暫停','需要獨處時間'],
+      '朋友': ['借錢但我不願意','我沒有餘力繼續聽對方傾訴','不想接受邀約']
+    };
+    const rel = answers.relation || '職場';
+    const sitOptions = situations[rel] || situations['職場'];
+    return [
+      { key: 'relation', type: 'single', explain: isZh ? '選一種關係。' : 'Select a relationship.', title: isZh ? '1. 關係類型' : '1. Relationship', options: isZh ? ['職場','家人','伴侶','朋友'] : ['Work','Family','Partner','Friend'] },
+      { key: 'situation', type: 'single', explain: isZh ? '選一個適合這個關係的情境。' : 'Select a situation for this relationship.', title: isZh ? '2. 情境' : '2. Situation', options: sitOptions },
+      { key: 'style', type: 'single', explain: isZh ? '選一種說法風格。' : 'Pick a style.', title: isZh ? '3. 說法風格' : '3. Style', options: isZh ? ['溫和說明','簡短直接','再次重申'] : ['Gentle','Direct','Restate'] }
+    ];
+  }
   if (id === 'convo') return [
     { key: 'topic', type: 'text', explain: isZh ? '這次想談的主題。' : 'The topic for this conversation.', title: isZh ? '1. 這次想談的主題' : '1. Topic', placeholder: isZh ? '例：家事分工' : 'e.g. household chores' },
     { key: 'notice', type: 'text', explain: isZh ? '我具體注意到什麼？先描述事件或行為，避免推斷動機。' : 'What did I specifically notice? Describe the event, avoid inferring motives.', title: isZh ? '我具體注意到什麼？' : 'What did I notice?', placeholder: isZh ? '例：這週有幾次用完的餐具留在桌上' : 'e.g. dishes left on the table several times this week' },
