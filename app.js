@@ -1121,6 +1121,82 @@ function nextSense() {
 function skipSense() { nextSense(); }
 
 
+
+// Glossary
+const glossary = [
+  { term: '認知扭曲', def: '常見的思考習慣，會讓我們對事件做出偏離現實的解讀。例如全有或全無、過度概括、災難化。' },
+  { term: '正念', def: '有意識地、不加評判地注意當下的經驗。不是要放空，而是覺察正在發生的事。' },
+  { term: '自我同理', def: '對自己的困難給予理解和善意，而不是批評。想像你會怎麼對好朋友說話。' },
+  { term: '界線', def: '清楚表達自己的需要和限度。不是要控制別人，而是讓對方知道你的立場。' },
+  { term: '課題分離', def: '分辨哪些是自己能決定的，哪些是別人的事。不是冷漠，而是把精力放在能負責的部分。' },
+  { term: '焦慮', def: '對未來可能發生的事感到擔心或不安。身體可能會有心跳加速、肌肉緊繃等反應。' },
+  { term: '憂鬱', def: '持續的低落、失去興趣、疲倦。如果超過兩週並影響生活，可以考慮尋求專業協助。' },
+  { term: '觸發', def: '某些情境、話語或記憶引起強烈情緒反應。不是軟弱，是過去經驗的影響。' },
+  { term: '接地', def: '用感官把注意力帶回當下。例如五感練習、感受腳踩在地上的感覺。' },
+  { term: '情緒調節', def: '覺察情緒、理解它、並選擇如何回應。不是壓抑，而是給自己空間。' }
+];
+
+function renderGlossary() {
+  const container = document.getElementById('glossary-content');
+  if (!container) return;
+  let html = '<div style="display:grid; gap:1rem;">';
+  glossary.forEach(g => {
+    html += `<div style="background:var(--surface); padding:1rem; border-radius:8px; border:1px solid var(--border);">
+      <h3 style="margin:0 0 0.5rem; color:var(--accent-dark);">${g.term}</h3>
+      <p style="margin:0; color:var(--text-soft);">${g.def}</p>
+    </div>`;
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+// Resources
+function renderResources() {
+  const container = document.getElementById('resources-content');
+  if (!container) return;
+  container.innerHTML = `
+    <div class="category">
+      <h2>緊急與危機支援</h2>
+      <ul>
+        <li><strong>999</strong> — 緊急求助（警察、救護、消防）</li>
+        <li><strong>情緒通 18111</strong> — 24 小時心理支援專線（醫院管理局）</li>
+        <li><strong>撒瑪利亞防止自殺會 2896 0000</strong> — 24 小時</li>
+        <li><strong>生命熱線 2382 0000</strong> — 24 小時</li>
+        <li><strong>明愛向晴軒 18288</strong> — 24 小時</li>
+      </ul>
+    </div>
+    <div class="category" style="margin-top:1rem;">
+      <h2>輔導與精神健康服務</h2>
+      <ul>
+        <li><strong>社會福利署熱線 2343 2255</strong></li>
+        <li><strong>醫院管理局精神健康專線 2466 7350</strong></li>
+        <li><strong>綜合家庭服務中心</strong> — 各區社署或非政府機構</li>
+        <li><strong>私營輔導</strong> — 可向註冊社工、臨床心理學家查詢</li>
+      </ul>
+    </div>
+    <div class="category" style="margin-top:1rem;">
+      <h2>補助與支援</h2>
+      <ul>
+        <li><strong>關愛基金</strong> — 部分輔導服務有資助</li>
+        <li><strong>僱員再培訓局</strong> — 部分課程涵蓋心理健康</li>
+        <li><strong>學校社工</strong> — 學生可透過學校轉介</li>
+      </ul>
+      <p style="font-size:0.85rem; color:var(--text-soft); margin-top:0.5rem;">資訊可能變動，申請前請向相關機構確認資格與程序。</p>
+    </div>
+  `;
+}
+
+function showSection(section) {
+  document.getElementById('home-view').style.display = section === 'home' ? 'block' : 'none';
+  document.getElementById('glossary-view').style.display = section === 'glossary' ? 'block' : 'none';
+  document.getElementById('resources-view').style.display = section === 'resources' ? 'block' : 'none';
+  document.getElementById('tool-view').classList.remove('active');
+  if (section === 'glossary') renderGlossary();
+  if (section === 'resources') renderResources();
+  window.scrollTo(0, 0);
+}
+
+
 // Init
 applyTheme();
 renderGuided();
