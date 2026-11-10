@@ -1063,6 +1063,64 @@ const boundaryPhrases = {
 };
 
 
+
+// Enhanced breathing
+let breathInterval = null;
+function startBreathing() {
+  const inhale = parseInt(document.getElementById('inhale-sec')?.value) || 4;
+  const exhale = parseInt(document.getElementById('exhale-sec')?.value) || 4;
+  const circle = document.getElementById('breath-circle');
+  const status = document.getElementById('breath-status');
+  if (!circle) return;
+  
+  let phase = 'inhale';
+  let count = inhale;
+  
+  function tick() {
+    if (phase === 'inhale') {
+      circle.textContent = '吸氣';
+      circle.style.transform = 'scale(1.2)';
+      status.textContent = count + ' 秒';
+      count--;
+      if (count < 0) { phase = 'exhale'; count = exhale; }
+    } else {
+      circle.textContent = '吐氣';
+      circle.style.transform = 'scale(1)';
+      status.textContent = count + ' 秒';
+      count--;
+      if (count < 0) { phase = 'inhale'; count = inhale; }
+    }
+  }
+  
+  tick();
+  breathInterval = setInterval(tick, 1000);
+}
+
+function stopBreathing() {
+  if (breathInterval) clearInterval(breathInterval);
+  const circle = document.getElementById('breath-circle');
+  const status = document.getElementById('breath-status');
+  if (circle) { circle.textContent = '準備'; circle.style.transform = 'scale(1)'; }
+  if (status) status.textContent = '已停止';
+}
+
+// Five senses navigation
+function nextSense() {
+  window.senseStep = (window.senseStep || 0) + 1;
+  if (window.senseStep >= window.senses.length) {
+    document.getElementById('sense-display').innerHTML = '<p style="font-size:1.2rem;">完成了。慢慢回到當下。</p>';
+    return;
+  }
+  const s = window.senses[window.senseStep];
+  document.getElementById('sense-display').innerHTML = `
+    <div style="font-size:3rem; font-weight:300; color:var(--accent);">${s.n}</div>
+    <p style="font-size:1.2rem; margin:0.5rem 0;">${s.label}</p>
+    <p style="color:var(--text-soft);">${s.hint}</p>`;
+}
+
+function skipSense() { nextSense(); }
+
+
 // Init
 applyTheme();
 renderGuided();
