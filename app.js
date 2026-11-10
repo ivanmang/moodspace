@@ -240,9 +240,12 @@ function getSteps(id) {
   ];
 
   if (id === 'tasksep') return [
-    { key: 'situation', type: 'text', explain: isZh ? '用一句話描述這件事。' : 'Describe the situation in one sentence.', hint: isZh ? '用一句話描述這件事' : 'Describe it in one sentence', title: isZh ? '這件事是…' : 'This situation is…' },
-    { key: 'mine', type: 'text', explain: isZh ? '哪些部分是你能負責或決定的？寫下來。' : 'What parts are yours to handle or decide? Write them down.', title: isZh ? '哪些部分是我可以負責的？' : 'What parts are mine to handle?' },
-    { key: 'notmine', type: 'text', explain: isZh ? '哪些部分不是你能控制的？寫下來，幫助自己放下。' : 'What parts are outside your control? Writing them helps you let go.', title: isZh ? '哪些部分不是我能控制的？' : 'What parts are outside my control?' }
+    { key: 'situation', type: 'text', explain: isZh ? '寫下一件你現在在意的事。' : 'Write one thing you care about right now.', title: isZh ? '我現在在意的一件事' : 'One thing I care about', placeholder: isZh ? '例：家人希望我每週末都回家' : 'e.g. Family wants me home every weekend' },
+    { key: 'parts', type: 'text', explain: isZh ? '這件事裡有哪些要決定的部分？一項寫一件。' : 'What parts need decisions? One per line.', title: isZh ? '要決定的部分' : 'Parts that need decisions', placeholder: isZh ? '例：週末怎麼安排、要不要提出我的需要' : 'e.g. how to arrange weekends, whether to state my needs' },
+    { key: 'mine', type: 'text', explain: isZh ? '我能決定：我的時間安排、要不要提出需求、我願意採取的行動。' : 'I can decide: my schedule, whether to state needs, actions I am willing to take.', title: isZh ? '我能決定的' : 'What I can decide', placeholder: isZh ? '例：我的時間安排' : 'e.g. my schedule' },
+    { key: 'theirs', type: 'text', explain: isZh ? '由對方決定：對方如何看待事情、是否接受我的提議。' : 'They decide: how they see things, whether they accept my proposal.', title: isZh ? '由對方決定的' : 'What they decide', placeholder: isZh ? '例：對方是否接受' : 'e.g. whether they accept' },
+    { key: 'together', type: 'text', explain: isZh ? '需要一起協商：共同空間、分工、雙方約定。' : 'Need to negotiate: shared space, division of tasks, mutual agreements.', title: isZh ? '需要一起協商的' : 'Need to negotiate', placeholder: isZh ? '例：週末的安排' : 'e.g. weekend arrangements' },
+    { key: 'action', type: 'text', explain: isZh ? '我願意負責或先做的一件事。選填。' : 'One thing I am willing to do first. Optional.', title: isZh ? '我願意先做的（選填）' : 'What I will do first (optional)', placeholder: isZh ? '例：這週先跟家人說我需要一個週末休息' : 'e.g. tell family I need one weekend off' }
   ];
   if (id === 'repair') return [
     { key: 'what', type: 'text', explain: isZh ? '只寫你記得的部分，不用完整。' : 'Just what you remember — no need to be complete.', hint: isZh ? '只寫你記得的部分，不用完整' : 'Just what you remember — no need to be complete', title: isZh ? '發生了什麼事？' : 'What happened?', placeholder: isZh ? '例：我們為了週末安排起爭執' : 'e.g. We argued about weekend plans' },
@@ -300,7 +303,7 @@ function getSteps(id) {
   ];
   if (id === 'careguide') return [
     { key: 'signs', type: 'multi', max: 4, explain: isZh ? '低落時別人可能會看到的樣子。' : 'What others might notice when you are low.', title: isZh ? '我狀態不好的時候，你可能會看到' : 'When I am not okay, you might notice', options: isZh ? ['話變少、不太回訊息','一直待在房間或床上','容易煩躁、講話比較衝','一直說「我沒事」','吃很少或吃很多','睡很多或睡不著','一直道歉、覺得自己很糟'] : ['Talk less, reply slowly','Stay in room or bed','Get irritable easily','Keep saying I am fine','Eat very little or a lot','Sleep a lot or not at all','Apologize a lot, feel bad about myself'] },
-    { key: 'helpful', type: 'multi', max: 4, explain: isZh ? '選對你有幫助的陪伴方式。' : 'Pick ways of support that help you.', title: isZh ? '這些陪法對我有幫助' : 'These ways of support help me', options: isZh ? ['陪我坐著就好，不用一直說話','傳一句「我在」，不用急著等我回','問我想被安慰還是被聽','聽我說完再回應','幫我買飯或提醒我吃東西','給我一點空間，但讓我知道你在'] : ['Just sit with me, no need to talk','Send a message saying you are there','Ask if I want comfort or just listening','Listen fully before responding','Help with food or remind me to eat','Give me space but let me know you are around'] },
+    { key: 'helpful', type: 'multi', max: 4, explain: isZh ? '選對你有幫助的陪伴方式。' : 'Pick ways of support that help you.', title: isZh ? '這些陪法對我有幫助' : 'These ways of support help me', options: isZh ? ['陪我坐著就好，不用一直說話','傳一句「我在」，不用急著等我回','問我「你現在想要被安慰，還是想被聽就好？」','聽我說完再回應，不用急著給建議','約好一個時間再來看看我','幫我買飯或提醒我吃東西','幫我分擔一件家事或跑腿','約我出去走一小段路','給我一點空間，但讓我知道你在','跟我說「你不用急著好起來」','跟我說「你不是麻煩」'] : ['Just sit with me, no need to talk','Send a message saying you are there','Ask if I want comfort or just listening','Listen fully before responding','Help with food or remind me to eat','Give me space but let me know you are around'] },
     { key: 'note', type: 'text', explain: isZh ? '其他想讓對方知道的。選填。' : 'Anything else you want them to know. Optional.', title: isZh ? '其他想說的（選填）' : 'Anything else (optional)', placeholder: isZh ? '例：這些不代表我在生你的氣' : 'e.g. This does not mean I am angry at you' }
   ];
   if (id === 'lowenergy') return [
