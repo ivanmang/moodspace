@@ -79,6 +79,16 @@ const tools = [
   { id: 'transition', cat: 'emotions', zh: { name: '生活變動適應卡', desc: '搬家、轉職、畢業或家裡有變化？把想保留、可以調整和還不確定的事分開寫。' }, en: { name: 'Life Transition Card', desc: 'Moving, changing jobs, graduating? Sort what to keep, adjust, and what is still unclear.' } },
   { id: 'relpause', cat: 'communication', zh: { name: '關係不安時的暫停卡', desc: '訊息還沒回，心裡有些不安？先整理感受，再決定如何回應。' }, en: { name: 'Relationship Pause Card', desc: 'Message not replied, feeling uneasy? Organize feelings, then decide how to respond.' } },
   { id: 'examprep', cat: 'actions', zh: { name: '考試、面試前準備清單', desc: '考試或面試快到了？依還有幾天整理出要確認的事。' }, en: { name: 'Exam / Interview Prep', desc: 'Exam or interview coming up? Organize what to check based on days remaining.' } },
+
+  { id: 'relatives', cat: 'communication', zh: { name: '過年親戚問題應答卡', desc: '擔心聚會被問收入、感情或婚育？先準備幾句想使用的回應。' }, en: { name: 'Family Gathering Responses', desc: 'Worried about questions on income, relationships, or kids? Prepare a few responses.' } },
+  { id: 'parenttalk', cat: 'communication', zh: { name: '親子溝通接話練習', desc: '孩子不想說話或一開口就吵？比較三種說法，寫下一句你自己的接話。' }, en: { name: 'Parent-Child Response Practice', desc: 'Child not talking or arguing? Compare three approaches and write your own response.' } },
+  { id: 'mindfulreply', cat: 'communication', zh: { name: '正念接話練習', desc: '被一句話刺到、很想回嘴？先看見衝動，再擬一句想說的回覆。' }, en: { name: 'Mindful Reply', desc: 'Triggered by a comment and want to snap back? Notice the urge, then draft a reply.' } },
+  { id: 'twoperson', cat: 'communication', zh: { name: '三分鐘雙人對話練習', desc: '兩個人都願意的時候，輪流當說話者和聆聽者。不適合高衝突關係。' }, en: { name: 'Three-Minute Dialogue', desc: 'When both are willing, take turns speaking and listening. Not for high-conflict situations.' } },
+  { id: 'screentime', cat: 'actions', zh: { name: '家庭 3C 使用約定表', desc: '想和孩子一起訂手機、平板或電玩的規則？逐項寫下做法和例外。' }, en: { name: 'Family Screen Time Agreement', desc: 'Want to set rules for phones, tablets, or games with your child? Write the rules and exceptions.' } },
+  { id: 'visualcard', cat: 'actions', zh: { name: '情境轉換視覺提示卡', desc: '孩子換活動時常卡住？選「現在、接下來、完成後」的步驟，做成提示卡。' }, en: { name: 'Transition Visual Card', desc: 'Child gets stuck switching activities? Create a now-next-done visual prompt.' } },
+  { id: 'sleepdiary', cat: 'emotions', zh: { name: '一週睡眠日記', desc: '想看清楚自己這一週怎麼睡？每天記下上床、睡著、醒來的時間。' }, en: { name: 'Weekly Sleep Diary', desc: 'Want to see your sleep pattern this week? Note bedtime, sleep time, and wake time each day.' } },
+  { id: 'workplace', cat: 'help', zh: { name: '職場事件紀錄表', desc: '遇到不舒服的職場事件？把時間、聽到的話和自己的推測分開記下。' }, en: { name: 'Workplace Incident Log', desc: 'Uncomfortable workplace incident? Separate what you heard, what was told to you, and your interpretation.' } },
+  { id: 'breathspace', cat: 'pause', zh: { name: '三分鐘呼吸空間練習', desc: '心裡很亂時，跟著覺察、集中、擴展三個階段停下來看看自己。' }, en: { name: 'Three-Minute Breathing Space', desc: 'Mind racing? Pause with awareness, focus, and expansion. No need to control the breath.' } },
   { id: 'pmr', cat: 'pause', zh: { name: '漸進式肌肉放鬆', desc: '身體一直很緊時，跟著提示一組一組收緊再放開。不舒服的部位隨時跳過。' }, en: { name: 'Progressive Muscle Relaxation', desc: 'Body tense? Follow prompts to tense and release muscle groups. Skip any that feel uncomfortable.' } },
   { id: 'counselprep', cat: 'help', zh: { name: '第一次諮商準備包', desc: '正在考慮心理諮商？先整理想談的內容和想問的問題。' }, en: { name: 'Counseling Prep', desc: 'Organize topics, main concern, and anything you want the counselor to know' } },
 ];
@@ -302,6 +312,55 @@ function getSteps(id) {
   ];
   if (id === 'pmr') return [
     { key: 'start', type: 'single', explain: isZh ? '找一個舒服的姿勢，跟著提示做。不舒服的部位隨時跳過。' : 'Find a comfortable position and follow the prompts. Skip any area that feels uncomfortable.', title: isZh ? '準備好了嗎？' : 'Ready?', options: isZh ? ['開始','先休息一下'] : ['Start','Rest first'] }
+  ];
+
+  if (id === 'relatives') return [
+    { key: 'question', type: 'single', explain: isZh ? '選最常被問到的問題。' : 'Pick the question you get asked most.', title: isZh ? '最常被問什麼？' : 'What are you asked most?', options: isZh ? ['收入多少','有沒有對象','什麼時候結婚','什麼時候生小孩','工作穩定嗎','其他'] : ['How much do you earn','Are you seeing someone','When will you get married','When will you have kids','Is your job stable','Other'] },
+    { key: 'response', type: 'text', explain: isZh ? '準備一句你說得出口的回應。' : 'Prepare a response you can actually say.', hint: isZh ? '可以溫和，也可以直接' : 'Can be gentle or direct', title: isZh ? '我可以這樣回應：' : 'I can respond like this:', placeholder: isZh ? '例：目前還在規劃中，謝謝關心' : 'e.g. Still planning, thanks for asking' },
+    { key: 'backup', type: 'text', explain: isZh ? '如果對方繼續追問，我可以…' : 'If they keep asking, I can…', title: isZh ? '如果繼續追問（選填）' : 'If they keep asking (optional)', placeholder: isZh ? '例：轉換話題、找藉口離開' : 'e.g. change topic, find an excuse to leave' }
+  ];
+  if (id === 'parenttalk') return [
+    { key: 'situation', type: 'text', explain: isZh ? '描述孩子的反應或情境。' : 'Describe the child\'s reaction or the situation.', title: isZh ? '發生了什麼？' : 'What happened?', placeholder: isZh ? '例：叫他收玩具，他不理我' : 'e.g. Asked him to put away toys, he ignored me' },
+    { key: 'age', type: 'single', explain: isZh ? '孩子大概幾歲？' : 'Roughly how old is the child?', title: isZh ? '孩子年齡' : 'Child\'s age', options: isZh ? ['3歲以下','3–6歲','7–12歲','13歲以上'] : ['Under 3','3–6','7–12','13+'] },
+    { key: 'myreply', type: 'text', explain: isZh ? '寫一句你自己的接話。' : 'Write your own response.', hint: isZh ? '不用完美，寫得出來就好' : 'Not perfect — just write something', title: isZh ? '我可以這樣說：' : 'I can say:', placeholder: isZh ? '例：我看到你還想玩，我們先收三個好不好？' : 'e.g. I see you still want to play. Can we put away three first?' }
+  ];
+  if (id === 'mindfulreply') return [
+    { key: 'trigger', type: 'text', explain: isZh ? '對方說了什麼讓你想回嘴？' : 'What did they say that made you want to snap back?', title: isZh ? '那句話是…' : 'The comment was…', placeholder: isZh ? '例：你怎麼又遲到了' : 'e.g. Why are you late again' },
+    { key: 'urge', type: 'text', explain: isZh ? '你當下想回什麼？先寫下來，不用傳。' : 'What did you want to reply? Write it down — no need to send.', title: isZh ? '我當下想回…' : 'I wanted to reply…', placeholder: isZh ? '例：你才遲到' : 'e.g. You are the one who is late' },
+    { key: 'fact', type: 'text', explain: isZh ? '對方實際說了什麼？和我的解讀分開。' : 'What did they actually say? Separate from my interpretation.', title: isZh ? '對方實際說的是…' : 'What they actually said was…', placeholder: isZh ? '例：問我為什麼遲到' : 'e.g. Asked why I was late' },
+    { key: 'reply', type: 'text', explain: isZh ? '擬一句你想說的回覆。可以先不傳。' : 'Draft a reply you want to say. You can hold off sending.', title: isZh ? '我想說的回覆是…' : 'The reply I want to give is…', placeholder: isZh ? '例：抱歉遲到了，路上塞車' : 'e.g. Sorry I was late, traffic was bad' }
+  ];
+  if (id === 'twoperson') return [
+    { key: 'topic', type: 'text', explain: isZh ? '選一件小事來聊。不適合高衝突或有暴力的關係。' : 'Pick a small topic. Not for high-conflict or violent relationships.', title: isZh ? '想聊的一件小事' : 'A small thing to talk about', placeholder: isZh ? '例：今天午餐吃了什麼' : 'e.g. What I had for lunch today' },
+    { key: 'role', type: 'single', explain: isZh ? '先決定誰先說。每人約一分半。' : 'Decide who speaks first. About 90 seconds each.', title: isZh ? '誰先說？' : 'Who speaks first?', options: isZh ? ['我先說','對方先說'] : ['I speak first','They speak first'] },
+    { key: 'ready', type: 'single', explain: isZh ? '兩個人都願意的時候再開始。' : 'Start only when both are willing.', title: isZh ? '準備好了嗎？' : 'Ready?', options: isZh ? ['開始','先等等'] : ['Start','Wait'] }
+  ];
+  if (id === 'screentime') return [
+    { key: 'device', type: 'multi', max: 3, explain: isZh ? '選要討論的設備。' : 'Select the devices to discuss.', title: isZh ? '哪些設備？' : 'Which devices?', options: isZh ? ['手機','平板','電腦','電玩','電視'] : ['Phone','Tablet','Computer','Games','TV'] },
+    { key: 'rule', type: 'text', explain: isZh ? '寫下基本規則。' : 'Write the basic rule.', title: isZh ? '基本規則' : 'Basic rule', placeholder: isZh ? '例：每天最多一小時，做完功課後' : 'e.g. Max one hour a day, after homework' },
+    { key: 'exception', type: 'text', explain: isZh ? '有什麼例外？' : 'Any exceptions?', title: isZh ? '例外情況（選填）' : 'Exceptions (optional)', placeholder: isZh ? '例：週末可以多半小時' : 'e.g. Extra 30 minutes on weekends' },
+    { key: 'discuss', type: 'text', explain: isZh ? '還要再談的地方。' : 'Things still to discuss.', title: isZh ? '還要再談（選填）' : 'Still to discuss (optional)', placeholder: isZh ? '例：罰則怎麼定' : 'e.g. How to handle breaking the rule' }
+  ];
+  if (id === 'visualcard') return [
+    { key: 'activity', type: 'text', explain: isZh ? '孩子要從什麼活動換到什麼？' : 'What activity is the child switching from and to?', title: isZh ? '轉換的活動' : 'The transition', placeholder: isZh ? '例：從玩玩具到吃飯' : 'e.g. from playing to eating' },
+    { key: 'steps', type: 'text', explain: isZh ? '寫下「現在、接下來、完成後」的步驟。' : 'Write the now, next, and done steps.', title: isZh ? '步驟' : 'Steps', placeholder: isZh ? '例：現在收玩具 → 接下來洗手 → 完成後吃飯' : 'e.g. Now: put toys away → Next: wash hands → Done: eat' },
+    { key: 'choice', type: 'text', explain: isZh ? '加上一個選擇，如「我需要休息」。' : 'Add a choice, like "I need a break".', title: isZh ? '選擇（選填）' : 'Choice (optional)', placeholder: isZh ? '例：我需要休息' : 'e.g. I need a break' }
+  ];
+  if (id === 'sleepdiary') return [
+    { key: 'day', type: 'single', explain: isZh ? '選今天是第幾天。連續記錄七天。' : 'Select which day this is. Track for seven days.', title: isZh ? '今天是第幾天？' : 'Which day is this?', options: isZh ? ['第1天','第2天','第3天','第4天','第5天','第6天','第7天'] : ['Day 1','Day 2','Day 3','Day 4','Day 5','Day 6','Day 7'] },
+    { key: 'bed', type: 'text', explain: isZh ? '幾點上床？' : 'What time did you go to bed?', title: isZh ? '上床時間' : 'Bedtime', placeholder: isZh ? '例：23:30' : 'e.g. 11:30 pm' },
+    { key: 'sleep', type: 'text', explain: isZh ? '大概幾點睡著？' : 'Roughly what time did you fall asleep?', title: isZh ? '睡著時間' : 'Fell asleep', placeholder: isZh ? '例：00:15' : 'e.g. 12:15 am' },
+    { key: 'wake', type: 'text', explain: isZh ? '幾點醒來？' : 'What time did you wake up?', title: isZh ? '醒來時間' : 'Wake time', placeholder: isZh ? '例：07:00' : 'e.g. 7:00 am' },
+    { key: 'feel', type: 'single', explain: isZh ? '起床後的感覺。' : 'How did you feel after waking?', title: isZh ? '起床後感覺' : 'Feeling after waking', options: isZh ? ['精神不錯','普通','還是很累','不確定'] : ['Fairly refreshed','Okay','Still tired','Not sure'] }
+  ];
+  if (id === 'workplace') return [
+    { key: 'when', type: 'text', explain: isZh ? '事件發生的時間。' : 'When did the incident happen?', title: isZh ? '時間' : 'When', placeholder: isZh ? '例：2026年11月10日下午' : 'e.g. Nov 10, 2026, afternoon' },
+    { key: 'heard', type: 'text', explain: isZh ? '你親耳聽到的話。用引號記下。' : 'What you heard directly. Use quotes.', title: isZh ? '親耳聽到的' : 'What I heard directly', placeholder: isZh ? '例：「你這個做不好」' : 'e.g. "You cannot do this well"' },
+    { key: 'told', type: 'text', explain: isZh ? '別人轉述的。標明是轉述。' : 'What others told you. Mark as secondhand.', title: isZh ? '別人轉述的（選填）' : 'What others told me (optional)', placeholder: isZh ? '例：同事說主管在會議上提到…' : 'e.g. Colleague said the manager mentioned…' },
+    { key: 'guess', type: 'text', explain: isZh ? '你自己的推測。和事實分開。' : 'Your own interpretation. Separate from facts.', title: isZh ? '我的推測（選填）' : 'My interpretation (optional)', placeholder: isZh ? '例：我猜他是針對我' : 'e.g. I guess he was targeting me' }
+  ];
+  if (id === 'breathspace') return [
+    { key: 'start', type: 'single', explain: isZh ? '心裡很亂時，跟著三個階段停下來。不控制呼吸節奏。' : 'When your mind is racing, pause with three stages. No need to control the breath.', title: isZh ? '準備好了嗎？' : 'Ready?', options: isZh ? ['開始','先等等'] : ['Start','Wait'] }
   ];
   return [];
 }
