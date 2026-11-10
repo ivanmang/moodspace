@@ -269,3 +269,36 @@ details summary:hover {
 details[open] summary {
   color: var(--accent-dark);
 }
+
+.guided-entry {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.guided-entry .options { margin: 1rem 0; }
+.guided-entry .option-btn { margin: 0.3rem 0.3rem 0.3rem 0; }
+.guided-result {
+  background: var(--accent-light);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+.guided-result h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+.guided-result .tool-link {
+  display: block;
+  padding: 0.6rem 0.8rem;
+  margin: 0.4rem 0;
+  background: var(--surface);
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--border);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.guided-result .tool-link:hover {
+  border-color: var(--accent);
+  transform: translateX(3px);
+}
