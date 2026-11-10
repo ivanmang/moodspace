@@ -212,9 +212,11 @@ function getSteps(id) {
     { key: 'myphrase', type: 'text', explain: isZh ? '看完範例後，改成你的語氣寫下來。' : 'After seeing the examples, rewrite in your tone.', title: isZh ? '3. 我的說法（可改寫）' : '3. My phrase (edit as needed)', placeholder: isZh ? '改成你說得出口的話' : 'Rewrite in words you can say' }
   ];
   if (id === 'convo') return [
-    { key: 'who', type: 'text', explain: isZh ? '寫名字或關係都可以，如「主管」「媽媽」。' : 'Name or relationship is fine, e.g. manager, mom.', hint: isZh ? '可以寫名字或關係，如「主管」「媽媽」' : 'Name or relationship is fine, e.g. manager, mom', title: isZh ? '對話對象是誰？' : 'Who will I talk to?' },
-    { key: 'goal', type: 'text', explain: isZh ? '這次對話你希望達到什麼？寫下來幫助自己聚焦。' : 'What do you hope to achieve? Writing it helps you focus.', title: isZh ? '我想達到的目的是？' : 'What outcome do I want?' },
-    { key: 'points', type: 'text', explain: isZh ? '列出想說的重點。不用一次說完，先整理。' : 'List the key points. No need to say everything — just organize.', title: isZh ? '我想說的重點' : 'Key points I want to say' }
+    { key: 'topic', type: 'text', explain: isZh ? '這次想談的主題。' : 'The topic for this conversation.', title: isZh ? '1. 這次想談的主題' : '1. Topic', placeholder: isZh ? '例：家事分工' : 'e.g. household chores' },
+    { key: 'notice', type: 'text', explain: isZh ? '我具體注意到什麼？先描述事件或行為，避免推斷動機。' : 'What did I specifically notice? Describe the event, avoid inferring motives.', title: isZh ? '我具體注意到什麼？' : 'What did I notice?', placeholder: isZh ? '例：這週有幾次用完的餐具留在桌上' : 'e.g. dishes left on the table several times this week' },
+    { key: 'impact', type: 'text', explain: isZh ? '這件事對我有什麼影響或感受？' : 'How does this affect me or how do I feel?', title: isZh ? '2. 對我的影響或感受' : '2. Impact or feelings', placeholder: isZh ? '例：想用桌子前要先整理，有點累' : 'e.g. have to clear the table first, a bit tired' },
+    { key: 'discuss', type: 'text', explain: isZh ? '我希望一起討論什麼？' : 'What do I want to discuss together?', title: isZh ? '我希望一起討論什麼？' : 'What I want to discuss', placeholder: isZh ? '例：能不能約定一個收拾時間' : 'e.g. can we agree on a cleanup time' },
+    { key: 'opening', type: 'text', explain: isZh ? '我想怎麼開頭？選填。' : 'How do I want to start? Optional.', title: isZh ? '4. 我想怎麼開頭？（選填）' : '4. How to start (optional)', placeholder: isZh ? '例：有件事想跟你聊聊' : 'e.g. There is something I want to talk about' }
   ];
   if (id === 'smallstep') return [
     { key: 'big', type: 'text', explain: isZh ? '用一句話寫下你想處理的事。不用想完整計畫。' : 'Write what you want to handle in one sentence. No need for a full plan.', hint: isZh ? '用一句話寫下你想處理的事' : 'Write what you want to handle in one sentence', title: isZh ? '想做的大事情是…' : 'The bigger thing I want to do is…', placeholder: isZh ? '例：整理房間、開始運動、回覆積壓的訊息' : 'e.g. tidy the room, start exercising, reply to messages' },
@@ -255,9 +257,10 @@ function getSteps(id) {
     { key: 'stop', type: 'single', explain: isZh ? '什麼時候停手？' : 'When to stop?', title: isZh ? '3. 什麼時候停手？' : '3. When to stop?', options: isZh ? ['到一個時間就停','檢查固定次數就停','花固定時間就停'] : ['Stop at a set time','Stop after a set number of checks','Stop after a set duration'] }
   ];
   if (id === 'phone') return [
-    { key: 'trigger', type: 'text', explain: isZh ? '什麼時候或什麼情況最容易滑手機？寫下來。' : 'When or where do you scroll most? Write it down.', hint: isZh ? '例：等車時、睡前、無聊時' : 'e.g. waiting for the bus, before bed, when bored', title: isZh ? '我最容易無意識滑手機的時間／情境' : 'When/where I scroll mindlessly most' },
-    { key: 'rule', type: 'text', explain: isZh ? '設定一個暫停規則。不用戒手機，只是先停一下。' : 'Set a pause rule. Not about quitting — just pausing first.', title: isZh ? '我想設定的暫停規則' : 'The pause rule I want to set' },
-    { key: 'alt', type: 'text', explain: isZh ? '如果想滑，可以改做什麼？寫一個替代行動。' : 'If you want to scroll, what can you do instead? Write one alternative.', title: isZh ? '如果想滑，我可以改做什麼？' : 'If I want to scroll, I can instead…' }
+    { key: 'situation', type: 'single', explain: isZh ? '先想一下現在是哪種情況。' : 'What is the situation?', title: isZh ? '1. 現在是哪種情況？' : '1. What is the situation?', options: isZh ? ['睡前滑不停','工作中一直拿手機','一直刷新訊息','有正當用途但常滑過頭','其他'] : ['Scroll before bed','Keep picking up phone at work','Keep refreshing messages','Have a reason but often over-scroll','Other'] },
+    { key: 'intent', type: 'text', explain: isZh ? '這次拿起手機，原本是想做什麼？想不起來也沒關係。' : 'What did you originally want to do? Not remembering is okay.', title: isZh ? '2. 原本想做什麼？' : '2. What did you want to do?', placeholder: isZh ? '例：查一個資料、不知道怎麼就打開了' : 'e.g. look something up, not sure how I opened it' },
+    { key: 'stop', type: 'single', explain: isZh ? '選一個這次想停下的提示。' : 'Pick a cue to stop this time.', title: isZh ? '3. 我想停下的提示' : '3. Cue to stop', options: isZh ? ['做完一件事','看完這一則','某個時間點','先停一下再決定'] : ['After finishing one thing','After this one','At a certain time','Pause and decide'] },
+    { key: 'after', type: 'text', explain: isZh ? '放下手機後的第一個動作。' : 'First action after putting the phone down.', title: isZh ? '4. 放下手機後' : '4. After putting phone down', placeholder: isZh ? '例：把手機背面朝上放在桌上' : 'e.g. place phone face down on the table' }
   ];
   if (id === 'problemsolve') return [
     { key: 'problem', type: 'text', explain: isZh ? '用一句話說清楚問題是什麼。' : 'State the problem in one sentence.', title: isZh ? '問題是什麼？（一句話）' : 'What is the problem? (one sentence)' },
