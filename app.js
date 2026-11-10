@@ -1490,8 +1490,76 @@ function renderSinglePageForm(toolId) {
         { key: 'together', type: 'text', label: isZh ? '需要一起協商的' : 'Need to negotiate', placeholder: isZh ? '例：週末的安排' : 'e.g. weekend arrangements' },
         { key: 'action', type: 'text', label: isZh ? '我願意先做的（選填）' : 'What I will do first (optional)', placeholder: isZh ? '例：這週先說我需要休息' : 'e.g. say I need rest this week' }
       ]
-    }
-  };
+    },
+
+    decision: {
+      fields: [
+        { key: 'options', type: 'text', label: isZh ? '我的選項（一行一個）' : 'My options (one per line)', placeholder: isZh ? '例：接受新工作、留在現職' : 'e.g. take new job, stay' },
+        { key: 'criteria', type: 'text', label: isZh ? '重要的考量' : 'Important criteria', placeholder: isZh ? '例：薪水、通勤、成長' : 'e.g. salary, commute, growth' },
+        { key: 'lean', type: 'text', label: isZh ? '目前比較傾向' : 'Currently leaning toward', placeholder: isZh ? '例：留在現職，再觀察' : 'e.g. stay for now' }
+      ]
+    },
+    supportcard: {
+      fields: [
+        { key: 'name', type: 'text', label: isZh ? '稱呼' : 'Name', placeholder: isZh ? '例：媽媽、朋友' : 'e.g. Mom, friend' },
+        { key: 'contact', type: 'text', label: isZh ? '聯絡方式' : 'Contact', placeholder: isZh ? '例：電話、WhatsApp' : 'e.g. phone' },
+        { key: 'help', type: 'text', label: isZh ? '可以請對方協助什麼' : 'What they can help with', placeholder: isZh ? '例：聽我說、陪我去' : 'e.g. listen, accompany' },
+        { key: 'time', type: 'text', label: isZh ? '方便時段（選填）' : 'Convenient times (optional)', placeholder: isZh ? '例：晚上、週末' : 'e.g. evenings' }
+      ]
+    },
+    repair: {
+      fields: [
+        { key: 'what', type: 'text', label: isZh ? '我記得發生的事' : 'What I remember', placeholder: isZh ? '例：我們為了週末安排起爭執' : 'e.g. we argued about weekend' },
+        { key: 'impact', type: 'text', label: isZh ? '這件事帶來的影響' : 'Impact', placeholder: isZh ? '例：之後沒再說話' : 'e.g. stopped talking' },
+        { key: 'mypart', type: 'text', label: isZh ? '我願意負責的部分' : 'My part', placeholder: isZh ? '例：我提高了音量' : 'e.g. I raised my voice' },
+        { key: 'step', type: 'text', label: isZh ? '我能做的一步' : 'One step I can take', placeholder: isZh ? '例：傳一句訊息' : 'e.g. send a message' }
+      ]
+    },
+    phone: {
+      fields: [
+        { key: 'situation', type: 'single', label: isZh ? '現在是哪種情況？' : 'What situation?', options: isZh ? ['睡前滑不停','工作中一直拿手機','一直刷新訊息','有正當用途但常滑過頭'] : ['Before bed','At work','Refreshing messages','Over-scroll'] },
+        { key: 'intent', type: 'text', label: isZh ? '原本想做什麼？' : 'What did you want to do?', placeholder: isZh ? '例：查資料、不知道怎麼就打開了' : 'e.g. look something up' },
+        { key: 'stop', type: 'single', label: isZh ? '我想停下的提示' : 'Cue to stop', options: isZh ? ['做完一件事','看完這一則','某個時間點','先停一下再決定'] : ['After one thing','After this one','At a time','Pause and decide'] },
+        { key: 'after', type: 'text', label: isZh ? '放下手機後' : 'After putting down', placeholder: isZh ? '例：把手機翻面放桌上' : 'e.g. place face down' }
+      ]
+    },
+    problemsolve: {
+      fields: [
+        { key: 'problem', type: 'text', label: isZh ? '我想處理的問題' : 'The problem', placeholder: isZh ? '例：工作量太大' : 'e.g. too much work' },
+        { key: 'solutions', type: 'text', label: isZh ? '我想得到的方法（1-5個）' : 'Solutions (1-5)', placeholder: isZh ? '例：跟主管談、延後部分' : 'e.g. talk to manager' },
+        { key: 'first', type: 'text', label: isZh ? '我想先試' : 'Try first', placeholder: isZh ? '例：跟主管談優先順序' : 'e.g. discuss priorities' },
+        { key: 'review', type: 'text', label: isZh ? '什麼時候回顧' : 'When to review', placeholder: isZh ? '例：下週五' : 'e.g. next Friday' }
+      ]
+    },
+    tasksorter: {
+      fields: [
+        { key: 'tasks', type: 'text', label: isZh ? '腦中的事情（一行一個）' : 'Tasks (one per line)', placeholder: isZh ? '例：回覆訊息、整理房間' : 'e.g. reply, tidy room' },
+        { key: 'today', type: 'text', label: isZh ? '今天想處理' : 'Handle today', placeholder: isZh ? '例：回覆確認時間的信' : 'e.g. reply to confirm' },
+        { key: 'later', type: 'text', label: isZh ? '可以延後' : 'Can wait', placeholder: isZh ? '例：整理整個房間' : 'e.g. tidy whole room' },
+        { key: 'first', type: 'text', label: isZh ? '第一小步' : 'First step', placeholder: isZh ? '例：打開信件' : 'e.g. open the email' }
+      ]
+    },
+    askhelp: {
+      fields: [
+        { key: 'type', type: 'single', label: isZh ? '需要的協助類型' : 'Type of help', options: isZh ? ['聽我說','具體幫忙','陪同','討論工作量'] : ['Listen','Specific help','Accompany','Discuss workload'] },
+        { key: 'who', type: 'text', label: isZh ? '想請誰幫忙' : 'Who to ask', placeholder: isZh ? '例：朋友、同事' : 'e.g. friend, colleague' },
+        { key: 'what', type: 'text', label: isZh ? '具體內容' : 'Specifics', placeholder: isZh ? '例：幫我看一下文件' : 'e.g. check this document' },
+        { key: 'message', type: 'text', label: isZh ? '我的說法' : 'My message', placeholder: isZh ? '例：我想請你幫我看一下…' : 'e.g. Could you help me check...' }
+      ]
+    },
+    relpause: {
+      fields: [
+        { key: 'known', type: 'text', label: isZh ? '已知的事' : 'What I know', placeholder: isZh ? '例：晚上九點傳的訊息還沒回' : 'e.g. sent at 9pm, no reply' },
+        { key: 'guess', type: 'text', label: isZh ? '我的猜測' : 'My guesses', placeholder: isZh ? '例：他是不是生氣了' : 'e.g. is he angry' },
+        { key: 'urge', type: 'multi', max: 3, label: isZh ? '現在想做的反應' : 'Reactions I want', options: isZh ? ['一直傳訊息','反覆查看','立刻問清楚','假裝沒事','也不理對方'] : ['Keep messaging','Keep checking','Ask now','Pretend nothing','Ignore too'] },
+        { key: 'decide', type: 'single', label: isZh ? '我決定' : 'I decide', options: isZh ? ['先等一段時間','傳一則簡單訊息','先找朋友聊聊','先照顧自己','暫時不回應'] : ['Wait a while','Send simple message','Talk to friend','Care for myself','Not respond'] }
+      ]
+    },
+    selfaffirm: {
+      fields: [
+        { key: 'affirm', type: 'single', label: isZh ? '我對自己說' : 'I say to myself', options: isZh ? ['我今天有努力','我已經盡力了','這次真的很多','我需要喘口氣','還在學習','一次沒做好不代表我不行'] : ['I tried today','I did my best','This was a lot','I need a break','Still learning','One time does not define me'] }
+      ]
+    }  };
   
   const form = forms[toolId];
   if (!form) return '<p>Form not found</p>';
