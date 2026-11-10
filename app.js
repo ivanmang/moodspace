@@ -1120,6 +1120,9 @@ const examples = {
   askhelp: { zh: '類型：聽我說\n對象：朋友\n內容：最近有些事想說\n溫和說法：我最近有些事想說，想找人聽一聽。你方便找個時間聊一下嗎？', en: 'Type: listen\nWho: friend\nWhat: some things I want to talk about\nGentle: I have some things I want to talk about. Do you have time to chat?' },
   repair: { zh: '發生的事：我們為了週末安排起爭執\n影響：之後沒再說話\n我負責的：我提高了音量\n不由我決定的：對方的感受\n我能做的：傳一句「我需要一點時間」', en: 'What happened: we argued about weekend\nImpact: stopped talking\nMy part: I raised my voice\nNot mine: their feelings\nI can do: send "I need some time"' },
   problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
+  decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
+  bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
   phone: { zh: '情況：睡前滑不停\n原本想做：查一個資料\n停下提示：看完這一則\n放下後：把手機翻面放桌上', en: 'Situation: scroll before bed\nWanted: look something up\nStop cue: after this one\nAfter: place phone face down' },
@@ -1132,6 +1135,9 @@ const examples = {
   askhelp: { zh: '類型：聽我說\n對象：朋友\n內容：最近有些事想說\n溫和說法：我最近有些事想說，想找人聽一聽。你方便找個時間聊一下嗎？', en: 'Type: listen\nWho: friend\nWhat: some things I want to talk about\nGentle: I have some things I want to talk about. Do you have time to chat?' },
   repair: { zh: '發生的事：我們為了週末安排起爭執\n影響：之後沒再說話\n我負責的：我提高了音量\n不由我決定的：對方的感受\n我能做的：傳一句「我需要一點時間」', en: 'What happened: we argued about weekend\nImpact: stopped talking\nMy part: I raised my voice\nNot mine: their feelings\nI can do: send "I need some time"' },
   problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
+  decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
+  bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
   phone: { zh: '情況：睡前滑不停\n原本想做：查一個資料\n停下提示：看完這一則\n放下後：把手機翻面放桌上', en: 'Situation: scroll before bed\nWanted: look something up\nStop cue: after this one\nAfter: place phone face down' },
@@ -1449,6 +1455,9 @@ function renderSinglePageForm(toolId) {
   askhelp: { zh: '類型：聽我說\n對象：朋友\n內容：最近有些事想說\n溫和說法：我最近有些事想說，想找人聽一聽。你方便找個時間聊一下嗎？', en: 'Type: listen\nWho: friend\nWhat: some things I want to talk about\nGentle: I have some things I want to talk about. Do you have time to chat?' },
   repair: { zh: '發生的事：我們為了週末安排起爭執\n影響：之後沒再說話\n我負責的：我提高了音量\n不由我決定的：對方的感受\n我能做的：傳一句「我需要一點時間」', en: 'What happened: we argued about weekend\nImpact: stopped talking\nMy part: I raised my voice\nNot mine: their feelings\nI can do: send "I need some time"' },
   problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
+  decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
+  bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
   phone: { zh: '情況：睡前滑不停\n原本想做：查一個資料\n停下提示：看完這一則\n放下後：把手機翻面放桌上', en: 'Situation: scroll before bed\nWanted: look something up\nStop cue: after this one\nAfter: place phone face down' },
@@ -1469,7 +1478,10 @@ function renderSinglePageForm(toolId) {
         { key: 'action', type: 'text', label: isZh ? '一個小行動（選填）' : 'One small action (optional)', placeholder: isZh ? '例：今天先完成最急的' : 'e.g. Finish the most urgent today' }
       ]
     },
-    gratitude: {
+    decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
+  bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
+  gratitude: {
       fields: [
         { key: 'thing', type: 'text', label: isZh ? '今天想留下的一件事' : 'One thing to note today', placeholder: isZh ? '例：午餐很好吃' : 'e.g. lunch was good' },
         { key: 'meaning', type: 'text', label: isZh ? '這件事的意義（選填）' : 'Meaning (optional)', placeholder: isZh ? '例：提醒我還是有小事值得開心' : 'e.g. reminds me small things count' },
@@ -1514,6 +1526,9 @@ function renderSinglePageForm(toolId) {
   askhelp: { zh: '類型：聽我說\n對象：朋友\n內容：最近有些事想說\n溫和說法：我最近有些事想說，想找人聽一聽。你方便找個時間聊一下嗎？', en: 'Type: listen\nWho: friend\nWhat: some things I want to talk about\nGentle: I have some things I want to talk about. Do you have time to chat?' },
   repair: { zh: '發生的事：我們為了週末安排起爭執\n影響：之後沒再說話\n我負責的：我提高了音量\n不由我決定的：對方的感受\n我能做的：傳一句「我需要一點時間」', en: 'What happened: we argued about weekend\nImpact: stopped talking\nMy part: I raised my voice\nNot mine: their feelings\nI can do: send "I need some time"' },
   problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
+  decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
+  bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
   phone: { zh: '情況：睡前滑不停\n原本想做：查一個資料\n停下提示：看完這一則\n放下後：把手機翻面放桌上', en: 'Situation: scroll before bed\nWanted: look something up\nStop cue: after this one\nAfter: place phone face down' },
@@ -1553,6 +1568,9 @@ function renderSinglePageForm(toolId) {
     },
     repair: { zh: '發生的事：我們為了週末安排起爭執\n影響：之後沒再說話\n我負責的：我提高了音量\n不由我決定的：對方的感受\n我能做的：傳一句「我需要一點時間」', en: 'What happened: we argued about weekend\nImpact: stopped talking\nMy part: I raised my voice\nNot mine: their feelings\nI can do: send "I need some time"' },
   problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
+  decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
+  bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: { zh: '已知：晚上九點傳的訊息，到十一點還沒回\n猜測：他是不是不想理我\n想做的反應：一直傳訊息、反覆查看\n其他做法：先等一小時、先照顧自己\n決定：先去洗澡，明天再看', en: 'Known: sent at 9pm, no reply by 11pm\nGuess: does he not want to talk\nUrge: keep messaging, keep checking\nOther: wait an hour, care for myself\nDecide: shower first, check tomorrow' },
   phone: {
@@ -1588,6 +1606,9 @@ function renderSinglePageForm(toolId) {
       ]
     },
     problemsolve: { zh: '問題：早上出門總是很趕\n方法：晚餐後整理包包、前一晚準備衣服\n先試：晚餐後整理包包\n回顧：一週後看是否比較不趕', en: 'Problem: always rushed in the morning\nSolutions: pack bag after dinner, prepare clothes night before\nTry first: pack bag after dinner\nReview: check in a week' },
+  decision: { zh: '決定：要不要轉換工作\n選項A：留在原職\n選項B：接受新工作\n條件：時間安排、收入變動、身心負擔\n缺資訊：新工作的加班頻率\n下一步：先問人，不急決定', en: 'Decision: whether to change jobs\nOption A: stay\nOption B: take new job\nCriteria: time, income, wellbeing\nMissing: overtime at new job\nNext: ask someone, no rush' },
+  bodycheck: { zh: '部位：肩膀與上背\n感覺：緊繃、痠\n程度：中等\n補充：從早上開始就緊\n接下來：起來走走', en: 'Area: shoulders\nSensation: tight, sore\nIntensity: moderate\nNote: tight since morning\nNext: get up and walk' },
+  transition: { zh: '類型：轉職、新工作\n階段：即將發生\n想保留：和朋友的聯絡\n可以調整：作息時間\n還不確定：新環境的人際\n先照顧：先把作息穩定下來', en: 'Type: new job\nStage: about to happen\nKeep: contact with friends\nAdjust: sleep schedule\nUnclear: new relationships\nCare first: stabilize sleep' },
   gratitude: { zh: '今天的事：下班吃了熱湯麵\n意義：忙碌後照顧自己\n感受：滿足、溫暖', en: 'Today: had hot noodles after work\nMeaning: cared for myself after busy day\nFeeling: content, warm' },
   relpause: {
       fields: [
@@ -1691,6 +1712,9 @@ const toolNotes = {
   repair: '不是每次衝突都要立刻和好。自己能負責的是具體言行，不是把整件事的錯都攬在身上。',
   problemsolve: '先說清楚問題，再列出幾個可能的做法，選一個先試。想不到方法時，一個也可以。',
   lowenergy: '選「沒力氣時也有可能做到」的活動。不是作業，今天做不到也沒關係。',
+  decision: '這張表不替你打分數，也不推薦。只是幫你把選項和條件攤開來看。',
+  bodycheck: '只是「注意到」，不急著解釋原因。身體感覺可能有很多原因，不一定是壓力。',
+  transition: '生活變動可能帶來壓力，即使是正向的改變，也需要時間適應。',
   gratitude: '只記一件小事即可。沒有想到也沒關係，可先留白或記讓自己喘口氣的事。',
   relpause: '這張卡不判斷對方愛不愛你。猜測不代表事實，寫下來只是讓它被看見。',
   phone: '不需戒掉手機，而是先規劃使用範圍。為單次使用設結束點。',
@@ -1736,6 +1760,14 @@ const toolFAQ = {
     { q: '想不到第二個方法怎麼辦？', a: '一個方法也可以完成。可以想想如果是朋友會建議什麼，或回想以前有幫助的做法。' },
     { q: '問題不是自己能控制的怎麼辦？', a: '可以整理情緒和支持資源，或只針對能做的小部分。' }
   ],
+  decision: [
+    { q: '這會告訴我該選哪個嗎？', a: '不會。這張表不打分數、不推薦，只是幫你把選項和條件攤開來看。' },
+    { q: '可以不今天決定嗎？', a: '可以。下一步可以是「先找資訊」或「先不決定」。' }
+  ],
+  bodycheck: [
+    { q: '不確定感覺是什麼能選嗎？', a: '可以。描述裡有「不確定」，說不清楚位置可以選「其他」。' },
+    { q: '身體痠痛一定代表壓力嗎？', a: '不一定。可能和姿勢、睡眠、受傷有關。持續不適請找醫師評估。' }
+  ],
   gratitude: [
     { q: '一定要寫三件嗎？', a: '不用。寫一件就完成了，想多寫可以寫到三件。' },
     { q: '沒有值得感謝的事怎麼辦？', a: '可以留白，或記一件讓自己稍微喘口氣的事。不需要勉強。' }
@@ -1770,6 +1802,14 @@ const toolFAQ = {
   problemsolve: [
     { q: '想不到第二個方法怎麼辦？', a: '一個方法也可以完成。可以想想如果是朋友會建議什麼，或回想以前有幫助的做法。' },
     { q: '問題不是自己能控制的怎麼辦？', a: '可以整理情緒和支持資源，或只針對能做的小部分。' }
+  ],
+  decision: [
+    { q: '這會告訴我該選哪個嗎？', a: '不會。這張表不打分數、不推薦，只是幫你把選項和條件攤開來看。' },
+    { q: '可以不今天決定嗎？', a: '可以。下一步可以是「先找資訊」或「先不決定」。' }
+  ],
+  bodycheck: [
+    { q: '不確定感覺是什麼能選嗎？', a: '可以。描述裡有「不確定」，說不清楚位置可以選「其他」。' },
+    { q: '身體痠痛一定代表壓力嗎？', a: '不一定。可能和姿勢、睡眠、受傷有關。持續不適請找醫師評估。' }
   ],
   gratitude: [
     { q: '一定要寫三件嗎？', a: '不用。寫一件就完成了，想多寫可以寫到三件。' },
