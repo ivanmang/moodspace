@@ -352,3 +352,45 @@ details[open] summary {
   body { background: white; }
   body::before { display: none; }
 }
+
+/* Accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+button:focus-visible,
+.tool-card:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Better result cards */
+.card-result {
+  background: var(--accent-light);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  white-space: pre-wrap;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* Print styles */
+@media print {
+  header, .back-btn, .actions, footer, .theme-toggle, .lang-toggle,
+  #guided-entry, .onboarding, .faq, .emergency { display: none !important; }
+  body { background: white; color: black; }
+  .card-result { border: 1px solid #ccc; background: white; box-shadow: none; }
+  main { padding: 0; max-width: none; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

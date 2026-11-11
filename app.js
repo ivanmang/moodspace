@@ -102,6 +102,20 @@ const tools = [
   { id: 'breathspace', icon: '🌌', cat: 'pause', zh: { name: '三分鐘呼吸空間練習', desc: '心裡很亂時，跟著覺察、集中、擴展三個階段停下來看看自己。' }, en: { name: 'Three-Minute Breathing Space', desc: 'Mind racing? Pause with awareness, focus, and expansion. No need to control the breath.' } },
   { id: 'pmr', icon: '💪', cat: 'pause', zh: { name: '漸進式肌肉放鬆', desc: '身體一直很緊時，跟著提示一組一組收緊再放開。不舒服的部位隨時跳過。' }, en: { name: 'Progressive Muscle Relaxation', desc: 'Body tense? Follow prompts to tense and release muscle groups. Skip any that feel uncomfortable.' } },
   { id: 'counselprep', icon: '📝', cat: 'help', zh: { name: '第一次諮商準備包', desc: '正在考慮心理諮商？先整理想談的內容和想問的問題。' }, en: { name: 'Counseling Prep', desc: 'Organize topics, main concern, and anything you want the counselor to know' } },
+
+  { id: 'neednow', icon: '🌱', cat: 'emotions', zh: { name: '我現在最需要什麼', desc: '快速看看此刻最需要的是休息、空間、陪伴，還是其他。' }, en: { name: 'What I Need Right Now', desc: 'Quickly check what you need most in this moment — rest, space, company, or something else.' } },
+  { id: 'weeklywin', icon: '🌟', cat: 'actions', zh: { name: '這週的小勝利', desc: '回顧這一週有哪些還不錯的事，不管多小。' }, en: { name: 'Weekly Small Wins', desc: 'Look back at the week and note the things that went okay, however small.' } 
+  if (id === 'neednow') return [
+    { key: 'needs', type: 'multi', max: 3, explain: isZh ? '選最接近的就好，最多三個。' : 'Pick the closest ones, up to three.', title: isZh ? '此刻我最需要' : 'What I need most right now', options: isZh ? ['休息','一點空間','有人陪伴','被聽見','實際幫助','更清楚的資訊','運動一下','先什麼都不做'] : ['Rest','Some space','Company','To be heard','Practical help','Clearer information','Move my body','Do nothing for now'] },
+    { key: 'note', type: 'text', explain: isZh ? '選填。想補充什麼都可以。' : 'Optional. Add anything else you want to note.', title: isZh ? '其他想記下的（選填）' : 'Anything else (optional)', placeholder: isZh ? '例如：今天已經很累了' : 'e.g. Already quite tired today' }
+  ];
+  if (id === 'weeklywin') return [
+    { key: 'wins', type: 'text', explain: isZh ? '寫下這一週還不錯的事，可以一件或幾件。' : 'Note things that went okay this week — one or several.', title: isZh ? '這週的小勝利' : 'This week's small wins', placeholder: isZh ? '例：準時下班一次、回了朋友訊息、好好吃了一頓飯' : 'e.g. Left work on time once, replied to a friend, ate a proper meal' },
+    { key: 'next', type: 'text', explain: isZh ? '選填。下週想多一點的一件小事。' : 'Optional. One small thing you want more of next week.', title: isZh ? '下週想多一點的（選填）' : 'Something to have more of next week (optional)', placeholder: isZh ? '例：早點睡兩次' : 'e.g. Go to bed earlier twice' }
+  ];
+
+},
+
 ];
 
 function t(key) { return translations[lang][key] || key; }
@@ -831,6 +845,15 @@ function buildCard(id, a) {
   }
 
   return '—';
+
+  if (id === 'neednow') {
+    const needs = (a.needs || []).join('、') || '—';
+    return (isZh ? '我現在最需要\n\n' : 'What I need right now\n\n') + needs + (a.note ? '\n\n' + a.note : '');
+  }
+  if (id === 'weeklywin') {
+    return (isZh ? '這週的小勝利\n\n' : 'This week\'s small wins\n\n') + (a.wins || '—') + (a.next ? '\n\n下週想多一點的：' + a.next : '');
+  }
+
 }
 
 function renderSpecial(id) {
@@ -2261,3 +2284,4 @@ window.addEventListener('load', () => {
   const hash = location.hash.slice(1);
   if (hash && tools.some(t => t.id === hash)) openTool(hash);
 });
+
